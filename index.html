@@ -349,7 +349,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-16 11:24:35" itemprop="dateModified" datetime="2022-03-16T11:24:35+08:00">2022-03-16</time>
+                <time title="修改时间：2022-03-16 22:52:57" itemprop="dateModified" datetime="2022-03-16T22:52:57+08:00">2022-03-16</time>
               </span>
 
           
@@ -403,7 +403,13 @@
 <li>内部类没太看懂，不知道重不重要</li>
 </ol>
 <h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><ol>
-<li>如果出现RuntimeException异常，那么就一定是你的问题</li>
+<li><p>如果出现RuntimeException（非受查异常）异常，那么就一定是你的问题，有可能是因为程序的逻辑错误导致的，这些运行时错误完全在我们的控制之下</p>
+</li>
+<li><p>方法应该在其首部声明所有可能抛出的异常。这样可以从首部反映出这个方法可能抛出哪类受査异常。</p>
+</li>
+<li><p>运行时异常：编译时不会报错，但程序运行起来如果有错误就会报异常。下面是几种常见的运行时异常</p>
+<p>ArithmeticException  算数运算异常，由于除数为0引起的异常；<br>ClassCastException  类型转换异常，当把一个对象归为某个类，但实际上此对象并不是由这个类创建的，也不是其子类创建的，则会引起异常；<br>ArrayStoreException  由于数组存储空间不够引起的异常；<br>NullPointerException  空指针异常，程序试图访问一个空的数组中的元素或访问空的对象中的方法或变量时产生异常；<br>IndexOutOfBoundsExcention  索引越界异常，由于数组下标越界或字符串访问越界引起异常；<br>ConcurrentModificationException  并发修改异常；<br>NoSuchElementException  找不到元素异常；<br>UnsupportedOperationException  不支持请求异常；（使用Arrays工具类的asList将数组转成集合增加元素时，会报此异常）</p>
+</li>
 </ol>
 
       
