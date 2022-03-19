@@ -28,7 +28,7 @@
 <meta property="og:description" content="一些零散知识点 块（即复合语句）是指由一对大括号括起来的若干条简单的 Java 语句  不能在嵌套的两个块中声明同名的变量  instanceof（）方法左边是对象，右边是类，当对象是右边类或子类所创建的对象时，返回true，否则返回false  设计方法的第一步是先对数据的合理性进行校验  类之间的关系：依赖（“uses-a”）：一个类的方法操纵另一个类的对象；聚合（”has-a“）：类A对象包">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-10T23:52:01.000Z">
-<meta property="article:modified_time" content="2022-03-16T14:52:57.255Z">
+<meta property="article:modified_time" content="2022-03-19T06:44:53.042Z">
 <meta property="article:author" content="Irony">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -182,7 +182,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-16 22:52:57" itemprop="dateModified" datetime="2022-03-16T22:52:57+08:00">2022-03-16</time>
+                <time title="修改时间：2022-03-19 14:44:53" itemprop="dateModified" datetime="2022-03-19T14:44:53+08:00">2022-03-19</time>
               </span>
 
           
@@ -220,6 +220,21 @@
 </li>
 <li><p>logo用面向对象的思想重写一遍：有两个类一个是Turtle一个是Chessboard，当乌龟移动时，就在Chessboard上留下痕迹，这部分是在main方法里面实现的，感觉这部分做的不是很好，乌龟和棋盘的关系是棋盘上有只乌龟，或许应该在棋盘类中创建乌龟的实例？（“has-a”关系？），继续学习用<strong>面向对象的观点和方法</strong>来思考</p>
 </li>
+<li><p>方法签名是指方法的名称（即函数名）和方法的参数</p>
+</li>
+<li><p>在定义方法时，在最后一个形参后加上三点 <strong>…</strong>，就表示该形参可以接受多个参数值，多个参数值被当成数组传入。上述定义有几个要点需要注意：</p>
+</li>
+</ol>
+<ul>
+<li>可变参数只能作为函数的最后一个参数，但其前面可以有也可以没有任何其他参数</li>
+<li>由于可变参数必须是最后一个参数，所以一个函数最多只能有一个可变参数</li>
+<li>Java的可变参数，会被编译器转型为一个数组</li>
+<li>变长参数在编译为字节码后，在方法签名中就是以数组形态出现的。这两个方法的签名是一致的，不能作为方法的重载。如果同时出现，是不能编译通过的。可变参数可以兼容数组，反之则不成立</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">foo</span><span class="params">(String...varargs)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="string">&quot;arg1&quot;</span>, <span class="string">&quot;arg2&quot;</span>, <span class="string">&quot;arg3&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//上述过程和下面的调用是等价的</span></span><br><span class="line">foo(<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;arg1&quot;</span>, <span class="string">&quot;arg2&quot;</span>, <span class="string">&quot;arg3&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="11">
+<li>Equals 与 hashCode 的定义必须一致：如果 x.equals(y) 返回 true, 那么 x.hashCode( ) 就必 须与 y.hashCode( ) 具有相同的值。</li>
 </ol>
 <h1 id="对象和类"><a href="#对象和类" class="headerlink" title="对象和类"></a>对象和类</h1><ol>
 <li>静态方法不能访问某一对象的实例域，因为它不能操作对象，但静态的方法可以访问自身类中的静态域</li>
@@ -236,7 +251,7 @@
 <li>内部类没太看懂，不知道重不重要</li>
 </ol>
 <h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><ol>
-<li><p>如果出现RuntimeException（非受查异常）异常，那么就一定是你的问题，有可能是因为程序的逻辑错误导致的，这些运行时错误完全在我们的控制之下</p>
+<li><p>如果出现RuntimeException（非受查异常）异常，那么就一定是你的问题，有可能是因为程序的逻辑错误导致的，这些运行时错误完全在我们的控制之下，但已检查异常需要提供异常处理器</p>
 </li>
 <li><p>方法应该在其首部声明所有可能抛出的异常。这样可以从首部反映出这个方法可能抛出哪类受査异常。</p>
 </li>
@@ -244,7 +259,23 @@
 <p>ArithmeticException  算数运算异常，由于除数为0引起的异常；<br>ClassCastException  类型转换异常，当把一个对象归为某个类，但实际上此对象并不是由这个类创建的，也不是其子类创建的，则会引起异常；<br>ArrayStoreException  由于数组存储空间不够引起的异常；<br>NullPointerException  空指针异常，程序试图访问一个空的数组中的元素或访问空的对象中的方法或变量时产生异常；<br>IndexOutOfBoundsExcention  索引越界异常，由于数组下标越界或字符串访问越界引起异常；<br>ConcurrentModificationException  并发修改异常；<br>NoSuchElementException  找不到元素异常；<br>UnsupportedOperationException  不支持请求异常；（使用Arrays工具类的asList将数组转成集合增加元素时，会报此异常）</p>
 </li>
 </ol>
+<h1 id="泛型程序设计"><a href="#泛型程序设计" class="headerlink" title="泛型程序设计"></a>泛型程序设计</h1><ol>
+<li><p>一个泛型类（ generic class) 就是具有一个或多个类型变量的类。</p>
+</li>
+<li><p>下面的这个Pair就是一个泛型类，类定义中的类型变量指定方法的返回类型以及域和局部变量的类型</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Pair</span>&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> T first;</span><br><span class="line">    <span class="keyword">private</span> T second;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Pair</span><span class="params">()</span> &#123; first = <span class="literal">null</span> ; second = <span class="literal">null</span> ; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Pair</span><span class="params">(T first, T second)</span> </span><br><span class="line">    &#123; <span class="built_in">this</span>.first = first; <span class="built_in">this</span>.second = second; &#125;</span><br><span class="line">    <span class="keyword">public</span> T <span class="title function_">getFirst</span><span class="params">()</span> &#123; <span class="keyword">return</span> first; &#125;</span><br><span class="line">    <span class="keyword">public</span> T <span class="title function_">getSecond</span><span class="params">()</span> &#123; <span class="keyword">return</span> second; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setFirst</span><span class="params">(T newValue)</span> &#123; first = newValue; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSecond</span><span class="params">(T newValue)</span> &#123; second = newValue; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<ol start="3">
+<li>对类型变量 T 设置<strong>限定</strong>：<code>public static &lt;T extends Comparable&gt; T min(T[] a) </code>,一个类型变量或通配符可以有多个限定， 例如： <code>T extends Comparable &amp; Serializable</code> 限定类型用“ &amp;” 分隔，而逗号用来分隔类型变量。</li>
+<li><strong>泛型的一些东西没搞清楚</strong>，但基本上应该使用泛型没什么问题</li>
+</ol>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><ol>
+<li>Java 迭代器指向两个元素之间的位置</li>
+<li>树集是一个有序集合 ( sorted collection) o，可以以任意顺序将元素插入到集合中。在对集合进行遍历时，每个值将自动地按照排序后的顺序呈现。</li>
+</ol>
+<h1 id="Java高级特性反射、代理（等到今后需要用到时再了解吧）"><a href="#Java高级特性反射、代理（等到今后需要用到时再了解吧）" class="headerlink" title="Java高级特性反射、代理（等到今后需要用到时再了解吧）"></a>Java高级特性反射、代理（等到今后需要用到时再了解吧）</h1>
     </div>
 
     
@@ -327,7 +358,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%9B%B6%E6%95%A3%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">一些零散知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">对象和类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">3.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8"><span class="nav-number">5.</span> <span class="nav-text">异常</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%9B%B6%E6%95%A3%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">一些零散知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">对象和类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">3.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8"><span class="nav-number">5.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">6.</span> <span class="nav-text">泛型程序设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88"><span class="nav-number">7.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E5%8F%8D%E5%B0%84%E3%80%81%E4%BB%A3%E7%90%86%EF%BC%88%E7%AD%89%E5%88%B0%E4%BB%8A%E5%90%8E%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0%E6%97%B6%E5%86%8D%E4%BA%86%E8%A7%A3%E5%90%A7%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">Java高级特性反射、代理（等到今后需要用到时再了解吧）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

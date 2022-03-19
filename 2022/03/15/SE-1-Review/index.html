@@ -28,7 +28,7 @@
 <meta property="og:description" content="Python部分 parameter是形参，argument是实参。  title() 方法返回一个字符串，其中每个单词的第一个字符均为大写。如果单词包含数字或符号，则其后的第一个字母将转换为大写字母。  换零钱问题（递归、动态规划）：给定半美元、25美分、10美分、5美分、1美分 5种硬币，将 1 美元换成硬币，有多少种硬币组合？给定任意数量的现金 和 任意组合的硬币种类，计算换零钱所有方式的种">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-15T12:49:47.000Z">
-<meta property="article:modified_time" content="2022-03-16T03:24:42.514Z">
+<meta property="article:modified_time" content="2022-03-18T11:40:35.361Z">
 <meta property="article:author" content="Irony">
 <meta name="twitter:card" content="summary">
 
@@ -181,7 +181,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-16 11:24:42" itemprop="dateModified" datetime="2022-03-16T11:24:42+08:00">2022-03-16</time>
+                <time title="修改时间：2022-03-18 19:40:35" itemprop="dateModified" datetime="2022-03-18T19:40:35+08:00">2022-03-18</time>
               </span>
 
           
@@ -226,6 +226,12 @@
 <li><p>思考递归问题时，先将其分解为几个子问题，然后分别判断这几个子问题在哪些方面缩减了问题的规模，以此来考虑边界情况。</p>
 </li>
 <li><p>在 <a target="_blank" rel="noopener" href="http://c.biancheng.net/python/">Python</a> 中，有一个特殊的常量 None（N 必须大写）。和 False 不同，它不表示 0，也不表示空字符串，而表示没有值，也就是空值。这里的空值并不代表空对象，即 None 和 []、“” 不同。</p>
+</li>
+<li><p><strong>sort()</strong> 函数用于对原列表进行排序，会改变原列表中数据的顺序，sorted 可以对所有可迭代的对象进行排序操作， sorted 方法返回的是一个新的 list，而不是在原来的基础上进行的操作。</p>
+</li>
+<li><p>对字符串的操作方法都不会改变原来字符串的值，下面是一些常用的字符串方法：</p>
+<p>1.去掉空格和特殊符号<br>name.strip() 去掉空格和换行符<br>name.strip(‘xx’) 去掉某个字符串<br>name.lstrip() 去掉左边的空格和换行符<br>name.rstrip() 去掉右边的空格和换行符<br>2.字符串的搜索和替换<br>name.count(‘x’) 查找某个字符在字符串里面出现的次数<br>name.capitalize() 首字母大写<br>name.center(n,’-’) 把字符串放中间，两边用- 补齐<br>name.find(‘x’) 找到这个字符返回下标，多个时返回第一个；不存在的字符返回-1<br>name.index(‘x’) 找到这个字符返回下标，多个时返回第一个；不存在的字符报错<br>name.replace(oldstr, newstr) 字符串替换<br>name.format（） 字符串格式化<br>name.format_map(d) 字符串格式化，传进去的是一个字典<br>3.字符串的分割<br>name.split() 默认是按照空格分割<br>name.split(’,’) 按照逗号分割</p>
+<p>str.upper()用法：将字符串全部变成大写<br>str.lower()用法：将字符串全部变成小写<br>string.split(text)#字符串分割?<br>string.join(string.split(text), “+”)#字符串连接?<br>string.replace(text, “Python”, “Java”)#字符串替换?<br>string.count(text, “n”)#字符串计数?<br>string.find(text, “Python”), string.find(text,“Java”)#字符串查找</p>
 </li>
 </ol>
 
