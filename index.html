@@ -350,10 +350,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-03-13 11:58:21 / 修改时间：16:25:09" itemprop="dateCreated datePublished" datetime="2022-03-13T11:58:21+08:00">2022-03-13</time>
+              <time title="创建时间：2022-03-13 11:58:21" itemprop="dateCreated datePublished" datetime="2022-03-13T11:58:21+08:00">2022-03-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-20 14:21:47" itemprop="dateModified" datetime="2022-03-20T14:21:47+08:00">2022-03-20</time>
+              </span>
 
           
 
@@ -379,6 +385,17 @@
 </li>
 <li><p>寻找两个正序数组的中位数：归并排序，将<strong>两个有序数组合并为一个</strong>，for循环遍历合并后的数组，然后分别设置两个指针指向需要排序的两个数组，取两个数组中小的数放入新数组，并且让该数组指针后移，<strong>边界情况</strong>若一个数组指针已经指向末尾，则另外判断次情况，将另一个数组的数全部放入即可。</p>
 <p>算法时间复杂度为O（m+n），只用遍历一次新数组即可。</p>
+</li>
+<li><p>最长回文子串：</p>
+<p>（1）扩展中心：回文子串分两种，奇数长度：abcba可以从中间的a开始向两边扩展，偶数长度：abcabbabb，从[1]和[2]中间开始向两边扩展，下面是扩展的函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">expand</span><span class="params">(String s,<span class="type">int</span> start,<span class="type">int</span> end)</span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(start&gt;=<span class="number">0</span>&amp;&amp;end&lt;s.length()&amp;&amp;s.charAt(start)==s.charAt(end))&#123;</span><br><span class="line">            start--;</span><br><span class="line">            end++;</span><br><span class="line">        &#125;</span><br><span class="line">   	<span class="keyword">return</span> end-start-<span class="number">1</span>;<span class="comment">//注意这里的减一，比如abcba，到两边a的时候还会start--和end++,所以要减一</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>遍历字符串，从每个点开始扩展，有两种扩展方式，分别为<code>expand(s,i,i);//abcba</code>（从c开始扩展）和<code>len2=expand(s,i,i+1);//abba</code>（从[1]b和[2]b开始扩展），然后找出最长的那个扩展方式，<code>start=i-(len-1)/2;end=i+len/2;</code>,注意这里的start和end。</p>
+<p>（2）动态规划：p（i，j）&#x3D;p(i+1,j-1)&amp;&amp;s[i]&#x3D;&#x3D;s[j]所以如果我们想知道 P（i , j）的情况，只需要知道 P（i + 1，j - 1）的情况就可以了，然后向两边扩展即可，这样时间复杂度就少了 O(n)。因此我们可以用动态规划的方法，空间换时间，把已经求出的 P（i，j）存储起来，求 长度为 1 和长度为 2 的 P(i,j) 时不能用上边的公式，例如求p（1，2），带入会出现p（2，1），长度为1和2的回文串需要单独判断。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">1</span>; len &lt;= length; len++) <span class="comment">//遍历所有的长度</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>; start &lt; length; start++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> start + len - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (end &gt;= length) <span class="comment">//下标已经越界，结束本次循环</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            P[start][end] = (len == <span class="number">1</span> || len == <span class="number">2</span> || P[start + <span class="number">1</span>][end - <span class="number">1</span>]) &amp;&amp; s.charAt(start) == s.charAt(end); <span class="comment">//长度为 1 和 2 的单独判断下</span></span><br><span class="line">            <span class="keyword">if</span> (P[start][end] &amp;&amp; len &gt; maxLen) &#123;</span><br><span class="line">                maxLen=len;</span><br><span class="line">                maxPal = s.substring(start, end + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：两层循环 O(n²）</p>
+<p>空间复杂度：用二维数组 P<em>P</em> 保存每个子串的情况 O(n²)</p>
 </li>
 </ol>
 
@@ -431,7 +448,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-19 14:44:53" itemprop="dateModified" datetime="2022-03-19T14:44:53+08:00">2022-03-19</time>
+                <time title="修改时间：2022-03-19 22:15:18" itemprop="dateModified" datetime="2022-03-19T22:15:18+08:00">2022-03-19</time>
               </span>
 
           
@@ -483,7 +500,52 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">foo</span><span class="params">(String...varargs)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="string">&quot;arg1&quot;</span>, <span class="string">&quot;arg2&quot;</span>, <span class="string">&quot;arg3&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//上述过程和下面的调用是等价的</span></span><br><span class="line">foo(<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;arg1&quot;</span>, <span class="string">&quot;arg2&quot;</span>, <span class="string">&quot;arg3&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
 
 <ol start="11">
-<li>Equals 与 hashCode 的定义必须一致：如果 x.equals(y) 返回 true, 那么 x.hashCode( ) 就必 须与 y.hashCode( ) 具有相同的值。</li>
+<li><p>Equals 与 hashCode 的定义必须一致：如果 x.equals(y) 返回 true, 那么 x.hashCode( ) 就必 须与 y.hashCode( ) 具有相同的值。</p>
+</li>
+<li><p>正则表达式：</p>
+<table>
+<thead>
+<tr>
+<th align="left">代码</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">.</td>
+<td align="left">匹配任意1个字符（除了\n）</td>
+</tr>
+<tr>
+<td align="left">[ ]</td>
+<td align="left">匹配[ ]中列举的字符</td>
+</tr>
+<tr>
+<td align="left">\d</td>
+<td align="left">匹配数字，即0-9</td>
+</tr>
+<tr>
+<td align="left">\D</td>
+<td align="left">匹配非数字，即不是数字</td>
+</tr>
+<tr>
+<td align="left">\s</td>
+<td align="left">匹配空白，即 空格，tab键</td>
+</tr>
+<tr>
+<td align="left">\S</td>
+<td align="left">匹配非空白</td>
+</tr>
+<tr>
+<td align="left">\w</td>
+<td align="left">匹配非特殊字符，即a-z、A-Z、0-9、_、汉字</td>
+</tr>
+<tr>
+<td align="left">\W</td>
+<td align="left">匹配特殊字符，即非字母、非数字、非汉字、非_</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>对<strong>递归</strong>的理解：倒着想问题，正着写代码，先想问题的前一步，也就是再走一步就可以解决问题的这个点，然后看从这一点到解决问题有多少种方法，一般而言这几种方法就是从起点走到解决问题的这些方法，但也有可能不是，可能起点开始的时候方法选择会更多，所以要综合第一步来考虑，综合后这就是递归的路径，然后根据不同的路径判断<strong>递归的边界条件</strong>（边界条件非常重要），首先看问题规模是朝着什么方向缩减的，这可以写成if，然后再看看会不会有走向死路（死循环）的情况，这个边界条件也要加上去，这个地方的边界条件可能有点难找，多考虑几个样例来试试，切记分析问题时可以从正向和反向两个方面来分析，反向：假设这样可以会怎么怎么样。</p>
+</li>
 </ol>
 <h1 id="对象和类"><a href="#对象和类" class="headerlink" title="对象和类"></a>对象和类</h1><ol>
 <li>静态方法不能访问某一对象的实例域，因为它不能操作对象，但静态的方法可以访问自身类中的静态域</li>
