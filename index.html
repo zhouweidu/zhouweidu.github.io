@@ -148,6 +148,76 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Irony">
+      <meta itemprop="description" content="This is a blog in order to record my learning and growth.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Irony's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">数据结构与算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-25 16:47:47 / 修改时间：17:01:57" itemprop="dateCreated datePublished" datetime="2022-03-25T16:47:47+08:00">2022-03-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><ol>
+<li><p>排序中相关术语解释：</p>
+<p>稳定：如果a原本在b前面，而a&#x3D;b，排序后a仍然在b前面</p>
+<p>不稳定：如果a原本在b前面，而a&#x3D;b，排序后a可能在b后面</p>
+</li>
+<li><p>基数排序（桶排序的扩展），从个位开始对一个数组进行排序，然后是十位、百位（十位百位没有数字就补零），因为十位的排序建立在个位排序的基础之上，百位建立在十位排序的基础之上，所以该算法排序是正确的，排序次数位数组中最大数字的位数，举例如下：</p>
+<p>53 3 542 748 14 214</p>
+<p>个位排序：542 53 3 14 214 748</p>
+<p>十位排序：3 14 214 542 748 53</p>
+<p>百位排序：3 14 53 214 542 748</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/17/Discrete-Math/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -450,7 +520,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-20 22:41:25" itemprop="dateModified" datetime="2022-03-20T22:41:25+08:00">2022-03-20</time>
+                <time title="修改时间：2022-03-25 21:35:15" itemprop="dateModified" datetime="2022-03-25T21:35:15+08:00">2022-03-25</time>
               </span>
 
           
@@ -556,9 +626,9 @@
 <h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><ol>
 <li><p>通过<strong>后期绑定</strong>（也叫动态绑定）来确定一个引用所调用的方法是哪一个， private 方法、 static 方法或 final 方法不会动态绑定，在运行时， 调用 e.getSalary（） 的解析过程为（e是Employee类的一个对象）：</p>
 <p>在 Employee 的方法表中， 列出了这个类定义的所有方法（实际上没列出超类Object的方法）：</p>
-<p> <img src="/../images/Java-method-table1.png" alt="Snipaste_2022-03-20_22-30-05"></p>
+<p> <img src="/2022/03/11/review-on-java/Java-method-table1.png" alt="Java-method-table1"></p>
 <p>在Manager的方法表中，有三个方法是继承而来的，一个方法是重新定义的， 还有一个方法是新增加的：</p>
-<p><img src="/../images/Java-method-table2.png" alt="Snipaste_2022-03-20_22-30-31"></p>
+<p><img src="/2022/03/11/review-on-java/Java-method-table2.png" alt="Java-method-table2"></p>
 <p>1 ) 首先，虚拟机提取 e 的实际类型的方法表。既可能是 Employee、 Manager 的方法表， 也可能是 Employee 类的其他子类的方法表（有可能e的实际类型是Employee的子类但赋值给employee引用）。 </p>
 <p>2 ) 接下来， 虚拟机搜索定义 getSalary 签名的类（方法的名字和参数列表称为方法的签名）。此时，虚拟机已经知道应该调用哪个 方法。 </p>
 <p>3 ) 最后，虚拟机调用方法。动态绑定有一个非常重要的特性： 无需对现存的代码进行修改，就可以对程序进行扩展。 假设增加一个新类 Executive, 并且变量 e 有可能引用这个类的对象， 我们不需要对包含调用 e.getSalary() 的代码进行重新编译。如果 e 恰好引用一个 Executive 类的对象，就会自动地调用 Executive.getSalary（）方法。</p>
@@ -600,8 +670,14 @@
 <li><strong>泛型的一些东西没搞清楚</strong>，但基本上应该使用泛型没什么问题</li>
 </ol>
 <h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><ol>
-<li>Java 迭代器指向两个元素之间的位置</li>
-<li>树集是一个有序集合 ( sorted collection) o，可以以任意顺序将元素插入到集合中。在对集合进行遍历时，每个值将自动地按照排序后的顺序呈现。</li>
+<li><p>Java 迭代器指向两个元素之间的位置</p>
+</li>
+<li><p>树集是一个有序集合 ( sorted collection) o，可以以任意顺序将元素插入到集合中。在对集合进行遍历时，每个值将自动地按照排序后的顺序呈现。</p>
+</li>
+<li><p>Java 集合类型分为 Collection 和 Map，它们是 Java 集合的根接口，这两个接口又包含了一些子接口或实现类</p>
+<p><img src="/2022/03/11/review-on-java/5-1912051036333V.png" alt="Collection接口结构"></p>
+<p><img src="/2022/03/11/review-on-java/5-191205103G5960.png" alt="Map接口结构"></p>
+</li>
 </ol>
 <h1 id="Java高级特性反射、代理（等到今后需要用到时再了解吧）"><a href="#Java高级特性反射、代理（等到今后需要用到时再了解吧）" class="headerlink" title="Java高级特性反射、代理（等到今后需要用到时再了解吧）"></a>Java高级特性反射、代理（等到今后需要用到时再了解吧）</h1>
       
@@ -754,7 +830,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
