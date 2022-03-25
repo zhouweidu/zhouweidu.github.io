@@ -173,7 +173,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-03-25 16:47:47 / 修改时间：17:01:57" itemprop="dateCreated datePublished" datetime="2022-03-25T16:47:47+08:00">2022-03-25</time>
+              <time title="创建时间：2022-03-25 16:47:47 / 修改时间：23:00:34" itemprop="dateCreated datePublished" datetime="2022-03-25T16:47:47+08:00">2022-03-25</time>
             </span>
 
           
@@ -197,6 +197,12 @@
 <p>个位排序：542 53 3 14 214 748</p>
 <p>十位排序：3 14 214 542 748 53</p>
 <p>百位排序：3 14 53 214 542 748</p>
+</li>
+</ol>
+<h1 id="查找算法"><a href="#查找算法" class="headerlink" title="查找算法"></a>查找算法</h1><ol>
+<li><p>插值查找（定位mid的公式进行了优化）：将二分查找中求mid的公式改为 $$mid&#x3D;left+ \frac{key-arr[left]}{arr[right]-arr[left]}*(right-left)$$</p>
+<p>举例说明：数组arr&#x3D;{1，2，3，……100}，假如需要查找的值为1，第一次得到的mid&#x3D;0+(99-0)*(1-1)&#x2F;(100-1)&#x3D;0，公式将mid的求法变为计算key（key是要查找的值）与arr[left]的差距占arr[right]-arr[left]的比例乘此时的数组长度，因为数组是有序的，所以该公式可以快速的找到与key值接近的位置</p>
+<p>该算法中需要<strong>注意</strong>：因为key参与寻找mid（自适应），所以如果key很大的话会导致算出来的mid很大直接越界,而key在arr[left]和arr[right]之间可以保证该公式算出来的值一定不越界，插值查找存在<strong>局限性</strong>，当数组中的有序元素之间存在较大差距时（或者说需要查找的数组中的元素分布不均匀时），插值查找的效率往往不如二分查找</p>
 </li>
 </ol>
 
@@ -520,7 +526,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-25 21:35:15" itemprop="dateModified" datetime="2022-03-25T21:35:15+08:00">2022-03-25</time>
+                <time title="修改时间：2022-03-25 22:04:23" itemprop="dateModified" datetime="2022-03-25T22:04:23+08:00">2022-03-25</time>
               </span>
 
           
@@ -677,6 +683,82 @@
 <li><p>Java 集合类型分为 Collection 和 Map，它们是 Java 集合的根接口，这两个接口又包含了一些子接口或实现类</p>
 <p><img src="/2022/03/11/review-on-java/5-1912051036333V.png" alt="Collection接口结构"></p>
 <p><img src="/2022/03/11/review-on-java/5-191205103G5960.png" alt="Map接口结构"></p>
+</li>
+<li><p>Java集合接口的作用</p>
+<table>
+<thead>
+<tr>
+<th>接口名称</th>
+<th>作  用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Iterator 接口</td>
+<td>集合的输出接口，主要用于遍历输出（即迭代访问）Collection 集合中的元素，Iterator 对象被称之为迭代器。迭代器接口是集合接口的父接口，实现类实现 Collection 时就必须实现 Iterator 接口。</td>
+</tr>
+<tr>
+<td>Collection 接口</td>
+<td>是 List、Set 和 Queue 的父接口，是存放一组单值的最大接口。所谓的单值是指集合中的每个元素都是一个对象。一般很少直接使用此接口直接操作。</td>
+</tr>
+<tr>
+<td>Queue 接口</td>
+<td>Queue 是 Java 提供的队列实现，有点类似于 List。</td>
+</tr>
+<tr>
+<td>Dueue 接口</td>
+<td>是 Queue 的一个子接口，为双向队列。</td>
+</tr>
+<tr>
+<td>List 接口</td>
+<td>是最常用的接口。是有序集合，允许有相同的元素。使用 List 能够精确地控制每个元素插入的位置，用户能够使用索引（元素在 List 中的位置，类似于数组下标）来访问 List 中的元素，与数组类似。</td>
+</tr>
+<tr>
+<td>Set 接口</td>
+<td>不能包含重复的元素。</td>
+</tr>
+<tr>
+<td>Map 接口</td>
+<td>是存放一对值的最大接口，即接口中的每个元素都是一对，以 key→value 的形式保存。</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Java集合实现类的作用</p>
+<table>
+<thead>
+<tr>
+<th>类名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HashSet</td>
+<td>为优化査询速度而设计的 Set。它是基于 HashMap 实现的，HashSet 底层使用 HashMap 来保存所有元素，实现比较简单</td>
+</tr>
+<tr>
+<td>TreeSet</td>
+<td>实现了 Set 接口，是一个有序的 Set，这样就能从 Set 里面提取一个有序序列</td>
+</tr>
+<tr>
+<td>ArrayList</td>
+<td>一个用数组实现的 List，能进行快速的随机访问，效率高而且实现了可变大小的数组</td>
+</tr>
+<tr>
+<td>ArrayDueue</td>
+<td>是一个基于数组实现的双端队列，按“先进先出”的方式操作集合元素</td>
+</tr>
+<tr>
+<td>LinkedList</td>
+<td>对顺序访问进行了优化，但随机访问的速度相对较慢。此外它还有 addFirst()、addLast()、getFirst()、getLast()、removeFirst() 和 removeLast() 等方法，能把它当成栈（Stack）或队列（Queue）来用</td>
+</tr>
+<tr>
+<td>HsahMap</td>
+<td>按哈希算法来存取键对象</td>
+</tr>
+<tr>
+<td>TreeMap</td>
+<td>可以对键对象进行排序</td>
+</tr>
+</tbody></table>
 </li>
 </ol>
 <h1 id="Java高级特性反射、代理（等到今后需要用到时再了解吧）"><a href="#Java高级特性反射、代理（等到今后需要用到时再了解吧）" class="headerlink" title="Java高级特性反射、代理（等到今后需要用到时再了解吧）"></a>Java高级特性反射、代理（等到今后需要用到时再了解吧）</h1>
