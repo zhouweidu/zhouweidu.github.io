@@ -179,7 +179,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-28 20:54:38" itemprop="dateModified" datetime="2022-03-28T20:54:38+08:00">2022-03-28</time>
+                <time title="修改时间：2022-04-05 22:24:13" itemprop="dateModified" datetime="2022-04-05T22:24:13+08:00">2022-04-05</time>
               </span>
 
           
@@ -229,7 +229,42 @@
 </ol>
 <p>顺序存储二叉树在堆排序中会用到</p>
 </li>
+<li><p>二叉排序树：对于二叉排序树的任何一个非叶子结点，要求左子结点的值比当前结点的值小，右子结点的值比当前结点的值大。（如果有相同的值，可以将该结点放在左子结点或右子结点）</p>
+</li>
+<li><p>平衡二叉树首先是二叉排序树，它是在二叉排序树的基础上实现的。</p>
+<p>平衡二叉树的特点：它是一棵空树或者它的左右两个子树的<strong>高度差</strong>的绝对值<strong>不超过1</strong>，并且左右两个子树都是一颗平衡二叉树，平衡二叉树的实现方法有：红黑树、AVL等。</p>
+</li>
 </ol>
+<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><ol>
+<li><p>图的一些基本知识：</p>
+<p>连通图：在无向图中任意两个顶点都是连通的(可以不是直接相连)，则称该图为连通图。</p>
+<p>非连通图：易知为上面定义的反面</p>
+</li>
+<li><p>图的深度优先遍历（Depth First Search简称DFS）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> i)</span>&#123;</span><br><span class="line">       isVisited[i]=<span class="literal">true</span>;<span class="comment">//标记为已访问</span></span><br><span class="line">       System.out.print(vertexList.get(i)+<span class="string">&quot;-&gt;&quot;</span>);</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; vertexList.size(); j++) &#123;</span><br><span class="line">           <span class="comment">// 这里的for循环就有递归回溯，从当前结点的第一个邻接结点递归遍历后，</span></span><br><span class="line">           <span class="comment">// 会继续寻找当前结点的下一个未访问的邻接结点，如果有就再次进行递归遍历</span></span><br><span class="line">           <span class="keyword">if</span> (edges[i][j]==<span class="number">1</span>&amp;&amp;!isVisited[j])&#123;</span><br><span class="line">               dfs(j);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//今后调用的是dfsTraverse，以图的所有结点作为初始结点进行遍历，除去已访问的结点</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">dfsTraverse</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; vertexList.size(); i++) &#123;</span><br><span class="line">           <span class="keyword">if</span> (!isVisited[i])&#123;</span><br><span class="line">               dfs(i);<span class="comment">//对未访问过的顶点调用dfs，如果是连通图，只会执行一次该语句，今后for循环的顶点都已经访问过了</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>图的广度优先遍历（Broad First Search简称BFS）：</p>
+</li>
+</ol>
+<p>  我们采用示例图来说明这个过程，在搜索的过程中，初始所有节点是白色（代表了所有点都还没开始搜索），把起点V0标志成灰色（表示即将辐射V0），下一步搜索的时候，我们把所有的灰色节点访问一次，然后将其变成黑色（表示已经被辐射过了），进而再将他们所能到达的节点标志成灰色（因为那些节点是下一步搜索的目标点了），但是这里有个判断，就像刚刚的例子，当访问到V1节点的时候，它的下一个节点应该是V0和V4，但是V0已经在前面被染成黑色了，所以不会将它染灰色。这样持续下去，直到目标节点V6被染灰色，说明了下一步就到终点了，没必要再搜索（染色）其他节点了，此时可以结束搜索了，整个搜索就结束了。然后根据搜索过程，反过来把最短路径找出来，下图中把最终路径上的节点标志成绿色。</p>
+<p><img src="/2022/03/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/image-20220317231004623.png" alt="image-20220317231004623"></p>
+<p><img src="/2022/03/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/image-20220317231029925.png" alt="image-20220317231029925"></p>
+<p><img src="/2022/03/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/1335725885_9403.png" alt="1335725885_9403"></p>
+<p>​    为了便于进行搜索，要设置一个表存储所有的结点。由于在广度优先搜索算法中，要满足先生成的结点先扩展的原则，所以存储结点的表一般采用队列这种数据结构。</p>
+<p>​    在编写程序时，可用数组q模拟队列。front和rear分别表示队头指针和队尾指针，初始时            front&#x3D;rear&#x3D;0。</p>
+<p>​    元素x入队操作为 q[rear++]&#x3D;x;</p>
+<p>​    元素x出队操作为 x &#x3D;q[front++];    </p>
+<p>​    </p>
+<p>广度优先搜索算法的搜索步骤一般是：</p>
+<p>   （1）从队列头取出一个结点，检查它按照扩展规则是否能够扩展，如果能则产生一个新结点。</p>
+<p>   （2）检查新生成的结点，看它是否已在队列中存在，如果新结点已经在队列中出现过，就放弃这个结点，然后回到第（1）步。否则，如果新结点未曾在队列中出现过，则将它加入到队列尾。</p>
+<p>  （3）检查新结点是否目标结点。如果新结点是目标结点，则搜索成功，程序结束；若新结点不是目标结点，则回到第（1）步，再从队列头取出结点进行扩展。</p>
+<p>​    最终可能产生两种结果：找到目标结点，或扩展完所有结点而没有找到目标结点。</p>
+<p>​    对于广度优先搜索算法来说，问题不同则状态结点的结构和结点扩展规则是不同的，但搜索的策略是相同的。广度优先搜索算法的框架一般如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span>  BFS（）</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    队列初始化；</span><br><span class="line"></span><br><span class="line">    初始结点入队；</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> （队列非空）</span><br><span class="line"></span><br><span class="line">    &#123;  </span><br><span class="line"></span><br><span class="line">          队头元素出队，赋给current；</span><br><span class="line"></span><br><span class="line">          <span class="keyword">while</span>  （current 还可以扩展）</span><br><span class="line"></span><br><span class="line">          &#123;</span><br><span class="line"></span><br><span class="line">              由结点current扩展出新结点new；</span><br><span class="line"></span><br><span class="line">              <span class="keyword">if</span>  （new 重复于已有的结点状态） <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">              new结点入队；</span><br><span class="line"></span><br><span class="line">              <span class="keyword">if</span>  (new结点是目标状态)</span><br><span class="line"></span><br><span class="line">              &#123;</span><br><span class="line"></span><br><span class="line">                    置flag= <span class="literal">true</span>;    <span class="keyword">break</span>; </span><br><span class="line"></span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 
       
     </div>
@@ -272,10 +307,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-03-17 22:49:58 / 修改时间：23:17:33" itemprop="dateCreated datePublished" datetime="2022-03-17T22:49:58+08:00">2022-03-17</time>
+              <time title="创建时间：2022-03-17 22:49:58" itemprop="dateCreated datePublished" datetime="2022-03-17T22:49:58+08:00">2022-03-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-05 22:17:28" itemprop="dateModified" datetime="2022-04-05T22:17:28+08:00">2022-04-05</time>
+              </span>
 
           
 
@@ -288,7 +329,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="BFS（广度优先搜索）"><a href="#BFS（广度优先搜索）" class="headerlink" title="BFS（广度优先搜索）"></a>BFS（广度优先搜索）</h1><p>我们采用示例图来说明这个过程，在搜索的过程中，初始所有节点是白色（代表了所有点都还没开始搜索），把起点V0V0标志成灰色（表示即将辐射V0V0），下一步搜索的时候，我们把所有的灰色节点访问一次，然后将其变成黑色（表示已经被辐射过了），进而再将他们所能到达的节点标志成灰色（因为那些节点是下一步搜索的目标点了），但是这里有个判断，就像刚刚的例子，当访问到V1V1节点的时候，它的下一个节点应该是V0V0和V4V4，但是V0V0已经在前面被染成黑色了，所以不会将它染灰色。这样持续下去，直到目标节点V6V6被染灰色，说明了下一步就到终点了，没必要再搜索（染色）其他节点了，此时可以结束搜索了，整个搜索就结束了。然后根据搜索过程，反过来把最短路径找出来，下图中把最终路径上的节点标志成绿色。</p>
+          <h1 id="BFS（广度优先搜索）"><a href="#BFS（广度优先搜索）" class="headerlink" title="BFS（广度优先搜索）"></a>BFS（广度优先搜索）</h1><p>我们采用示例图来说明这个过程，在搜索的过程中，初始所有节点是白色（代表了所有点都还没开始搜索），把起点V0标志成灰色（表示即将辐射V0），下一步搜索的时候，我们把所有的灰色节点访问一次，然后将其变成黑色（表示已经被辐射过了），进而再将他们所能到达的节点标志成灰色（因为那些节点是下一步搜索的目标点了），但是这里有个判断，就像刚刚的例子，当访问到V1节点的时候，它的下一个节点应该是V0和V4，但是V0已经在前面被染成黑色了，所以不会将它染灰色。这样持续下去，直到目标节点V6被染灰色，说明了下一步就到终点了，没必要再搜索（染色）其他节点了，此时可以结束搜索了，整个搜索就结束了。然后根据搜索过程，反过来把最短路径找出来，下图中把最终路径上的节点标志成绿色。</p>
 <p><img src="/2022/03/17/Discrete-Math/image-20220317231004623.png" alt="image-20220317231004623"></p>
 <p><img src="/2022/03/17/Discrete-Math/image-20220317231029925.png" alt="image-20220317231029925"></p>
 <p><img src="/2022/03/17/Discrete-Math/1335725885_9403.png" alt="1335725885_9403"></p>
@@ -356,7 +397,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-23 17:22:55" itemprop="dateModified" datetime="2022-03-23T17:22:55+08:00">2022-03-23</time>
+                <time title="修改时间：2022-04-01 18:02:42" itemprop="dateModified" datetime="2022-04-01T18:02:42+08:00">2022-04-01</time>
               </span>
 
           
@@ -411,7 +452,7 @@
 <li><p>要学会从题目中抽象出一些东西来，而不是按照题目给的要求来模拟，不要被题目说的那些方法步骤所局限，要跳出题目给的方法和步骤，想一想能不能从另一个角度来思考这个问题，或者说用另一种方式来模拟这个题目，有时候可以直接根据题目文字来模拟，有时候要抽象一下题目给的条件，用另一种方式来模拟或者是计算，解题两种路径<strong>模拟</strong>和<strong>计算</strong></p>
 </li>
 </ol>
-
+<h1 id="Java部分"><a href="#Java部分" class="headerlink" title="Java部分"></a>Java部分</h1>
       
     </div>
 
