@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="注意：一道题目先思考20-30分钟如果实在做不出来再看看题解和思路，然后自己试试能不能自己写出代码  两数之和：太简单没什么说的。  两数相加：应该根据题目现有的条件来做，从题目本身出发，不要一开始就考虑转换为常用的按顺序的十进制加法，类比二进制加法计算（二进制全加法器），直接用两个链表的结点从前往后相加即可。  无重复字符的最长子串：用滑动窗口思想，两个指针left和right，如果left和r">
+  <meta name="description" content="注意：一道题目先思考20-30分钟如果实在做不出来再看看题解和思路，然后自己试试能不能自己写出代码，题目后面是在LeetCode网站上的题号，前面那个是自动生成的有序列表。  两数之和(1)：太简单没什么说的。  两数相加(2)：应该根据题目现有的条件来做，从题目本身出发，不要一开始就考虑转换为常用的按顺序的十进制加法，类比二进制加法计算（二进制全加法器），直接用两个链表的结点从前往后相加即可。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 刷题笔记">
 <meta property="og:url" content="http://example.com/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Irony&#39;s blog">
-<meta property="og:description" content="注意：一道题目先思考20-30分钟如果实在做不出来再看看题解和思路，然后自己试试能不能自己写出代码  两数之和：太简单没什么说的。  两数相加：应该根据题目现有的条件来做，从题目本身出发，不要一开始就考虑转换为常用的按顺序的十进制加法，类比二进制加法计算（二进制全加法器），直接用两个链表的结点从前往后相加即可。  无重复字符的最长子串：用滑动窗口思想，两个指针left和right，如果left和r">
+<meta property="og:description" content="注意：一道题目先思考20-30分钟如果实在做不出来再看看题解和思路，然后自己试试能不能自己写出代码，题目后面是在LeetCode网站上的题号，前面那个是自动生成的有序列表。  两数之和(1)：太简单没什么说的。  两数相加(2)：应该根据题目现有的条件来做，从题目本身出发，不要一开始就考虑转换为常用的按顺序的十进制加法，类比二进制加法计算（二进制全加法器），直接用两个链表的结点从前往后相加即可。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220328225949259.png">
 <meta property="og:image" content="http://example.com/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/1.png">
@@ -35,8 +35,9 @@
 <meta property="og:image" content="http://example.com/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220410224312579.png">
 <meta property="og:image" content="http://example.com/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220410225427004.png">
 <meta property="og:image" content="http://example.com/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220411225207697.png">
+<meta property="og:image" content="http://example.com/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220414201955313.png">
 <meta property="article:published_time" content="2022-03-13T03:58:21.000Z">
-<meta property="article:modified_time" content="2022-04-12T13:17:08.773Z">
+<meta property="article:modified_time" content="2022-04-14T14:14:23.982Z">
 <meta property="article:author" content="Irony">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220328225949259.png">
@@ -190,7 +191,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-12 21:17:08" itemprop="dateModified" datetime="2022-04-12T21:17:08+08:00">2022-04-12</time>
+                <time title="修改时间：2022-04-14 22:14:23" itemprop="dateModified" datetime="2022-04-14T22:14:23+08:00">2022-04-14</time>
               </span>
 
           
@@ -204,23 +205,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>注意：一道题目<strong>先思考20-30分钟</strong>如果实在做不出来再看看题解和思路，然后自己试试能不能自己写出代码</p>
+        <p>注意：一道题目<strong>先思考20-30分钟</strong>如果实在做不出来再看看题解和思路，然后自己试试能不能自己写出代码，题目后面是在LeetCode网站上的题号，前面那个是自动生成的有序列表。</p>
 <ol>
-<li><p>两数之和：太简单没什么说的。</p>
+<li><p>两数之和(1)：太简单没什么说的。</p>
 </li>
-<li><p>两数相加：应该根据题目现有的条件来做，从题目本身出发，不要一开始就考虑转换为常用的按顺序的十进制加法，<strong>类比二进制加法计算（二进制全加法器）</strong>，直接用两个链表的结点从前往后相加即可。</p>
+<li><p>两数相加(2)：应该根据题目现有的条件来做，从题目本身出发，不要一开始就考虑转换为常用的按顺序的十进制加法，<strong>类比二进制加法计算（二进制全加法器）</strong>，直接用两个链表的结点从前往后相加即可。</p>
 </li>
-<li><p>无重复字符的最长子串：用<strong>滑动窗口</strong>思想，两个指针left和right，如果left和right之间没有重复就让right++，因为之前left和right之间无重复，所有如果right++后出现重复一定是现在的right和之前的left到right之间有一个值重复了，以<code>string.charAt(right)</code>为标准从left开始遍历，分三种情况（前部、中部、后部）</p>
+<li><p>无重复字符的最长子串(3)：</p>
+<p>用<strong>滑动窗口</strong>思想，两个指针left和right，如果left和right之间没有重复就让right++，因为之前left和right之间无重复，所有如果right++后出现重复一定是现在的right和之前的left到right之间有一个值重复了，以<code>string.charAt(right)</code>为标准从left开始遍历，分三种情况（前部、中部、后部）</p>
 <p>（1）a b c a</p>
 <p>（2）a b c b</p>
 <p>（3）a b c c</p>
 <p>从j&#x3D;left开始遍历（j++），如果遇到这两种重复的情况，让left&#x3D;j+1即左指针指向重复位置的下一个位置。</p>
 </li>
-<li><p>寻找两个正序数组的中位数：归并排序，将<strong>两个有序数组合并为一个</strong>，for循环遍历合并后的数组，然后分别设置两个指针指向需要排序的两个数组，取两个数组中小的数放入新数组，并且让该数组指针后移，<strong>边界情况</strong>若一个数组指针已经指向末尾，则另外判断次情况，将另一个数组的数全部放入即可。</p>
+<li><p>寻找两个正序数组的中位数(4)：</p>
+<p>归并排序，将<strong>两个有序数组合并为一个</strong>，for循环遍历合并后的数组，然后分别设置两个指针指向需要排序的两个数组，取两个数组中小的数放入新数组，并且让该数组指针后移，<strong>边界情况</strong>若一个数组指针已经指向末尾，则另外判断次情况，将另一个数组的数全部放入即可。</p>
 <p>算法时间复杂度为O（m+n），只用遍历一次新数组即可。</p>
 <span id="more"></span>
 </li>
-<li><p>最长回文子串：</p>
+<li><p>最长回文子串(5)：</p>
 <p>（1）扩展中心：回文子串分两种，奇数长度：abcba可以从中间的a开始向两边扩展，偶数长度：abcabbabb，从[1]和[2]中间开始向两边扩展，下面是扩展的函数</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">expand</span><span class="params">(String s,<span class="type">int</span> start,<span class="type">int</span> end)</span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(start&gt;=<span class="number">0</span>&amp;&amp;end&lt;s.length()&amp;&amp;s.charAt(start)==s.charAt(end))&#123;</span><br><span class="line">            start--;</span><br><span class="line">            end++;</span><br><span class="line">        &#125;</span><br><span class="line">   	<span class="keyword">return</span> end-start-<span class="number">1</span>;<span class="comment">//注意这里的减一，比如abcba，到两边a的时候还会start--和end++,所以要减一</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -231,10 +234,11 @@
 <p>时间复杂度：两层循环 O(n²）</p>
 <p>空间复杂度：用二维数组 P<em>P</em> 保存每个子串的情况 O(n²)</p>
 </li>
-<li><p>Z字形变换：是一个找规律的题目，可以找出规律来用二维数组模拟</p>
+<li><p>Z字形变换(6)：是一个找规律的题目，可以找出规律来用二维数组模拟</p>
 <p><img src="/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220328225949259.png" alt="image-20220328225949259"></p>
 </li>
-<li><p>正则表达式匹配：给你一个字符串 <code>s</code> 和一个字符规律 <code>p</code>，请你来实现一个支持 <code>&#39;.&#39;</code> 和 <code>&#39;*&#39;</code> 的正则表达式匹配。</p>
+<li><p>正则表达式匹配(10)：</p>
+<p>给你一个字符串 <code>s</code> 和一个字符规律 <code>p</code>，请你来实现一个支持 <code>&#39;.&#39;</code> 和 <code>&#39;*&#39;</code> 的正则表达式匹配。</p>
 <ul>
 <li><code>&#39;.&#39;</code> 匹配任意单个字符</li>
 <li><code>&#39;*&#39;</code> 匹配零个或多个前面的那一个元素</li>
@@ -257,9 +261,11 @@
 <p><img src="/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/4.png" alt="image-20220407223334274"></p>
 <p>其中 matches(x,y) 判断两个字符是否匹配的辅助函数。只有当 y 是 . 或者 x 和 y 本身相同时，这两个字符才会匹配。</p>
 <ol start="8">
-<li><p>盛最多水的容器：<strong>双指针</strong>解决，第一次做这题可能不会想到双指针。下面解释双指针算法的过程，并证明其正确性。给定一个数组height[1, 8, 6, 2, 5, 4, 8, 3, 7]，初始时分别有一左一右两个指针位于边界，容纳的水量&#x3D;两个指针指向的数字中较小值∗指针之间的距离，假设左指针为left右指针为right，不妨设此时height[left]&lt;height[right]，如果移动右指针，那么两个指针的距离一定变小，并且min{height[left],height[right’]}&lt;&#x3D;之前的高度，因为如果此时新的高度比原来的高度大，取height[left]和height[right]的最小值还是之前的height[left]，高度没变但距离变小，所以容器的容积变小，如果新的高度比原来的高度小，则导致高度变小且距离变小，容积也会变小，即无论我们怎么移动右指针，得到的容器的容量都小于移动前容器的容量，也就是说，这个左指针对应的数不会作为容器的边界了，那么我们就可以丢弃这个位置，将左指针向右移动一个位置，此时新的左指针于原先的右指针之间的左右位置，才可能会作为容器的边界。综上，可以得出每次移动指针的时候移动高度较小的那个指针是正确答案，边界条件是left&lt;right。</p>
-</li>
-<li><p>整数转罗马数字：</p>
+<li>盛最多水的容器(11)：</li>
+</ol>
+<p>  <strong>双指针</strong>解决，第一次做这题可能不会想到双指针。下面解释双指针算法的过程，并证明其正确性。给定一个数组height[1, 8, 6, 2, 5, 4, 8, 3, 7]，初始时分别有一左一右两个指针位于边界，容纳的水量&#x3D;两个指针指向的数字中较小值∗指针之间的距离，假设左指针为left右指针为right，不妨设此时height[left]&lt;height[right]，如果移动右指针，那么两个指针的距离一定变小，并且min{height[left],height[right’]}&lt;&#x3D;之前的高度，因为如果此时新的高度比原来的高度大，取height[left]和height[right]的最小值还是之前的height[left]，高度没变但距离变小，所以容器的容积变小，如果新的高度比原来的高度小，则导致高度变小且距离变小，容积也会变小，即无论我们怎么移动右指针，得到的容器的容量都小于移动前容器的容量，也就是说，这个左指针对应的数不会作为容器的边界了，那么我们就可以丢弃这个位置，将左指针向右移动一个位置，此时新的左指针于原先的右指针之间的左右位置，才可能会作为容器的边界。综上，可以得出每次移动指针的时候移动高度较小的那个指针是正确答案，边界条件是left&lt;right。</p>
+<ol start="9">
+<li><p>整数转罗马数字(12)：</p>
 <p>按照题目所给规则可能出现的罗马数字如下</p>
 <p><img src="/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220410224312579.png" alt="image-20220410224312579"></p>
 <p><img src="/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220410225427004.png" alt="image-20220410225427004"></p>
@@ -268,9 +274,10 @@
 <p>编程时，可以建立一个数值-符号对的列表valueSymbols，按数值从大到小排列。遍历 valueSymbols 中的每个数值-符号对，若当前数值 value 不超过 num，则从 num 中不断减去 value，直至 num 小于 value，然后遍历下一个数值-符号对。若遍历中 num 为 0 则跳出循环。valueSymbols对应表和代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] values = &#123;<span class="number">1000</span>, <span class="number">900</span>, <span class="number">500</span>, <span class="number">400</span>, <span class="number">100</span>, <span class="number">90</span>, <span class="number">50</span>, <span class="number">40</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">1</span>&#125;;</span><br><span class="line">String[] symbols = &#123;<span class="string">&quot;M&quot;</span>, <span class="string">&quot;CM&quot;</span>, <span class="string">&quot;D&quot;</span>, <span class="string">&quot;CD&quot;</span>, <span class="string">&quot;C&quot;</span>, <span class="string">&quot;XC&quot;</span>, <span class="string">&quot;L&quot;</span>, <span class="string">&quot;XL&quot;</span>, <span class="string">&quot;X&quot;</span>, <span class="string">&quot;IX&quot;</span>, <span class="string">&quot;V&quot;</span>, <span class="string">&quot;IV&quot;</span>, <span class="string">&quot;I&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">intToRoman</span><span class="params">(<span class="type">int</span> num)</span> &#123;</span><br><span class="line">    <span class="type">StringBuffer</span> <span class="variable">roman</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; values.length; ++i) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">value</span> <span class="operator">=</span> values[i];</span><br><span class="line">        <span class="type">String</span> <span class="variable">symbol</span> <span class="operator">=</span> symbols[i];</span><br><span class="line">        <span class="keyword">while</span> (num &gt;= value) &#123;</span><br><span class="line">            num -= value;</span><br><span class="line">            roman.append(symbol);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (num == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> roman.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>三数之和：刚开始做这题直接三重循环遍历，会超出时间限制，需要改进算法，看来LeetCode上的题目<strong>不能直接模拟</strong>，要想想降低复杂度的做法。「不重复」的本质是什么？我们保持三重循环的大框架不变，只需要保证：</p>
+<li><p>三数之和(15)：</p>
 </li>
 </ol>
+<p>   刚开始做这题直接三重循环遍历，会超出时间限制，需要改进算法，看来LeetCode上的题目<strong>不能直接模拟</strong>，要想想降低复杂度的做法。「不重复」的本质是什么？我们保持三重循环的大框架不变，只需要保证：</p>
 <p>   第二重循环枚举到的元素不小于当前第一重循环枚举到的元素；</p>
 <p>   第三重循环枚举到的元素不小于当前第二重循环枚举到的元素。</p>
 <p>   也就是说，我们枚举的三元组 (a, b, c) 满足 a≤b≤c，保证了只有(a,b,c) 这个顺序会被枚举到，而 (b, a, c)、(c, b, a) 等等这些不会，这样就减少了重复。要实现这一点，我们可以将数组中的元素从小到大进行排序，随后使用普通的三重循环就可以满足上面的要求。</p>
@@ -280,6 +287,30 @@
 <p>   这个方法就是我们常说的「双指针」，当我们需要枚举数组中的两个元素时，如果我们发现随着第一个元素的递增，第二个元素是递减的，那么就可以使用双指针的方法，将枚举的时间复杂度从 O(N^2) 减少至 O(N)。为什么是 O(N) 呢？这是因为在枚举的过程每一步中，「左指针」会向右移动一个位置（也就是题目中的 b），而「右指针」会向左移动若干个位置，这个与数组的元素有关，但我们知道它一共会移动的位置数为 O(N)，均摊下来，每次也向左移动一个位置，因此时间复杂度为 O(N)。</p>
 <p>   双指针看似容易理解，但不同题目下的<strong>边界条件</strong>都不尽相同，边界条件应该是一个难点，需要仔细考虑。</p>
    <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">threeSum</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">target</span> <span class="operator">=</span> -nums[i];</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span> || nums[i] != nums[i - <span class="number">1</span>]) &#123;<span class="comment">//对于每一重循环相邻两个元素不能相同</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (j == i + <span class="number">1</span> || nums[j] != nums[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                    <span class="keyword">while</span> (j &lt; k &amp;&amp; nums[j] + nums[k] &gt; target) &#123;</span><br><span class="line">                        k--;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">// 如果指针重合，一种情况是上一次j&lt;k时（j和k相邻），nums[j] + nums[k] &gt; target</span></span><br><span class="line">                    <span class="comment">// 另一种情况时j不断增加但nums[j]+nums[k]&lt;target，随着 j 后续的增加</span></span><br><span class="line">                    <span class="comment">// 就不会有满足 nums[j] + nums[k] = target 并且 j&lt;k 的值了，可以退出循环</span></span><br><span class="line">                    <span class="keyword">if</span> (j == k) &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (nums[j] + nums[k] == target) &#123;</span><br><span class="line">                        List&lt;Integer&gt; integerList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">                        integerList.add(nums[i]);</span><br><span class="line">                        integerList.add(nums[j]);</span><br><span class="line">                        integerList.add(nums[k]);</span><br><span class="line">                        list.add(integerList);</span><br><span class="line">                        <span class="comment">// 这里不要写k--，要让k--交由上面的while循环来判断执行</span></span><br><span class="line">                        <span class="comment">// 如果写了k--，在j和k相邻的情况下，下一次循环j会大于k（j比k大1），</span></span><br><span class="line">                        <span class="comment">// while循环和if失效，所以k--要交由while循环来执行</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> list;</span><br></pre></td></tr></table></figure>
+<ol start="11">
+<li>电话号码的字母组合(17)：</li>
+</ol>
+<p>   这道题其实<del>直接模拟</del>也能做，因为最多只有四位电话号码，直接根据不同的位数电话号码采取一层for，二层for，三层for，四层for遍历也可AC。</p>
+<p>   首先使用哈希表存储每个数字对应的所有可能的字母，然后进行回溯操作。</p>
+<p>   回溯过程中维护一个字符串，表示已有的字母排列（如果未遍历完电话号码的所有数字，则已有的字母排列是不完整的）。该字符串初始为空。每次取电话号码的一位数字，从哈希表中获得该数字对应的所有可能的字母，并将其中的一个字母插入到已有的字母排列后面，然后继续处理电话号码的后一位数字，直到处理完电话号码中的所有数字，即得到一个完整的字母排列。然后进行回退操作，遍历其余的字母排列。</p>
+<p>   回溯算法用于寻找所有的可行解，如果发现一个解不可行，则会舍弃不可行的解。在这道题中，由于每个数字对应的每个字母都可能进入字母组合，因此不存在不可行的解，直接穷举所有的解即可。下面贴上带有回溯的递归函数的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个回溯的递归函数借鉴了赫夫曼编码的向左为0向右为1的那个递归函数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">f</span><span class="params">(List&lt;String&gt; res, HashMap&lt;Character, String&gt; stringHashMap, String digits, StringBuilder stringBuilder, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">    <span class="comment">//用index遍历电话号码，for循环遍历每一个电话号码对应的所有字符</span></span><br><span class="line">    <span class="comment">//  2   3</span></span><br><span class="line">    <span class="comment">// abc def</span></span><br><span class="line">    <span class="keyword">if</span> (digits.length() != index) &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">digitString</span> <span class="operator">=</span> stringHashMap.get(digits.charAt(index));</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; digitString.length(); i++) &#123;</span><br><span class="line">            stringBuilder.append(digitString.charAt(i));</span><br><span class="line">            f(res, stringHashMap, digits, stringBuilder, index + <span class="number">1</span>);</span><br><span class="line">            <span class="comment">// 当该递归函数返回进入下一行时，说明已经遍历完电话号码的所有数字，</span></span><br><span class="line">            <span class="comment">// 下一步应该取最后一个电话号码的下一个字符（也就是i++），需要删掉stringBuilder2的末尾一位，</span></span><br><span class="line">            <span class="comment">// 让最后一个电话号码的下一个字符填入进来</span></span><br><span class="line">            stringBuilder.deleteCharAt(stringBuilder.length() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res.add(stringBuilder.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="12">
+<li><p>删除链表的倒数第N个结点(19)：</p>
+<p>我的想法是从头节点开始遍历，用于遍历的结点记为indexNode，如果indexNode向后遍历n次为null的话，证明此时indexNode结点即为要删除的结点，看下面这个图可以轻松证明</p>
+</li>
+</ol>
+<p><img src="/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220414201955313.png" alt="image-20220414201955313"></p>
+<p>​    还需要设置一个preNode作为indexNode的前一个结点，这样才能做到删除操作，除此以外需要注意一个特殊情况即删除的结点是头结点，直接返回head.next即可。</p>
+<p>​    一个小tips：处理链表是可以在头结点前面加上一个哑节点dummy，dummy不保存任何信息只是指向原链表的头结点，这样可以有效解决删除链表头相关的特殊情况，可以把有关链表头的特殊情况统一到普通情况的代码中。（不是下面贴的那段代码）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ListNode <span class="title function_">removeNthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (head.next==<span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;<span class="comment">//该链表只有一个结点</span></span><br><span class="line">    &#125;</span><br><span class="line">    ListNode indexNode=head;</span><br><span class="line">    ListNode preNode=<span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">while</span> (indexNode!=<span class="literal">null</span>)&#123;</span><br><span class="line">        ListNode temp=indexNode;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            temp=temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (temp==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (preNode==<span class="literal">null</span>)&#123;</span><br><span class="line">                <span class="comment">//删除的是头节点的情况</span></span><br><span class="line">                <span class="keyword">return</span> head.next;</span><br><span class="line">            &#125;</span><br><span class="line">            preNode.next=preNode.next.next;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//这里的保存preNode是一个保存链表前一个结点的经典操作</span></span><br><span class="line">        preNode=indexNode;</span><br><span class="line">        indexNode=indexNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="13">
+<li>有效的括号(20)：</li>
+</ol>
+<p>​        典型的<strong>栈的应用</strong>，我们遍历给定的字符串 s。当我们遇到一个左括号时，我们会期望在后续的遍历中，有一个相同类型的右括号将其闭合。由于后遇到的左括号要先闭合（<strong>后进先出</strong>），因此我们可以将这个左括号放入栈顶。当我们遇到一个右括号时，我们需要将一个相同类型的左括号闭合。此时，我们可以取出栈顶的左括号并判断它们是否是相同类型的括号。<strong>如果不是相同的类型，或者栈中并没有左括号</strong>，那么字符串 s 无效，返回 False。在遍历结束后，如果栈中没有左括号，说明我们将字符串 s 中的所有左括号闭合，返回 True，否则返回 False。</p>
+<p>​        注意到有效字符串的长度一定为偶数，因此如果字符串的长度为奇数，我们可以直接返回 False，省去后续的遍历判断过程。</p>
 
     </div>
 
