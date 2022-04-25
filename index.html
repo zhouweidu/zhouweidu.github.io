@@ -179,7 +179,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-15 19:18:04" itemprop="dateModified" datetime="2022-04-15T19:18:04+08:00">2022-04-15</time>
+                <time title="修改时间：2022-04-25 22:21:41" itemprop="dateModified" datetime="2022-04-25T22:21:41+08:00">2022-04-25</time>
               </span>
 
           
@@ -206,7 +206,7 @@
 </li>
 </ol>
 <h1 id="查找算法"><a href="#查找算法" class="headerlink" title="查找算法"></a>查找算法</h1><ol>
-<li><p>插值查找（定位mid的公式进行了优化）：将二分查找中求mid的公式改为 $$mid&#x3D;left+ \frac{key-arr[left]}{arr[right]-arr[left]}*(right-left)$$</p>
+<li><p>插值查找（定位mid的公式进行了优化）：将二分查找中求mid的公式改为 <img src="/2022/03/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/image-20220425221317298.png" alt="image-20220425221317298"></p>
 <p>举例说明：数组arr&#x3D;{1，2，3，……100}，假如需要查找的值为1，第一次得到的mid&#x3D;0+(99-0)*(1-1)&#x2F;(100-1)&#x3D;0，公式将mid的求法变为计算key（key是要查找的值）与arr[left]的差距占arr[right]-arr[left]的比例乘此时的数组长度，因为数组是有序的，所以该公式可以快速的找到与key值接近的位置</p>
 <p>该算法中需要<strong>注意</strong>：因为key参与寻找mid（自适应），所以如果key很大的话会导致算出来的mid很大直接越界,而key在arr[left]和arr[right]之间可以保证该公式算出来的值一定不越界，插值查找存在<strong>局限性</strong>，当数组中的有序元素之间存在较大差距时（或者说需要查找的数组中的元素分布不均匀时），插值查找的效率往往不如二分查找</p>
 </li>
@@ -442,7 +442,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-24 22:17:41" itemprop="dateModified" datetime="2022-04-24T22:17:41+08:00">2022-04-24</time>
+                <time title="修改时间：2022-04-25 22:20:08" itemprop="dateModified" datetime="2022-04-25T22:20:08+08:00">2022-04-25</time>
               </span>
 
           
