@@ -55,7 +55,7 @@
 <meta property="og:image" content="http://example.com/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220424201017152.png">
 <meta property="og:image" content="http://example.com/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220425220202755.png">
 <meta property="article:published_time" content="2022-03-13T03:58:21.000Z">
-<meta property="article:modified_time" content="2022-04-25T14:20:08.336Z">
+<meta property="article:modified_time" content="2022-05-01T14:35:55.462Z">
 <meta property="article:author" content="Irony">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220328225949259.png">
@@ -209,7 +209,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-25 22:20:08" itemprop="dateModified" datetime="2022-04-25T22:20:08+08:00">2022-04-25</time>
+                <time title="修改时间：2022-05-01 22:35:55" itemprop="dateModified" datetime="2022-05-01T22:35:55+08:00">2022-05-01</time>
               </span>
 
           
@@ -489,7 +489,7 @@
 <p>  以 target &#x3D; 7 为 根结点 ，创建一个分支的时 做减法 ；<br>  每一个箭头表示：从父亲结点的数值减去边上的数值，得到孩子结点的数值。边的值就是题目中给出的 candidate 数组的每个元素的值；<br>  减到 0 或者负数的时候停止，即：结点 0 和负数结点成为叶子结点；<br>  所有从根结点到结点 0 的路径（只能从上往下，没有回路）就是题目要找的一个结果。<br>  这棵树有 4 个叶子结点的值 0，对应的路径列表是 [[2, 2, 3], [2, 3, 2], [3, 2, 2], [7]]，而示例中给出的输出只有 [[7], [2, 2, 3]]。即：题目中要求每一个符合要求的解是 不计算顺序 的。下面我们分析为什么会产生重复。</p>
 <p>  产生重复的原因是：在每一个结点，做减法，展开分支的时候，由于题目中说 <strong>每一个元素可以重复使用</strong>，我们考虑了 <strong>所有的</strong> 候选数，因此出现了重复的列表。具体的做法是：每一次搜索的时候设置 <strong>下一轮搜索的起点</strong> <code>index</code>，请看下图。</p>
 <p><img src="/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220418221816511.png" alt="image-20220418221816511"></p>
-<p>​        即：从每一层的第 22 个结点开始，都不能再搜索产生同一层结点已经使用过的 <code>candidate</code> 里的元素。</p>
+<p>​        即：从每一层的第 2 个结点开始，都不能再搜索产生同一层结点已经使用过的 <code>candidate</code> 里的元素。</p>
 <p>​        <strong>剪枝提速</strong></p>
 <p>​        根据上面画树形图的经验，如果 target 减去一个数得到负数，那么减去一个更大的数依然是负数，同样搜索不到结果。基于这个想法，我们可以对输入数组进行排序（从小到大），添加相关逻辑达到进一步剪枝的目的，下面贴上剪枝提速后的代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">f</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; res, List&lt;Integer&gt; integerList, <span class="type">int</span>[] candidates, <span class="type">int</span> target, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">    <span class="comment">//[2, 3, 6, 7]  4</span></span><br><span class="line">    <span class="keyword">if</span> (target==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="comment">//添加的时候拷贝比每次传进来就拷贝效率高</span></span><br><span class="line">        res.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(integerList));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> index; i &lt; candidates.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (target-candidates[i]&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;<span class="comment">//在这里剪枝效率很高</span></span><br><span class="line">        &#125;</span><br><span class="line">        integerList.add(candidates[i]);</span><br><span class="line">        f(res,integerList,candidates,target-candidates[i],i);</span><br><span class="line">        integerList.remove(integerList.size()-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -511,8 +511,8 @@
 <ol start="20">
 <li><p>全排列（46）：</p>
 <p>用这道题来与上面那道组数总和的回溯算法进行对比，再次深刻理解一下回溯算法和深度优先遍历（DFS）</p>
-<p>从全排列问题开始理解回溯算法<br>我们尝试在纸上写 33 个数字、44 个数字、55 个数字的全排列，相信不难找到这样的方法。以数组 [1, 2, 3] 的全排列为例。</p>
-<p>先写以 11 开头的全排列，它们是：[1, 2, 3], [1, 3, 2]，即 1 + [2, 3] 的全排列（注意：递归结构体现在这里）；<br>再写以 22 开头的全排列，它们是：[2, 1, 3], [2, 3, 1]，即 2 + [1, 3] 的全排列；<br>最后写以 33 开头的全排列，它们是：[3, 1, 2], [3, 2, 1]，即 3 + [1, 2] 的全排列。<br>总结搜索的方法：按顺序枚举每一位可能出现的情况，已经选择的数字在 当前 要选择的数字中不能出现。按照这种策略搜索就能够做到 不重不漏。这样的思路，可以用一个树形结构表示。</p>
+<p>从全排列问题开始理解回溯算法<br>我们尝试在纸上写 3 个数字、4 个数字、5 个数字的全排列，相信不难找到这样的方法。以数组 [1, 2, 3] 的全排列为例。</p>
+<p>先写以 1 开头的全排列，它们是：[1, 2, 3], [1, 3, 2]，即 1 + [2, 3] 的全排列（注意：递归结构体现在这里）；<br>再写以 2 开头的全排列，它们是：[2, 1, 3], [2, 3, 1]，即 2 + [1, 3] 的全排列；<br>最后写以 3 开头的全排列，它们是：[3, 1, 2], [3, 2, 1]，即 3 + [1, 2] 的全排列。<br>总结搜索的方法：按顺序枚举每一位可能出现的情况，已经选择的数字在 当前 要选择的数字中不能出现。按照这种策略搜索就能够做到 不重不漏。这样的思路，可以用一个树形结构表示。</p>
 <p><img src="/2022/03/13/LeetCode-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/image-20220422115357752.png" alt="image-20220422115357752"></p>
 </li>
 </ol>
