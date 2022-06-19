@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-21 18:53:54" itemprop="dateModified" datetime="2022-05-21T18:53:54+08:00">2022-05-21</time>
+                <time title="修改时间：2022-06-19 15:55:52" itemprop="dateModified" datetime="2022-06-19T15:55:52+08:00">2022-06-19</time>
               </span>
 
           
@@ -397,7 +397,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-12 22:45:27" itemprop="dateModified" datetime="2022-05-12T22:45:27+08:00">2022-05-12</time>
+                <time title="修改时间：2022-06-19 17:17:10" itemprop="dateModified" datetime="2022-06-19T17:17:10+08:00">2022-06-19</time>
               </span>
 
           
@@ -469,7 +469,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-11 14:44:32" itemprop="dateModified" datetime="2022-06-11T14:44:32+08:00">2022-06-11</time>
+                <time title="修改时间：2022-06-19 14:35:01" itemprop="dateModified" datetime="2022-06-19T14:35:01+08:00">2022-06-19</time>
               </span>
 
           
@@ -508,8 +508,8 @@
 <p>一定要<strong>小心边界出口</strong>，仔细考虑设计边界条件</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -- coding = utf-8 --</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">count_change</span>(<span class="params">amount, coins_list</span>):</span><br><span class="line">    <span class="keyword">if</span> amount == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> amount &lt; <span class="number">0</span> <span class="keyword">or</span> <span class="keyword">not</span> coins_list: </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        part1 = count_change(amount, coins_list[<span class="number">1</span>:])</span><br><span class="line">        part2 = count_change(amount-coins_list[<span class="number">0</span>], coins_list[:])</span><br><span class="line">    <span class="keyword">return</span> part1 + part2</span><br><span class="line"></span><br><span class="line">us_coins = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">25</span>, <span class="number">50</span>]</span><br><span class="line"><span class="built_in">print</span>(count_change(<span class="number">100</span>, us_coins)</span><br></pre></td></tr></table></figure>
 
-<p>没有硬币种类换就返回0，amount&lt;0防止50$[20,10,5,1]-&gt;30$[20,10,5,1]</p>
-<p>-&gt;10$[20,10,5,1]-&gt;10$[20,10,5,1]</p>
+<p>没有硬币种类换就返回0，amount&lt;0防止</p>
+<p>50$[20,10,5,1]-&gt;30$[20,10,5,1] - &gt;10$[20,10,5,1]-&gt;10$[20,10,5,1]</p>
 </li>
 <li><p>思考递归问题时，先将其分解为几个子问题，然后分别判断这几个子问题在哪些方面缩减了问题的规模，以此来考虑边界情况。</p>
 </li>
@@ -571,7 +571,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-22 22:56:10" itemprop="dateModified" datetime="2022-05-22T22:56:10+08:00">2022-05-22</time>
+                <time title="修改时间：2022-06-19 22:46:00" itemprop="dateModified" datetime="2022-06-19T22:46:00+08:00">2022-06-19</time>
               </span>
 
           
@@ -661,7 +661,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-02 17:44:02" itemprop="dateModified" datetime="2022-06-02T17:44:02+08:00">2022-06-02</time>
+                <time title="修改时间：2022-06-19 15:33:38" itemprop="dateModified" datetime="2022-06-19T15:33:38+08:00">2022-06-19</time>
               </span>
 
           
@@ -680,7 +680,7 @@
 </li>
 <li><p>在下面两种情况下使用静态方法：一个方法不需要访问对象状态，其所需参数都是通过显式参数提供（例如：Math.pow（)）；一个方法只需要访问类的静态域</p>
 </li>
-<li><p>Scanner类的一些知识点：next()方法如果没有扫描读入非空格或非回车字符是不会创建String对象并返回的，并且next()遇到空格或者说\t或者是回车都会结束扫描；nextLine():读取输入，包括单词之间的空格和除回车以外的所有符号(即。它读到行尾)。读取输入后，nextLine()将光标定位在下一行（会忽略掉末尾的回车进入下一行开始扫描）。所以它和next()的区别就是它没有分隔符，直接扫描全部的键盘输入内容，并创建对象进行将其引用返回。</p>
+<li><p><strong>Scanner类的一些知识点</strong>：next()方法如果没有扫描读入非空格或非回车字符是不会创建String对象并返回的，并且next()遇到空格或者说\t或者是回车都会结束扫描；nextLine():读取输入，包括单词之间的空格和除回车以外的所有符号(即。它读到行尾)。读取输入后，nextLine()将光标定位在下一行（会忽略掉末尾的回车进入下一行开始扫描）。所以它和next()的区别就是它没有分隔符，直接扫描全部的键盘输入内容，并创建对象进行将其引用返回。</p>
 <p>Scanner类还可以用来<strong>读取文件</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    scanner = <span class="keyword">new</span> <span class="title class_">Scanner</span>(<span class="keyword">new</span> <span class="title class_">File</span>(fileName));<span class="comment">//注意传入的是File</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -700,6 +700,15 @@
 <li>2、可以获得空白。</li>
 </ul>
 </li>
+<li><p>Java控制台输入输出</p>
+<ul>
+<li>使用Scanner</li>
+</ul>
+<p><code>Scanner scanner=new Scanner(System.in)</code>,然后使用Scanner相关的方法，比如scanner.nextInt() scanner.nextLine() scanner.next()等</p>
+<ul>
+<li>使用BufferReader</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">BufferedReader bufferedReader=<span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    String str1=bufferedReader.readLine();</span><br><span class="line">    String str2=bufferedReader.readLine();</span><br><span class="line">    System.out.print(str1);</span><br><span class="line">    System.out.print(str2);</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
           <!--noindex-->
             <div class="post-button">
