@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhouweidu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="文本格式化标签   标签 标签 说明    b strong 加粗   u ins 下划线   i em 倾斜   s del 删除线">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML+CSS Review">
+<meta property="og:url" content="https://zhouweidu.github.io/2022/09/06/HTML-CSS-Review/index.html">
+<meta property="og:site_name" content="Irony&#39;s blog">
+<meta property="og:description" content="文本格式化标签   标签 标签 说明    b strong 加粗   u ins 下划线   i em 倾斜   s del 删除线">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-06T11:09:37.000Z">
+<meta property="article:modified_time" content="2022-09-06T11:09:49.163Z">
+<meta property="article:author" content="Irony">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://zhouweidu.github.io/2022/09/06/HTML-CSS-Review/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>HTML+CSS Review | Irony's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Irony's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Maker & Developer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouweidu.github.io/2022/09/06/HTML-CSS-Review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Irony">
+      <meta itemprop="description" content="This is a blog in order to record my learning and growth.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Irony's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML+CSS Review
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-06 19:09:37 / 修改时间：19:09:49" itemprop="dateCreated datePublished" datetime="2022-09-06T19:09:37+08:00">2022-09-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="文本格式化标签"><a href="#文本格式化标签" class="headerlink" title="文本格式化标签"></a>文本格式化标签</h4><table>
+<thead>
+<tr>
+<th align="center">标签</th>
+<th align="center">标签</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">b</td>
+<td align="center">strong</td>
+<td align="center">加粗</td>
+</tr>
+<tr>
+<td align="center">u</td>
+<td align="center">ins</td>
+<td align="center">下划线</td>
+</tr>
+<tr>
+<td align="center">i</td>
+<td align="center">em</td>
+<td align="center">倾斜</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">del</td>
+<td align="center">删除线</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<h4 id="HTML常用标签含义及其对应英文"><a href="#HTML常用标签含义及其对应英文" class="headerlink" title="HTML常用标签含义及其对应英文"></a>HTML常用标签含义及其对应英文</h4><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>标签含义</th>
+<th>英文</th>
+<th>英文含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h</td>
+<td>标题</td>
+<td>headline</td>
+<td>标题</td>
+<td></td>
+</tr>
+<tr>
+<td>p</td>
+<td>段落</td>
+<td>paragraph</td>
+<td>段落</td>
+<td></td>
+</tr>
+<tr>
+<td>hr</td>
+<td>水平分割线</td>
+<td>horizontal rules</td>
+<td>水平分割线</td>
+<td></td>
+</tr>
+<tr>
+<td>b</td>
+<td>加粗</td>
+<td>bold</td>
+<td>加粗&#x2F;粗体</td>
+<td></td>
+</tr>
+<tr>
+<td>strong</td>
+<td>加粗(强调语义)</td>
+<td>strong</td>
+<td>强壮的</td>
+<td></td>
+</tr>
+<tr>
+<td>i</td>
+<td>倾斜</td>
+<td>incline</td>
+<td>倾斜</td>
+<td></td>
+</tr>
+<tr>
+<td>em</td>
+<td>倾斜(强调语义)</td>
+<td>emphasize</td>
+<td>强调</td>
+<td>用倾斜来起到强调作用</td>
+</tr>
+<tr>
+<td>u</td>
+<td>下划线</td>
+<td>underline</td>
+<td>下划线</td>
+<td></td>
+</tr>
+<tr>
+<td>ins</td>
+<td>下划线(强调语义)</td>
+<td>insert</td>
+<td>插入</td>
+<td>ins标签准确来说是:插入字效果</td>
+</tr>
+<tr>
+<td>s</td>
+<td>删除线</td>
+<td>strikethrough</td>
+<td>删除线</td>
+<td></td>
+</tr>
+<tr>
+<td>del</td>
+<td>删除线</td>
+<td>delete</td>
+<td>删除</td>
+<td></td>
+</tr>
+<tr>
+<td>br</td>
+<td>回车换行</td>
+<td>break</td>
+<td>打破&#x2F;折断</td>
+<td></td>
+</tr>
+<tr>
+<td>img</td>
+<td>插入图</td>
+<td>image</td>
+<td>图片</td>
+<td></td>
+</tr>
+<tr>
+<td>src</td>
+<td>图片路径</td>
+<td>source</td>
+<td>源头</td>
+<td>img标签的属性</td>
+</tr>
+<tr>
+<td>width</td>
+<td>宽度</td>
+<td>width</td>
+<td>宽度</td>
+<td>标签属性</td>
+</tr>
+<tr>
+<td>height</td>
+<td>高度</td>
+<td>height</td>
+<td>高度</td>
+<td>标签属性</td>
+</tr>
+<tr>
+<td>title</td>
+<td>提示内容</td>
+<td>title</td>
+<td>标题</td>
+<td>img标签的属性</td>
+</tr>
+<tr>
+<td>alt</td>
+<td>替换的内容</td>
+<td>alternative</td>
+<td>替换&#x2F;交替</td>
+<td>img标签属性</td>
+</tr>
+<tr>
+<td>border</td>
+<td>边框线</td>
+<td>border</td>
+<td>边界</td>
+<td>标签属性</td>
+</tr>
+<tr>
+<td>a</td>
+<td>超链接</td>
+<td>anchor [‘æŋkə]</td>
+<td>锚点</td>
+<td></td>
+</tr>
+<tr>
+<td>href</td>
+<td>超链接地址</td>
+<td>hypertext reference</td>
+<td>超链接</td>
+<td>a标签的属性</td>
+</tr>
+<tr>
+<td>target</td>
+<td>超链接在哪个窗口打开</td>
+<td>target</td>
+<td>目标</td>
+<td>a标签的属性</td>
+</tr>
+<tr>
+<td>_blank</td>
+<td>新窗口</td>
+<td>blank</td>
+<td>空白</td>
+<td>target属性值</td>
+</tr>
+<tr>
+<td>_self</td>
+<td>当前窗口</td>
+<td>self</td>
+<td>自己</td>
+<td>target属性值</td>
+</tr>
+<tr>
+<td></td>
+<td>空格符</td>
+<td>non-breaking space</td>
+<td>不间断空格</td>
+<td></td>
+</tr>
+<tr>
+<td>ul</td>
+<td>无序列表</td>
+<td>unorder list</td>
+<td>无序列表</td>
+<td></td>
+</tr>
+<tr>
+<td>li</td>
+<td>列表项</td>
+<td>list item</td>
+<td>列表条目</td>
+<td></td>
+</tr>
+<tr>
+<td>ol</td>
+<td>有序列表</td>
+<td>order list</td>
+<td>有序列表</td>
+<td></td>
+</tr>
+<tr>
+<td>dl</td>
+<td>自定义列表</td>
+<td>defined list</td>
+<td>自定义列表</td>
+<td></td>
+</tr>
+<tr>
+<td>dt</td>
+<td>自定义列表标题</td>
+<td>defined title</td>
+<td>自定义标题</td>
+<td></td>
+</tr>
+<tr>
+<td>dd</td>
+<td>自定义列表详情</td>
+<td>defined detail</td>
+<td>自定义详情</td>
+<td></td>
+</tr>
+<tr>
+<td>table</td>
+<td>表格</td>
+<td>table</td>
+<td>表格</td>
+<td></td>
+</tr>
+<tr>
+<td>tr</td>
+<td>行</td>
+<td>table row</td>
+<td>表格行</td>
+<td></td>
+</tr>
+<tr>
+<td>td</td>
+<td>单元格</td>
+<td>table data</td>
+<td>表格数据单元格</td>
+<td></td>
+</tr>
+<tr>
+<td>radio</td>
+<td>单选按钮</td>
+<td>radio</td>
+<td>收音机</td>
+<td>收音机的按钮只能按下一个(单选)</td>
+</tr>
+<tr>
+<td>rows</td>
+<td>行数</td>
+<td>rows</td>
+<td>行的复数</td>
+<td>textarea属性</td>
+</tr>
+<tr>
+<td>cols</td>
+<td>列数</td>
+<td>columns</td>
+<td>列的复数</td>
+<td>textarea属性</td>
+</tr>
+<tr>
+<td>get</td>
+<td>get请求方式</td>
+<td>get</td>
+<td>获取</td>
+<td></td>
+</tr>
+<tr>
+<td>post</td>
+<td>post请求方式</td>
+<td>post</td>
+<td>提交</td>
+<td></td>
+</tr>
+<tr>
+<td>css</td>
+<td>层叠样式表(样式)</td>
+<td>Cascading Style Sheet</td>
+<td>层叠样式表</td>
+<td></td>
+</tr>
+<tr>
+<td>font-family</td>
+<td>字体</td>
+<td>font-family</td>
+<td>字体族&#x2F;字体类型</td>
+<td></td>
+</tr>
+<tr>
+<td>text-align</td>
+<td>内容对齐</td>
+<td>text-align</td>
+<td>文字对齐</td>
+<td></td>
+</tr>
+<tr>
+<td>text-indent</td>
+<td>文字首行缩进</td>
+<td>text-indent</td>
+<td>文字缩进</td>
+<td></td>
+</tr>
+<tr>
+<td>background</td>
+<td>背景</td>
+<td>background</td>
+<td>背景</td>
+<td>笔记中记录background为背景色,其实准确来说是背景.这个属性除了可以设置背景颜色,还可以设置背景图片等.</td>
+</tr>
+<tr>
+<td>display</td>
+<td>显示模式</td>
+<td>display</td>
+<td>显示</td>
+<td></td>
+</tr>
+<tr>
+<td>block</td>
+<td>块级</td>
+<td>block</td>
+<td>块</td>
+<td></td>
+</tr>
+<tr>
+<td>inline</td>
+<td>行内</td>
+<td>inline</td>
+<td>内联的</td>
+<td>这里可以这样理解:line是行,in是在…里边.inline就是在行里边(行内)</td>
+</tr>
+<tr>
+<td>none</td>
+<td>隐藏</td>
+<td>none</td>
+<td>没有&#x2F;消失</td>
+<td>display属性值:none可以理解为消失(不占位置隐藏)</td>
+</tr>
+<tr>
+<td>visibility</td>
+<td>显示</td>
+<td>visibility</td>
+<td>能见度</td>
+<td></td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>隐藏</td>
+<td>hidden</td>
+<td>隐藏</td>
+<td>占位置隐藏(隐身)</td>
+</tr>
+<tr>
+<td>class</td>
+<td>类样式</td>
+<td>class</td>
+<td>类</td>
+<td></td>
+</tr>
+<tr>
+<td>style</td>
+<td>行内样式</td>
+<td>style</td>
+<td>风格&#x2F;设计</td>
+<td></td>
+</tr>
+<tr>
+<td>link</td>
+<td>外链式</td>
+<td>link</td>
+<td>关系&#x2F;连接</td>
+<td></td>
+</tr>
+<tr>
+<td>rel</td>
+<td>关系</td>
+<td>relationship</td>
+<td>关系&#x2F;关联</td>
+<td></td>
+</tr>
+<tr>
+<td>stylesheet</td>
+<td>样式单</td>
+<td>stylesheet</td>
+<td>样式  床单</td>
+<td></td>
+</tr>
+<tr>
+<td>important</td>
+<td>提权功能(变为最重要)</td>
+<td>important</td>
+<td>重要</td>
+<td></td>
+</tr>
+<tr>
+<td>italic</td>
+<td>倾斜</td>
+<td>italic</td>
+<td>斜体字</td>
+<td>font-style属性值</td>
+</tr>
+<tr>
+<td>normal</td>
+<td>正常</td>
+<td>normal</td>
+<td>正常</td>
+<td>font-style属性值</td>
+</tr>
+<tr>
+<td>text-decoration</td>
+<td>文字修饰属性</td>
+<td>decoration</td>
+<td>修饰&#x2F;装饰</td>
+<td></td>
+</tr>
+<tr>
+<td>overline</td>
+<td>顶划线</td>
+<td>overline</td>
+<td>上划线</td>
+<td>text-decoration属性值</td>
+</tr>
+<tr>
+<td>line-through</td>
+<td>删除线&#x2F;贯穿线</td>
+<td>through</td>
+<td>穿过</td>
+<td>text-decoration属性值</td>
+</tr>
+<tr>
+<td>word-break</td>
+<td>强制打散单词换行</td>
+<td>beak</td>
+<td>折断</td>
+<td></td>
+</tr>
+<tr>
+<td>visited</td>
+<td>访问后</td>
+<td>visited</td>
+<td>访问后</td>
+<td>超链接伪类</td>
+</tr>
+<tr>
+<td>hover</td>
+<td>鼠标以上</td>
+<td>hover</td>
+<td>悬浮&#x2F;盘旋</td>
+<td>超链接伪类</td>
+</tr>
+<tr>
+<td>active</td>
+<td>点击状态</td>
+<td>active</td>
+<td>激活&#x2F;积极</td>
+<td>超链接伪类</td>
+</tr>
+<tr>
+<td>solid</td>
+<td>实线</td>
+<td>solid</td>
+<td>固体的</td>
+<td>border边框线条样式</td>
+</tr>
+<tr>
+<td>dashed</td>
+<td>虚线</td>
+<td>dashed</td>
+<td>虚线</td>
+<td>border边框线条样式</td>
+</tr>
+<tr>
+<td>repeat</td>
+<td>平铺</td>
+<td>repeat</td>
+<td>重复</td>
+<td>background属性值</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>背景图固定</td>
+<td>fixed</td>
+<td>固定的</td>
+<td>background属性值</td>
+</tr>
+<tr>
+<td>margin</td>
+<td>外边距</td>
+<td>margin</td>
+<td>边缘</td>
+<td>边缘可以理解为盒子外边的距离(盒子与盒子之间的距离)</td>
+</tr>
+<tr>
+<td>padding</td>
+<td>内边距</td>
+<td>padding</td>
+<td>填补&#x2F;填充</td>
+<td>填充意味着属于盒子内部的距离</td>
+</tr>
+<tr>
+<td>auto</td>
+<td>自动(自适应宽高)</td>
+<td>auto</td>
+<td>自动</td>
+<td>margin&#x2F;padding取值</td>
+</tr>
+<tr>
+<td>list-style</td>
+<td>列表样式</td>
+<td>list,style</td>
+<td>列表,样式</td>
+<td></td>
+</tr>
+<tr>
+<td>overflow</td>
+<td>溢出</td>
+<td>overflow</td>
+<td>溢出</td>
+<td></td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>隐藏</td>
+<td>hidden</td>
+<td>隐藏</td>
+<td>overflow属性值(visibility属性值)</td>
+</tr>
+<tr>
+<td>float</td>
+<td>浮动</td>
+<td>float</td>
+<td>浮动</td>
+<td></td>
+</tr>
+<tr>
+<td>position</td>
+<td>定位</td>
+<td>position</td>
+<td>位置</td>
+<td></td>
+</tr>
+<tr>
+<td>relative</td>
+<td>相对定位</td>
+<td>relative</td>
+<td>相对</td>
+<td>position的属性值</td>
+</tr>
+<tr>
+<td>static</td>
+<td>静态定位</td>
+<td>static</td>
+<td>静态的</td>
+<td></td>
+</tr>
+<tr>
+<td>absolute</td>
+<td>绝对定位</td>
+<td>absolute</td>
+<td>绝对的</td>
+<td></td>
+</tr>
+<tr>
+<td>cursor</td>
+<td>鼠标样式</td>
+<td>cursor</td>
+<td>光标</td>
+<td></td>
+</tr>
+<tr>
+<td>pointer</td>
+<td>小手</td>
+<td>pointer</td>
+<td>指针</td>
+<td></td>
+</tr>
+<tr>
+<td>border-radius</td>
+<td>边框半径(制作圆角矩形)</td>
+<td>radius</td>
+<td>半径</td>
+<td></td>
+</tr>
+<tr>
+<td>filter</td>
+<td>滤镜</td>
+<td>filter</td>
+<td>过滤器</td>
+<td></td>
+</tr>
+<tr>
+<td>alpha</td>
+<td>透明度</td>
+<td>alpha</td>
+<td>透明度</td>
+<td></td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>透明度</td>
+<td>opacity</td>
+<td>不透明度</td>
+<td>虽然翻译是不透明度,但是css中还是当做透明度处理了</td>
+</tr>
+<tr>
+<td>css sprite</td>
+<td>css精灵图</td>
+<td>sprite</td>
+<td>精灵&#x2F;雪碧</td>
+<td></td>
+</tr>
+<tr>
+<td>background-attachment</td>
+<td>背景图固定</td>
+<td>attachment</td>
+<td>附着</td>
+<td></td>
+</tr>
+<tr>
+<td>wrap</td>
+<td>包裹</td>
+<td>wrap</td>
+<td>包裹</td>
+<td></td>
+</tr>
+<tr>
+<td>banner</td>
+<td>广告条</td>
+<td>banner</td>
+<td>标语&#x2F;横幅广告</td>
+<td></td>
+</tr>
+<tr>
+<td>prefect</td>
+<td>完美</td>
+<td>prefect</td>
+<td>完美</td>
+<td></td>
+</tr>
+<tr>
+<td>course</td>
+<td>课程体系</td>
+<td>course</td>
+<td>课程</td>
+<td></td>
+</tr>
+<tr>
+<td>pilot</td>
+<td>领航者</td>
+<td>pilot</td>
+<td>飞行员&#x2F;领航者</td>
+<td></td>
+</tr>
+<tr>
+<td>vertical-align</td>
+<td>垂直对齐方式</td>
+<td>vertical</td>
+<td>垂直的</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="标签嵌套"><a href="#标签嵌套" class="headerlink" title="标签嵌套"></a>标签嵌套</h4><p>p和h不能相互嵌套，p里面不能包含div，a标签内可以嵌套任意元素，但a不能嵌套a</p>
+<h4 id="CSS书写顺序-这样写浏览器的执行效率更高"><a href="#CSS书写顺序-这样写浏览器的执行效率更高" class="headerlink" title="CSS书写顺序(这样写浏览器的执行效率更高)"></a>CSS书写顺序(这样写浏览器的执行效率更高)</h4><ol>
+<li>浮动&#x2F;display&#x2F;定位</li>
+<li>盒子模型:margin, border, padding, 宽度高度背景色</li>
+<li>文字样式</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/06/Git%E6%95%99%E7%A8%8B/" rel="prev" title="Git教程">
+      <i class="fa fa-chevron-left"></i> Git教程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/06/JavaWeb%E6%95%99%E7%A8%8B/" rel="next" title="JavaWeb教程">
+      JavaWeb教程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%A0%87%E7%AD%BE"><span class="nav-text">文本格式化标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE%E5%90%AB%E4%B9%89%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E8%8B%B1%E6%96%87"><span class="nav-text">HTML常用标签含义及其对应英文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E5%B5%8C%E5%A5%97"><span class="nav-text">标签嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS%E4%B9%A6%E5%86%99%E9%A1%BA%E5%BA%8F-%E8%BF%99%E6%A0%B7%E5%86%99%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%89%A7%E8%A1%8C%E6%95%88%E7%8E%87%E6%9B%B4%E9%AB%98"><span class="nav-text">CSS书写顺序(这样写浏览器的执行效率更高)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Irony</p>
+  <div class="site-description" itemprop="description">This is a blog in order to record my learning and growth.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Irony</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

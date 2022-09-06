@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhouweidu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Python部分 parameter是形参，argument是实参。  title() 方法返回一个字符串，其中每个单词的第一个字符均为大写。如果单词包含数字或符号，则其后的第一个字母将转换为大写字母。  换零钱问题（递归、动态规划）：给定半美元、25美分、10美分、5美分、1美分 5种硬币，将 1 美元换成硬币，有多少种硬币组合？给定任意数量的现金 和 任意组合的硬币种类，计算换零钱所有方式的种">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SE-1 Review">
+<meta property="og:url" content="https://zhouweidu.github.io/2022/09/06/SE-1-Review/index.html">
+<meta property="og:site_name" content="Irony&#39;s blog">
+<meta property="og:description" content="Python部分 parameter是形参，argument是实参。  title() 方法返回一个字符串，其中每个单词的第一个字符均为大写。如果单词包含数字或符号，则其后的第一个字母将转换为大写字母。  换零钱问题（递归、动态规划）：给定半美元、25美分、10美分、5美分、1美分 5种硬币，将 1 美元换成硬币，有多少种硬币组合？给定任意数量的现金 和 任意组合的硬币种类，计算换零钱所有方式的种">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-06T11:27:34.000Z">
+<meta property="article:modified_time" content="2022-09-06T11:30:36.640Z">
+<meta property="article:author" content="Irony">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://zhouweidu.github.io/2022/09/06/SE-1-Review/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>SE-1 Review | Irony's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Irony's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Maker & Developer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouweidu.github.io/2022/09/06/SE-1-Review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Irony">
+      <meta itemprop="description" content="This is a blog in order to record my learning and growth.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Irony's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SE-1 Review
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-06 19:27:34 / 修改时间：19:30:36" itemprop="dateCreated datePublished" datetime="2022-09-06T19:27:34+08:00">2022-09-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Python部分"><a href="#Python部分" class="headerlink" title="Python部分"></a>Python部分</h1><ol>
+<li><p>parameter是形参，argument是实参。</p>
+</li>
+<li><p>title() 方法返回一个字符串，其中每个单词的第一个字符均为大写。如果单词包含数字或符号，则其后的第一个字母将转换为大写字母。</p>
+</li>
+<li><p>换零钱问题（递归、动态规划）：给定半美元、25美分、10美分、5美分、1美分 5种硬币，将 1 美元换成硬币，有多少种硬币组合？<br>给定任意数量的现金 和 任意组合的硬币种类，计算换零钱所有方式的种数。</p>
+<p>10 美分能够用到的硬币种类只有<code>[10, 5, 1]</code>三种。我们用 <code>10$[10, 5, 1]</code>这种记法来标记问题。先按币值为10的硬币来分类，将问题化为：</p>
+<ol>
+<li><p>第一组，不使用 10 美分的硬币来表示，只用5美分和1美分来表示 即 <code>10$[5, 1]</code></p>
+</li>
+<li><p>第二组，使用了 10 美分的硬币，剩下的金额 0 使用全部的硬币种类表示，即 <code>0$[10, 5, 1]</code></p>
+<p><code>10$[10, 5, 1] = 10$[5, 1] + 0$[10, 5, 1]           = 10$[1] + 5$[5, 1] + 0$[10, 5, 1]           = 10$[1] + 5$[1] + 0$[5, 1] + 0$[10, 5, 1]</code></p>
+</li>
+</ol>
+<p>分成两组后，这两个问题新问题相对于原问题的范围缩小了，第一组现金没有变，但可选的硬币种类少了一种；第二组硬币种类没有变，但是现金减少了第一种硬币的币值。</p>
+<p>边界问题如下：</p>
+<ul>
+<li>当现金数 <code>a</code> 为 0 时，应该算作是有 1 种换零钱的方法</li>
+<li>当现金数 <code>a</code> 小于 0 时，应该算作是有 0 种换零钱的方法</li>
+<li>当换零钱可选的硬币种类为 0 时，应该算作是有 0 种换零钱的方法</li>
+</ul>
+<p>按边界规则，可以直观看出，当金额为 0 或可选币种只有 1 种时，组合数都为 1。</p>
+<p>一定要<strong>小心边界出口</strong>，仔细考虑设计边界条件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -- coding = utf-8 --</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">count_change</span>(<span class="params">amount, coins_list</span>):</span><br><span class="line">    <span class="keyword">if</span> amount == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> amount &lt; <span class="number">0</span> <span class="keyword">or</span> <span class="keyword">not</span> coins_list: </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        part1 = count_change(amount, coins_list[<span class="number">1</span>:])</span><br><span class="line">        part2 = count_change(amount-coins_list[<span class="number">0</span>], coins_list[:])</span><br><span class="line">    <span class="keyword">return</span> part1 + part2</span><br><span class="line"></span><br><span class="line">us_coins = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">25</span>, <span class="number">50</span>]</span><br><span class="line"><span class="built_in">print</span>(count_change(<span class="number">100</span>, us_coins)</span><br></pre></td></tr></table></figure>
+
+<p>没有硬币种类换就返回0，amount&lt;0防止</p>
+<p>50$[20,10,5,1]-&gt;30$[20,10,5,1] - &gt;10$[20,10,5,1]-&gt;10$[20,10,5,1]</p>
+</li>
+<li><p>思考递归问题时，先将其分解为几个子问题，然后分别判断这几个子问题在哪些方面缩减了问题的规模，以此来考虑边界情况。</p>
+</li>
+<li><p>在 <a target="_blank" rel="noopener" href="http://c.biancheng.net/python/">Python</a> 中，有一个特殊的常量 None（N 必须大写）。和 False 不同，它不表示 0，也不表示空字符串，而表示没有值，也就是空值。这里的空值并不代表空对象，即 None 和 []、“” 不同。</p>
+<span id="more"></span>
+</li>
+<li><p><strong>sort()</strong> 函数用于对原列表进行排序，会改变原列表中数据的顺序，sorted 可以对所有可迭代的对象进行排序操作， sorted 方法返回的是一个新的 list，而不是在原来的基础上进行的操作。</p>
+</li>
+<li><p>对字符串的操作方法都不会改变原来字符串的值，下面是一些常用的字符串方法：</p>
+<p>1.去掉空格和特殊符号<br>name.strip() 去掉空格和换行符<br>name.strip(‘xx’) 去掉某个字符串<br>name.lstrip() 去掉左边的空格和换行符<br>name.rstrip() 去掉右边的空格和换行符<br>2.字符串的搜索和替换<br>name.count(‘x’) 查找某个字符在字符串里面出现的次数<br>name.capitalize() 首字母大写<br>name.center(n,’-’) 把字符串放中间，两边用- 补齐<br>name.find(‘x’) 找到这个字符返回下标，多个时返回第一个；不存在的字符返回-1<br>name.index(‘x’) 找到这个字符返回下标，多个时返回第一个；不存在的字符报错<br>name.replace(oldstr, newstr) 字符串替换<br>name.format（） 字符串格式化<br>name.format_map(d) 字符串格式化，传进去的是一个字典<br>3.字符串的分割<br>name.split() 默认是按照空格分割<br>name.split(’,’) 按照逗号分割</p>
+<p>str.upper()用法：将字符串全部变成大写<br>str.lower()用法：将字符串全部变成小写<br>string.split(text)#字符串分割?<br>string.join(string.split(text), “+”)#字符串连接?<br>string.replace(text, “Python”, “Java”)#字符串替换?<br>string.count(text, “n”)#字符串计数?<br>string.find(text, “Python”), string.find(text,“Java”)#字符串查找</p>
+</li>
+<li><p>要学会从题目中抽象出一些东西来，而不是按照题目给的要求来模拟，不要被题目说的那些方法步骤所局限，要跳出题目给的方法和步骤，想一想能不能从另一个角度来思考这个问题，或者说用另一种方式来模拟这个题目，有时候可以直接根据题目文字来模拟，有时候要抽象一下题目给的条件，用另一种方式来模拟或者是计算，解题两种路径<strong>模拟</strong>和<strong>计算</strong></p>
+</li>
+<li><p>比较两个列表：</p>
+<ol>
+<li><p>“&#x3D;&#x3D;”只有成员、成员位置都相同时才返回True，但有时候我们希望只要成员相同、即使成员位置不同也能返回True，可以使用列表sort()方法进行排序后比较，注意sort()会改变原列表。sorted()不改变列表原本顺序而是新生成一个排序后的列表并返回。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">&quot;one&quot;</span>,<span class="string">&quot;two&quot;</span>,<span class="string">&quot;three&quot;</span>]</span><br><span class="line"></span><br><span class="line">list2= [<span class="string">&quot;one&quot;</span>,<span class="string">&quot;three&quot;</span>,<span class="string">&quot;two&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">sorted</span>(list1)==<span class="built_in">sorted</span>(list2)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>包含比较</p>
+<p>直接用列表本身进行包含类比较，只能用遍历的方法这是比较麻烦的，使用set()转成集合进行包含比较就简单多了。</p>
+<ul>
+<li>判断列表是否包含另一列表</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">&quot;one&quot;</span>,<span class="string">&quot;two&quot;</span>,<span class="string">&quot;three&quot;</span>]</span><br><span class="line"></span><br><span class="line">list2= [<span class="string">&quot;one&quot;</span>,<span class="string">&quot;three&quot;</span>,<span class="string">&quot;two&quot;</span>,<span class="string">&quot;four&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(list1).issubset(<span class="built_in">set</span>(list2))</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(list2).issuperset(<span class="built_in">set</span>(list1))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>求交集</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">&quot;one&quot;</span>,<span class="string">&quot;two&quot;</span>,<span class="string">&quot;three&quot;</span>,<span class="string">&quot;five&quot;</span>]</span><br><span class="line"></span><br><span class="line">list2= [<span class="string">&quot;one&quot;</span>,<span class="string">&quot;three&quot;</span>,<span class="string">&quot;two&quot;</span>,<span class="string">&quot;four&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(list1).intersection(<span class="built_in">set</span>(list2))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取两个列表不同成员</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">&quot;one&quot;</span>,<span class="string">&quot;two&quot;</span>,<span class="string">&quot;three&quot;</span>,<span class="string">&quot;five&quot;</span>]</span><br><span class="line"></span><br><span class="line">list2= [<span class="string">&quot;one&quot;</span>,<span class="string">&quot;three&quot;</span>,<span class="string">&quot;two&quot;</span>,<span class="string">&quot;four&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(list1).symmetric_difference(<span class="built_in">set</span>(list2))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取一个列表中不是另一个列表成员的成员（差集）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">&quot;one&quot;</span>,<span class="string">&quot;two&quot;</span>,<span class="string">&quot;three&quot;</span>,<span class="string">&quot;five&quot;</span>]</span><br><span class="line"></span><br><span class="line">list2= [<span class="string">&quot;one&quot;</span>,<span class="string">&quot;three&quot;</span>,<span class="string">&quot;two&quot;</span>,<span class="string">&quot;four&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(list1).difference(<span class="built_in">set</span>(list2))</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(list2).difference(<span class="built_in">set</span>(list1))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>求并集</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">&quot;one&quot;</span>,<span class="string">&quot;two&quot;</span>,<span class="string">&quot;three&quot;</span>,<span class="string">&quot;five&quot;</span>]</span><br><span class="line"></span><br><span class="line">list2= [<span class="string">&quot;one&quot;</span>,<span class="string">&quot;three&quot;</span>,<span class="string">&quot;two&quot;</span>,<span class="string">&quot;four&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(list1).union(<span class="built_in">set</span>(list2))</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>string.format方法，<code>print(&quot;&#123;:.2f&#125;&quot;.format(3.1415926))</code></p>
+</li>
+</ol>
+<p>   {:.2f} 保留小数点后两位</p>
+<p>   {:+.2f} 带符号保留小数点后两位</p>
+<p>   {:0&gt;2d} 数字补零 (填充左边, 宽度为2)</p>
+<p>   {:x&lt;4d} 数字补x (填充右边, 宽度为4)</p>
+<h1 id="Java部分"><a href="#Java部分" class="headerlink" title="Java部分"></a>Java部分</h1><ol>
+<li>一道我没做起的Java简单题</li>
+</ol>
+<h5 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h5><p>​	写一个程序来检测一个整数是不是丑数。</p>
+<p>​	丑数的定义是，只包含质因子 2, 3, 5 的正整数。比如 6, 8 就是丑数，但是 14 不是丑数因为他包含了质因子 7。</p>
+<h5 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h5><p>​	可以认为 1 是一个特殊的丑数。</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>​	给出 num &#x3D; 8，返回 true。 给出 num &#x3D; 14，返回 false。</p>
+<p>​	<strong>思路</strong>：只包含质因子2 3 5意味着该数可以被分解为2<sup>x</sup> * 3<sup> y</sup> * 5<sup>z</sup>,使 sum 依次对 2, 3, 5 相除，直到与 2, 3, 5 的余数不为 0，最终 sum 为 1，则代表该数只能被 2, 3, 5整除，返回 <code>true</code>，反之返回 <code>false</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isUgly</span><span class="params">(<span class="type">int</span> num)</span> &#123;</span><br><span class="line">    <span class="comment">//0也需要特殊判断，但题目说了是正整数</span></span><br><span class="line">    <span class="keyword">if</span> (num == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (num%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">        num=num/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (num%<span class="number">3</span>==<span class="number">0</span>)&#123;</span><br><span class="line">        num=num/<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (num%<span class="number">5</span>==<span class="number">0</span>)&#123;</span><br><span class="line">        num=num/<span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num == <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>手动实现Java的trim函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">trim</span><span class="params">(String str)</span> &#123;</span><br><span class="line">    <span class="comment">//String abc = &quot;   a b c ddsa    &quot;;</span></span><br><span class="line">    <span class="comment">//在遍历中其实我们只需要获得第一个和最后一个不为空格的字符的下标</span></span><br><span class="line">    <span class="type">char</span>[] chars = str.toCharArray();</span><br><span class="line">    <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; chars.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (chars[i] != <span class="string">&#x27; &#x27;</span>) &#123;</span><br><span class="line">            start = i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> chars.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (chars[i] != <span class="string">&#x27; &#x27;</span>) &#123;</span><br><span class="line">            end = i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str.substring(start,end+<span class="number">1</span>);<span class="comment">//substring不包含后一个参数，所以需要+1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>正则表达式：*表示匹配前面的字符0次或多次，+表示1次或多次，？表示0次或1次，{n}匹配确定的n次，{n，}匹配至少n次，{n，m}匹配n到m次两边都包含</p>
+</li>
+</ol>
+<h1 id="转专业考试复习"><a href="#转专业考试复习" class="headerlink" title="转专业考试复习"></a>转专业考试复习</h1><ol>
+<li><p>高阶函数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HighOrderFunction</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">cube</span><span class="params">(<span class="type">int</span> x)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x*x*x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算a到b的立方和（包含b）</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> b</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">fCube</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (a&gt;b)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cube(a)+fCube(a+<span class="number">1</span>,b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">piTerm</span><span class="params">(<span class="type">int</span> x)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1.0</span>/(x*(x+<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">piNext</span><span class="params">(<span class="type">int</span> x)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x+<span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算1/(1*3)+1/(5*7)+1/(9*11)……序列和，从a到b（包含b）</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> b</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">sumPi</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (a&gt;b)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> piTerm(a)+sumPi(piNext(a),b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(fCube(<span class="number">1</span>,<span class="number">2</span>));</span><br><span class="line">        System.out.println(sumPi(<span class="number">1</span>,<span class="number">5</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="VJAM实验报告"><a href="#VJAM实验报告" class="headerlink" title="VJAM实验报告"></a>VJAM实验报告</h1>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/06/review-on-java/" rel="prev" title="review on java">
+      <i class="fa fa-chevron-left"></i> review on java
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" rel="next" title="计算机组织与体系结构">
+      计算机组织与体系结构 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python%E9%83%A8%E5%88%86"><span class="nav-text">Python部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E9%83%A8%E5%88%86"><span class="nav-text">Java部分</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E8%A6%81%E6%B1%82"><span class="nav-text">题目要求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-text">示例</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%AC%E4%B8%93%E4%B8%9A%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0"><span class="nav-text">转专业考试复习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VJAM%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A"><span class="nav-text">VJAM实验报告</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Irony</p>
+  <div class="site-description" itemprop="description">This is a blog in order to record my learning and growth.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Irony</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

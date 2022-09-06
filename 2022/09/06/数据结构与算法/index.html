@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhouweidu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="排序算法 排序中相关术语解释： 稳定：如果a原本在b前面，而a&#x3D;b，排序后a仍然在b前面 不稳定：如果a原本在b前面，而a&#x3D;b，排序后a可能在b后面  基数排序（桶排序的扩展），从个位开始对一个数组进行排序，然后是十位、百位（十位百位没有数字就补零），因为十位的排序建立在个位排序的基础之上，百位建立在十位排序的基础之上，所以该算法排序是正确的，排序次数位数组中最大数字的位数，举">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法">
+<meta property="og:url" content="https://zhouweidu.github.io/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Irony&#39;s blog">
+<meta property="og:description" content="排序算法 排序中相关术语解释： 稳定：如果a原本在b前面，而a&#x3D;b，排序后a仍然在b前面 不稳定：如果a原本在b前面，而a&#x3D;b，排序后a可能在b后面  基数排序（桶排序的扩展），从个位开始对一个数组进行排序，然后是十位、百位（十位百位没有数字就补零），因为十位的排序建立在个位排序的基础之上，百位建立在十位排序的基础之上，所以该算法排序是正确的，排序次数位数组中最大数字的位数，举">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/image-20220425221317298.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/image-20220415184950837.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/image-20220317231004623.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/image-20220317231029925.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/1335725885_9403.png">
+<meta property="article:published_time" content="2022-09-06T10:57:07.000Z">
+<meta property="article:modified_time" content="2022-09-06T10:59:13.921Z">
+<meta property="article:author" content="Irony">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhouweidu.github.io/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/image-20220425221317298.png">
+
+<link rel="canonical" href="https://zhouweidu.github.io/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数据结构与算法 | Irony's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Irony's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Maker & Developer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouweidu.github.io/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Irony">
+      <meta itemprop="description" content="This is a blog in order to record my learning and growth.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Irony's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构与算法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-06 18:57:07 / 修改时间：18:59:13" itemprop="dateCreated datePublished" datetime="2022-09-06T18:57:07+08:00">2022-09-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><ol>
+<li><p>排序中相关术语解释：</p>
+<p>稳定：如果a原本在b前面，而a&#x3D;b，排序后a仍然在b前面</p>
+<p>不稳定：如果a原本在b前面，而a&#x3D;b，排序后a可能在b后面</p>
+</li>
+<li><p>基数排序（桶排序的扩展），从个位开始对一个数组进行排序，然后是十位、百位（十位百位没有数字就补零），因为十位的排序建立在个位排序的基础之上，百位建立在十位排序的基础之上，所以该算法排序是正确的，排序次数位数组中最大数字的位数，举例如下：</p>
+<p>53 3 542 748 14 214</p>
+<p>个位排序：542 53 3 14 214 748</p>
+<p>十位排序：3 14 214 542 748 53</p>
+<p>百位排序：3 14 53 214 542 748</p>
+</li>
+</ol>
+<h1 id="查找算法"><a href="#查找算法" class="headerlink" title="查找算法"></a>查找算法</h1><ol>
+<li><p>插值查找（定位mid的公式进行了优化）：将二分查找中求mid的公式改为 <img src="/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/image-20220425221317298.png" alt="image-20220425221317298"></p>
+<p>举例说明：数组arr&#x3D;{1，2，3，……100}，假如需要查找的值为1，第一次得到的mid&#x3D;0+(99-0)*(1-1)&#x2F;(100-1)&#x3D;0，公式将mid的求法变为计算key（key是要查找的值）与arr[left]的差距占arr[right]-arr[left]的比例乘此时的数组长度，因为数组是有序的，所以该公式可以快速的找到与key值接近的位置</p>
+<p>该算法中需要<strong>注意</strong>：因为key参与寻找mid（自适应），所以如果key很大的话会导致算出来的mid很大直接越界,而key在arr[left]和arr[right]之间可以保证该公式算出来的值一定不越界，插值查找存在<strong>局限性</strong>，当数组中的有序元素之间存在较大差距时（或者说需要查找的数组中的元素分布不均匀时），插值查找的效率往往不如二分查找</p>
+</li>
+</ol>
+<span id="more"></span>
+
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><ol>
+<li><p>二叉树</p>
+<ol>
+<li>前序遍历：中左右；中序遍历：左中右；后序遍历：左右中（父节点先输出就是前序，父节点中间输出为中序，父节点最后输出为后序）</li>
+<li>满二叉树：该二叉树的所有叶子节点（没有子节点的节点）都在最后一层，并且结点总数&#x3D;$2^n$-1,n为层数</li>
+<li>完全二叉树：若设二叉树的高度为h，除第h层外，其他各层（1~h-1）的节点数都达到最大个数，第h层上的节点都集中在该层最左边的若干位置上</li>
+</ol>
+</li>
+<li><p>顺序存储二叉树：存储方式是从树结构上看，从上到下从左到右将每一个节点的值存在数组中。需要实现的方法是将这样存储好的数组以树的方式来进行遍历输出</p>
+<p>顺序存储二叉树的特点：</p>
+<ol>
+<li>通常只考虑完全二叉树</li>
+<li>第n个元素的左子节点为2*n+1（这里及下面的n表示二叉树（其实是数组）中的第几个元素，按零开始编号）</li>
+<li>第n个元素的左子节点为2*n+2</li>
+<li>第n个元素的父节点为（n-1）&#x2F; 2（向下取整除法）</li>
+</ol>
+<p>顺序存储二叉树在堆排序中会用到</p>
+</li>
+<li><p>二叉排序树：对于二叉排序树的任何一个非叶子结点，要求左子结点的值比当前结点的值小，右子结点的值比当前结点的值大。（如果有相同的值，可以将该结点放在左子结点或右子结点）</p>
+</li>
+<li><p>平衡二叉树首先是二叉排序树，它是在二叉排序树的基础上实现的。</p>
+<p>平衡二叉树的特点：它是一棵空树或者它的左右两个子树的<strong>高度差</strong>的绝对值<strong>不超过1</strong>，并且左右两个子树都是一颗平衡二叉树，平衡二叉树的实现方法有：红黑树、AVL等。</p>
+</li>
+<li><p>堆：</p>
+</li>
+</ol>
+<ul>
+<li><p>最大堆（又叫大顶堆）：堆顶是整个数组中最大的元素，且任何父节点的值都大于其子节点</p>
+</li>
+<li><p>最小堆（又叫小顶堆）：堆顶是整个数组中最小的元素，且任何父节点的值都小于其子节点</p>
+<p>堆（通常是顺序存储二叉树得到的）的一些操作：下面以<strong>最大堆</strong>为例</p>
+<ul>
+<li><p>插入一个元素：每次插入都是将先将新数据放在数组最后，由于从这个新数据的父结点到根结点必然为一个有序的序列，现在的任务是将这个新数据插入到这个有序序列中——这就类似于直接插入排序中将一个数据并入到有序区间中。我们交换我们的插入元素和它的父节点，直到它的父节点比它大或者我们到达树的顶部。这就是所谓的 <strong>shift-up</strong>，每一次插入操作后都需要进行。它将一个太大或者太小的数字“浮起”到树的顶部。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">shiftUp</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">    <span class="type">int</span> parentIndex=(index - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (parentIndex &gt;= <span class="number">0</span> &amp;&amp;arr[index]&gt;arr[parentIndex])&#123;</span><br><span class="line">        swap(arr,index,parentIndex);</span><br><span class="line">        shiftUp(arr,parentIndex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除堆顶元素：堆中每次都只能删除堆顶元素删除一个元素，由于堆的<strong>完全二叉树的特点</strong>限制，要提防出现最后一层断层，即不连续。</p>
+<p><img src="/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/image-20220415184950837.png" alt="image-20220415184950837"></p>
+<p>所以采用的方法是把<strong>最末的元素替换堆顶</strong>再进行堆化，这样得到的新堆肯定是符合其自身特点的。很明显，这里是<strong>从上往下的</strong>堆化过程。</p>
+<p>删除堆顶元素的算法如下：将堆顶元素与堆的末尾的元素交换，然后删除该元素后（此时删除的是末尾一个元素），从堆的根结点调用shift-down。为了保持最大堆的堆属性，我们需要树的顶部是最大的数据。从根节点开始，找到左右子节点中小的那个，将根结点与之交换，在递归进行比较，直到该节点没有任何子节点或者它比两个子节点都要大为止</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">adjustHeap</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> i, <span class="type">int</span> len)</span> &#123;</span><br><span class="line">    <span class="comment">//这个代码中我实现的是最大堆</span></span><br><span class="line">    <span class="comment">//这个函数就是shiftDown()：如果一个节点比它的子节点小（最大堆），</span></span><br><span class="line">    <span class="comment">//那么需要将它向下移动。这个操作也称作“堆化（heapify）”。</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="number">2</span> * i + <span class="number">1</span> &gt;= len) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">2</span> * i + <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> <span class="number">2</span> * i + <span class="number">2</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">largestIndex</span> <span class="operator">=</span> i;</span><br><span class="line">    <span class="keyword">if</span> (left &lt; len &amp;&amp; arr[left] &gt; arr[largestIndex]) &#123;</span><br><span class="line">        largestIndex = left;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (right &lt; len &amp;&amp; arr[right] &gt; arr[largestIndex]) &#123;</span><br><span class="line">        largestIndex = right;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (largestIndex != i) &#123;</span><br><span class="line">        swap(arr, i, largestIndex);</span><br><span class="line">        adjustHeap(arr, largestIndex, len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造最大堆：首先将每个叶子节点视为一个堆，再将每个叶子节点与其父节点一起构造成一个包含更多节点的堆。所以，在构造堆的时候，首先需要找到最后一个节点的父节点，从这个节点开始构造最大堆；直到该节点前面所有分支节点都处理完毕，这样最大堆就构造完毕了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">buildMaxHeap</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> len)</span> &#123;</span><br><span class="line">    <span class="comment">//因为顺序化二叉树是从左至右从上至下，所以最后一个叶子节点(len-1)的父节点(len-1-1)/2一定是最后一个非叶子节点</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> len / <span class="number">2</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        adjustHeap(arr, i, len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li><p>优先队列：就是堆</p>
+</li>
+<li><p>最大优先队列：无论入队的顺序，当前最大的元素先出列。<br>最小优先队列：无论入队的顺序，当前最小的元素先出列。</p>
+<p><strong>说明：以最小优先队列为例</strong></p>
+<ul>
+<li>入队操作<br>优先队列本质上就是用二叉堆来实现的，每次插入一个数据都是插入到数据数组的最后一个位置，然后再做上浮操作，如果插入的数是数组中最大数，自然会上浮到堆顶。</li>
+<li>出队操作<br>出队操作就是返回堆顶最小堆的数据之后用数组最后的数插入到堆顶，之后再做下沉操作。</li>
+</ul>
+</li>
+</ol>
+<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><ol>
+<li><p>图的一些基本知识：</p>
+<p>连通图：在无向图中任意两个顶点都是连通的(可以不是直接相连)，则称该图为连通图。</p>
+<p>非连通图：易知为上面定义的反面</p>
+</li>
+<li><p>图的深度优先遍历（Depth First Search简称DFS）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> i)</span>&#123;</span><br><span class="line">       isVisited[i]=<span class="literal">true</span>;<span class="comment">//标记为已访问</span></span><br><span class="line">       System.out.print(vertexList.get(i)+<span class="string">&quot;-&gt;&quot;</span>);</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; vertexList.size(); j++) &#123;</span><br><span class="line">           <span class="comment">// 这里的for循环就有递归回溯，从当前结点的第一个邻接结点递归遍历后，</span></span><br><span class="line">           <span class="comment">// 会继续寻找当前结点的下一个未访问的邻接结点，如果有就再次进行递归遍历</span></span><br><span class="line">           <span class="keyword">if</span> (edges[i][j]==<span class="number">1</span>&amp;&amp;!isVisited[j])&#123;</span><br><span class="line">               dfs(j);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//今后调用的是dfsTraverse，以图的所有结点作为初始结点进行遍历，除去已访问的结点</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">dfsTraverse</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; vertexList.size(); i++) &#123;</span><br><span class="line">           <span class="keyword">if</span> (!isVisited[i])&#123;</span><br><span class="line">               dfs(i);<span class="comment">//对未访问过的顶点调用dfs，如果是连通图，只会执行一次该语句，今后for循环的顶点都已经访问过了</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>图的广度优先遍历（Broad First Search简称BFS）：</p>
+<p>我们采用示例图来说明这个过程，在搜索的过程中，初始所有节点是白色（代表了所有点都还没开始搜索），把起点V0标志成灰色（表示即将辐射V0），下一步搜索的时候，我们把所有的灰色节点访问一次，然后将其变成黑色（表示已经被辐射过了），进而再将他们所能到达的节点标志成灰色（因为那些节点是下一步搜索的目标点了），但是这里有个判断，就像刚刚的例子，当访问到V1节点的时候，它的下一个节点应该是V0和V4，但是V0已经在前面被染成黑色了，所以不会将它染灰色。这样持续下去，直到目标节点V6被染灰色，说明了下一步就到终点了，没必要再搜索（染色）其他节点了，此时可以结束搜索了，整个搜索就结束了。然后根据搜索过程，反过来把最短路径找出来，下图中把最终路径上的节点标志成绿色。</p>
+</li>
+</ol>
+<p><img src="/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/image-20220317231004623.png" alt="image-20220317231004623"></p>
+<p><img src="/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/image-20220317231029925.png" alt="image-20220317231029925"></p>
+<p><img src="/2022/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/1335725885_9403.png" alt="1335725885_9403"></p>
+<p>​	为了便于进行搜索，要设置一个表存储所有的结点。由于在广度优先搜索算法中，要满足先生成的结点先扩展的原则，所以存储结点的表一般采用队列这种数据结构。</p>
+<p>​	在编写程序时，可用数组q模拟队列。front和rear分别表示队头指针和队尾指针，初始时front&#x3D;rear&#x3D;0。</p>
+<p>​	元素x入队操作为 q[rear++]&#x3D;x;</p>
+<p>​	元素x出队操作为 x &#x3D;q[front++];	</p>
+<p>广度优先搜索算法的搜索步骤一般是：</p>
+<p>   （1）从队列头取出一个结点，检查它按照扩展规则是否能够扩展，如果能则产生一个新结点。</p>
+<p>   （2）检查新生成的结点，看它是否已在队列中存在，如果新结点已经在队列中出现过，就放弃这个结点，然后回到第（1）步。否则，如果新结点未曾在队列中出现过，则将它加入到队列尾。</p>
+<p>  （3）检查新结点是否目标结点。如果新结点是目标结点，则搜索成功，程序结束；若新结点不是目标结点，则回到第（1）步，再从队列头取出结点进行扩展。</p>
+<p>最终可能产生两种结果：找到目标结点，或扩展完所有结点而没有找到目标结点。</p>
+<p>对于广度优先搜索算法来说，问题不同则状态结点的结构和结点扩展规则是不同的，但搜索的策略是相同的。广度优先搜索算法的框架一般如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span>  BFS（）</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    队列初始化；</span><br><span class="line"></span><br><span class="line">        初始结点入队；</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> （队列非空）</span><br><span class="line"></span><br><span class="line">        &#123;  </span><br><span class="line"></span><br><span class="line">            队头元素出队，赋给current；</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span>  （current 还可以扩展）</span><br><span class="line"></span><br><span class="line">                &#123;</span><br><span class="line"></span><br><span class="line">                    由结点current扩展出新结点new；</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span>  （new 重复于已有的结点状态） <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">                    new结点入队；</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span>  (new结点是目标状态)</span><br><span class="line"></span><br><span class="line">                        &#123;</span><br><span class="line"></span><br><span class="line">                            置flag= <span class="literal">true</span>;    <span class="keyword">break</span>; </span><br><span class="line"></span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="一些常用算法和数据结构"><a href="#一些常用算法和数据结构" class="headerlink" title="一些常用算法和数据结构"></a>一些常用算法和数据结构</h1><ol>
+<li><p>分治算法：</p>
+<p>分治法在每一层递归上都有三个步骤：</p>
+<p>step1 分解：将原问题分解为若干个规模较小，相互独立，与原问题形式相同的子问题；</p>
+<p>step2 解决：若子问题规模较小而容易被解决则直接解，否则递归地解各个子问题</p>
+<p>step3 合并：将各个子问题的解合并为原问题的解。</p>
+<p>它的一般的算法设计模式如下：</p>
+<pre><code>Divide-and-Conquer(P)
+
+1. if |P|≤n0
+
+2. then return(ADHOC(P))
+
+3. 将P分解为较小的子问题 P1 ,P2 ,...,Pk
+
+4. for i←1 to k
+
+5. do yi ← Divide-and-Conquer(Pi) △ 递归解决Pi
+
+6. T ← MERGE(y1,y2,...,yk) △ 合并子问题
+
+7. return(T)
+</code></pre>
+<p>其中|P|表示问题P的规模；n0为一阈值，表示当问题P的规模不超过n0时，问题已容易直接解出，不必再继续分解。ADHOC(P)是该分治法中的基本子算法，用于直接解小规模的问题P。因此，当P的规模不超过n0时直接用算法ADHOC(P)求解。算法MERGE(y1,y2,…,yk)是该分治法中的合并子算法，用于将P的子问题P1 ,P2 ,…,Pk的相应的解y1,y2,…,yk合并为P的解。</p>
+<p><strong>依据分治法设计程序时的思维过程</strong></p>
+<p>实际上就是类似于数学归纳法，找到解决本问题的求解方程公式，然后根据方程公式设计递归程序。<br>1、一定是先找到最小问题规模时的求解方法<br>2、然后考虑随着问题规模增大时的求解方法<br>3、找到求解的递归函数式后（各种规模或因子），设计递归程序即可。</p>
+</li>
+<li><p><strong>贪心算法（Greedy Algorithm) 简介</strong></p>
+<p>贪心算法，又名贪婪法，是寻找<strong>最优解问题</strong>的常用方法，这种方法模式一般将求解过程分成<strong>若干个步骤</strong>，但每个步骤都应用贪心原则，选取当前状态下<strong>最好&#x2F;最优的选择</strong>（局部最有利的选择），并以此希望最后堆叠出的结果也是最好&#x2F;最优的解，但贪心算法得到的结果<strong>不一定</strong>是最优的结果。{看着这个名字，贪心，贪婪这两字的内在含义最为关键。这就好像一个贪婪的人，他事事都想要眼前看到最好的那个，看不到长远的东西，也不为最终的结果和将来着想，贪图眼前局部的利益最大化，有点走一步看一步的感觉。}</p>
+<p><strong>贪婪法的基本步骤：</strong></p>
+<p>步骤1：从某个初始解出发；<br>步骤2：采用迭代的过程，当可以向目标前进一步时，就根据局部最优策略，得到一部分解，缩小问题规模；<br>步骤3：将所有解综合起来。</p>
+</li>
+<li><p><strong>最小生成树</strong>：</p>
+<p>问题背景：给定7个村庄，现在要修路把7个村庄连通，各个村庄的距离用边线表示（也就是每条边的权），如何修路保证各个村庄都能连通，并且总的修建公路里程最短？</p>
+<p><strong>prim算法</strong>：将n个点连通最少需要n-1条边，从任意一个点开始，把这个点加入一个集合中，找到集合中的所有点能连通的其他点的所有路，选择距离最短（权最小）的一条路，然后把这条路的终点加入到集合中，重复次过程直到集合中有n个点</p>
+<p><strong>kruskal算法</strong>：先将所给的存在的能所有边按照权值从小到大的顺序进行排序放入一个集合中，依次从排序后的集合中取出一条边，判断这条边加入已修好路的集合中会不会产生回路，如果产生回路，则跳过这条边，从小到大的顺序选择下一条边，如果没有产生回路，则把这条边加入修路集合，直到修路集合中的边的条数为n-1</p>
+<p>两种算法的区别是prim算法的修路集合中的点一定都是连通，因为是从已有的所有点中扩展出去的，但kruskal算法的修路集合中的点不一定都是连通的，因为是按照权值从小到大进行选择，两次选择的边可以没有相同顶点，所以不一定连通</p>
+</li>
+<li><p><strong>单调栈</strong></p>
+<ul>
+<li>单调递增栈：从<strong>栈底到栈顶</strong>，栈中的值单调递增</li>
+<li>单调递减栈：从<strong>栈底到栈顶</strong>，栈中的值单调递减</li>
+</ul>
+<p>单调栈则主要用于解决<strong>NGE问题</strong>（Next Greater Element），也就是，对序列中每个元素，找到下一个比它大的元素。（当然，“下一个”可以换成“上一个”，“比它大”也可以换成“比他小”，原理不变。）</p>
+<p>我们维护一个栈，表示“<strong>待确定NGE的元素</strong>”，然后遍历序列。当我们碰上一个新元素，我们知道，越靠近栈顶的元素离新元素位置越近。所以不断比较新元素与栈顶，如果新元素比栈顶大，则可断定新元素就是栈顶的NGE，于是弹出栈顶并继续比较。直到新元素不比栈顶大，再将新元素压入栈。显然，这样形成的栈是单调递减的。</p>
+</li>
+<li><p><strong>单调队列</strong></p>
+<ul>
+<li><strong>单调递增队列</strong>：保证队列头元素一定是当前队列的最小值，用于维护区间的最小值。</li>
+<li><strong>单调递减队列</strong>：保证队列头元素一定是当前队列的最大值，用于维护区间的最大值。</li>
+</ul>
+<p>在说具体怎么实现一个单调队列之前，先来一个简单的例子，感受一下。</p>
+<p>给定数列：<code>[3,1,5,7,4,2,1]</code> 现在要维护区间长度为 3 的最大值。（区间的下标从0开始）</p>
+<table>
+<thead>
+<tr>
+<th align="center">数列遍历到的位置</th>
+<th align="center">操作</th>
+<th align="center">队列中元素</th>
+<th align="center">指定区间最大值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">3入队</td>
+<td align="center">3</td>
+<td align="center">区间大小不符合</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">1入队</td>
+<td align="center">3,1</td>
+<td align="center">区间大小不符合</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">3,1出队，5入队</td>
+<td align="center">5</td>
+<td align="center">区间[0,2]的最大值为5</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">5出队，7入队</td>
+<td align="center">7</td>
+<td align="center">区间[1,3]的最大值为7</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">4入队</td>
+<td align="center">7，4</td>
+<td align="center">区间[2,4]的最大值为7</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">2入队</td>
+<td align="center">7，4，2</td>
+<td align="center">区间[3,5]的最大值为7</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">1入队，7出队</td>
+<td align="center">4，2，1</td>
+<td align="center">区间[4,6]的最大值为5</td>
+</tr>
+</tbody></table>
+<p>可以发现队列中的元素都是单调递减的（不然也就不叫单调递减队列啦），同时既有入队列的操作、也有出队列的操作。</p>
+<p>实现流程：</p>
+<p>实现单调队列，主要分为三个部分：</p>
+<ul>
+<li><p><strong>去尾操作</strong> ：<strong>队尾元素出队列</strong>。当队列有新元素待入队，需要从队尾开始，删除影响队列单调性的元素，维护队列的单调性。(删除一个队尾元素后，就重新判断新的队尾元素)。<strong>去尾操作结束后，将该新元素入队列。</strong></p>
+</li>
+<li><p><strong>删头操作</strong> ：<strong>队头元素出队列</strong>。判断队头元素是否在待求解的区间之内，如果不在，就将其删除。（这个很好理解呀，因为单调队列的队头元素就是待求解区间的极值）</p>
+</li>
+<li><p><strong>取解操作</strong> ：经过上面两个操作，取出 <strong>队列的头元素</strong> ，就是 <strong>当前区间的极值</strong> 。</p>
+</li>
+</ul>
+<hr>
+<h5 id="去尾操作：队尾元素出队列"><a href="#去尾操作：队尾元素出队列" class="headerlink" title="去尾操作：队尾元素出队列"></a>去尾操作：队尾元素出队列</h5><p>假设需要维护一个 区间长度为 L 的 最大值，显然，我们需要一个 <strong>单调递减队列</strong>。</p>
+<p>现在有一个新元素 new（下标为new_id）待放入队列，在新元素 new 入队列之前，需要先执行下面的操作：</p>
+<ol>
+<li>如果当前 <strong>队列为空</strong>，则 <strong>直接将new放入队列</strong> 。否则，执行下一步。</li>
+<li>（假设队列的尾元素为rear)当前 <strong>队列不为空</strong> 。</li>
+</ol>
+<ul>
+<li>如果rear&lt;new，则 <strong>尾元素rear出队列</strong>，直到 <strong>当前队列为空</strong> 或者 <strong>rear&lt;new不再满足</strong>。紧接着，元素new入队列。</li>
+<li>如果rear&gt;&#x3D;new，直接将元素new放入队列。</li>
+</ul>
+<h5 id="删头操作：队头元素出队列"><a href="#删头操作：队头元素出队列" class="headerlink" title="删头操作：队头元素出队列"></a>删头操作：队头元素出队列</h5><p>将新元素new入队列之后，我们还需要判断当前队列中 <strong>队头元素</strong> 是否在 <strong>待求解的区间范围</strong> 内。</p>
+<p>假设队列的头元素为front(序号为front_id)。如果此时当前 <strong>队列不为空</strong> ，且front_id&lt;new_id-L+1，那么将队列头元素front出队列。不断重复此过程，直至front_id&gt;&#x3D;new_id-L+1（也就是将队列中序号不在区间[new_id-L+1,new_id]的元素删除）</p>
+<h5 id="取解操作"><a href="#取解操作" class="headerlink" title="取解操作"></a>取解操作</h5><p>经过上面的操作，此时 <strong>队列的头元素</strong>就是区间[new_id-L+1,new_id] 的最大值。</p>
+</li>
+<li><p><strong>动态规划</strong></p>
+<p>动态规划特点<br>「分治」是算法中的一种基本思想，其通过将原问题分解为子问题，不断递归地将子问题分解为更小的子问题，并通过组合子问题的解来得到原问题的解。</p>
+<p>类似于分治算法，「动态规划」也通过组合子问题的解得到原问题的解。不同的是，适合用动态规划解决的问题具有「重叠子问题」和「最优子结构」两大特性。</p>
+<ul>
+<li><p>重叠子问题<br>动态规划的子问题是有重叠的，即各个子问题中包含重复的更小子问题。若使用暴力法穷举，求解这些相同子问题会产生大量的重复计算，效率低下。</p>
+<p>动态规划在第一次求解某子问题时，会将子问题的解保存；后续遇到重叠子问题时，则直接通过查表获取解，保证每个独立子问题只被计算一次，从而降低算法的时间复杂度。</p>
+</li>
+<li><p>最优子结构<br>如果一个问题的最优解可以由其子问题的最优解组合构成，并且这些子问题可以独立求解，那么称此问题具有最优子结构。</p>
+<p>动态规划从基础问题的解开始，不断迭代组合、选择子问题的最优解，最终得到原问题最优解。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>并查集</strong></p>
+<ul>
+<li>定义：</li>
+</ul>
+<p>并查集是一种树型的数据结构，用于处理一些不相交集合的合并及查询问题（即所谓的并、查）</p>
+<ul>
+<li>主要构成：</li>
+</ul>
+<p>并查集主要由一个整型数组pre[ ]和两个函数find( )、join( )构成。<br>数组 pre[ ] 记录了每个点的前驱节点是谁，函数 find(x) 用于查找指定节点 x 属于哪个集合，函数 join(x,y) 用于合并两个节点 x 和 y 。</p>
+<ul>
+<li>find( )函数的定义与实现：</li>
+</ul>
+<p>首先我们需要定义一个数组：int pre[1000]; （数组长度依题意而定）。这个数组记录了每个人的上级是谁。这些人从0或1开始编号（依题意而定）。比如说pre[16]&#x3D;6就表示16号的上级是6号。如果一个人的上级就是他自己，那说明他就是教主了，查找到此结束。也有孤家寡人自成一派的，比如欧阳锋，那么他的上级就是他自己。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">find</span><span class="params">(<span class="type">int</span> x)</span>					<span class="comment">//查找x的教主</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">while</span>(pre[x] != x)			<span class="comment">//如果x的上级不是自己（则说明找到的人不是教主）</span></span><br><span class="line">		x = pre[x];				<span class="comment">//x继续找他的上级，直到找到教主为止</span></span><br><span class="line">	<span class="keyword">return</span> x;					<span class="comment">//教主驾到~~~</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>join( )函数的定义与实现</li>
+</ul>
+<p>join(x,y)的执行逻辑如下：<br>1、寻找 x 的代表元（即教主）；<br>2、寻找 y 的代表元（即教主）；<br>3、如果 x 和 y 不相等，则随便选一个人作为另一个人的上级，如此一来就完成了 x 和 y 的合并。<br>下面给出这个函数的具体实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">join</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>                    </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> fx=find(x), fy=find(y);            </span><br><span class="line">    <span class="keyword">if</span>(fx != fy)                           </span><br><span class="line">        pre[fx]=fy;                        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>路径压缩算法之一（优化find( )函数）</li>
+</ul>
+<p>所谓路径压缩，就是将一个集合中所有元素的上级都设为代表元，这样查找效率很高，我们可以通过递归的方法来逐层修改返回时的某个节点的直接前驱（即pre[x]的值）。简单说来就是将x到根节点路径上的所有点的pre（上级）都设为根节点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">find</span><span class="params">(<span class="type">int</span> x)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(x == fa[x])</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        fa[x] = find(fa[x]);  <span class="comment">//父节点设为根节点</span></span><br><span class="line">        <span class="keyword">return</span> fa[x];         <span class="comment">//返回父节点</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该算法存在一个缺陷：只有当查找了某个节点的代表元（教主）后，才能对该查找路径上的各节点进行路径压缩。换言之，第一次执行查找操作的时候是实现没有压缩效果的，只有在之后才有效。</p>
+<ul>
+<li>路径压缩算法之二 <a target="_blank" rel="noopener" href="https://blog.csdn.net/the_zed/article/details/105126583">加权标记法</a></li>
+</ul>
+<p>点链接看看即可，有上面那个优化基本上可以解决大多数题目</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">union</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    x=find(x);<span class="comment">//寻找 x的代表元</span></span><br><span class="line">    y=find(y);<span class="comment">//寻找 y的代表元</span></span><br><span class="line">    <span class="keyword">if</span>(x==y) <span class="keyword">return</span> ;<span class="comment">//如果 x 和 y 的代表元一致，说明他们共属同一集合，则不需要合并，直接返回；否则，执行下面的逻辑</span></span><br><span class="line">    <span class="keyword">if</span>(rank[x]&gt;rank[y])&#123;</span><br><span class="line">        pre[y]=x;<span class="comment">//如果 x 的高度大于 y，则令 y 的上级为 x</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(rank[x]&lt;rank[y])&#123;<span class="comment">//如果x的高度小于y，令x的上级为y</span></span><br><span class="line">        pre[x]=y;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        rank[y]++;  <span class="comment">//如果 x 的高度和 y 的高度相同，则令 y 的高度加1</span></span><br><span class="line">        pre[x]=y;   <span class="comment">//让 x 的上级为 y</span></span><br><span class="line">    &#125;								</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/06/%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%A1%E7%AE%97-review/" rel="prev" title="互联网计算-review">
+      <i class="fa fa-chevron-left"></i> 互联网计算-review
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/06/%E4%B8%AD%E6%96%87%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/" rel="next" title="中文技术文档写作规范">
+      中文技术文档写作规范 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-text">排序算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95"><span class="nav-text">查找算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91"><span class="nav-text">树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-text">图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-text">一些常用算法和数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%BB%E5%B0%BE%E6%93%8D%E4%BD%9C%EF%BC%9A%E9%98%9F%E5%B0%BE%E5%85%83%E7%B4%A0%E5%87%BA%E9%98%9F%E5%88%97"><span class="nav-text">去尾操作：队尾元素出队列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E5%A4%B4%E6%93%8D%E4%BD%9C%EF%BC%9A%E9%98%9F%E5%A4%B4%E5%85%83%E7%B4%A0%E5%87%BA%E9%98%9F%E5%88%97"><span class="nav-text">删头操作：队头元素出队列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%96%E8%A7%A3%E6%93%8D%E4%BD%9C"><span class="nav-text">取解操作</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Irony</p>
+  <div class="site-description" itemprop="description">This is a blog in order to record my learning and growth.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Irony</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

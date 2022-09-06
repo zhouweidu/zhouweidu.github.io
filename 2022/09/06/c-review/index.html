@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhouweidu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Accelerated c++使用字符串 &gt;&gt;运算符从标准输入读进一个字符串，它会首先略去输入开始碰到的空白字符（空白、制表符、回退键和换行符），然后连续的读入字符到某个变量中，直到遇到了另一个空白字符或文件结束标记为止  c++的数据结构可以用struct实现 12345struct studentInfo&amp;#123;  string name;  double midterm;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++ review">
+<meta property="og:url" content="https://zhouweidu.github.io/2022/09/06/c-review/index.html">
+<meta property="og:site_name" content="Irony&#39;s blog">
+<meta property="og:description" content="Accelerated c++使用字符串 &gt;&gt;运算符从标准输入读进一个字符串，它会首先略去输入开始碰到的空白字符（空白、制表符、回退键和换行符），然后连续的读入字符到某个变量中，直到遇到了另一个空白字符或文件结束标记为止  c++的数据结构可以用struct实现 12345struct studentInfo&amp;#123;  string name;  double midterm;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220715200844207.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220716144342905.png">
+<meta property="article:published_time" content="2022-09-06T11:04:24.000Z">
+<meta property="article:modified_time" content="2022-09-06T11:05:20.200Z">
+<meta property="article:author" content="Irony">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220715200844207.png">
+
+<link rel="canonical" href="https://zhouweidu.github.io/2022/09/06/c-review/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>c++ review | Irony's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Irony's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Maker & Developer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouweidu.github.io/2022/09/06/c-review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Irony">
+      <meta itemprop="description" content="This is a blog in order to record my learning and growth.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Irony's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          c++ review
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-06 19:04:24 / 修改时间：19:05:20" itemprop="dateCreated datePublished" datetime="2022-09-06T19:04:24+08:00">2022-09-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Accelerated-c"><a href="#Accelerated-c" class="headerlink" title="Accelerated c++"></a>Accelerated c++</h1><h3 id="使用字符串"><a href="#使用字符串" class="headerlink" title="使用字符串"></a>使用字符串</h3><ol>
+<li><p><code>&gt;&gt;</code>运算符从标准输入读进一个字符串，它会首先略去输入开始碰到的空白字符（空白、制表符、回退键和换行符），然后连续的读入字符到某个变量中，直到遇到了另一个空白字符或文件结束标记为止</p>
+</li>
+<li><p>c++的数据结构可以用struct实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">studentInfo</span>&#123;</span><br><span class="line">  string name;</span><br><span class="line">  <span class="type">double</span> midterm;</span><br><span class="line">  vector&lt;<span class="type">double</span>&gt; homework;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>随机访问：s[2],s[5],这样随机的数字进行访问就是随机访问，顺序访问就是从第一个元素开始，按照既定顺序一个一个遍历到结尾</p>
+</li>
+<li><p>半开[i,j)区间的元素个数是j-i，[i,j]闭区间的元素个数是j-i+1</p>
+</li>
+</ol>
+<span id="more"></span>
+
+<ol>
+<li><p>反向迭代器</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="type">char</span>&gt; v&#123;<span class="string">&#x27;j&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;v&#x27;</span>,<span class="string">&#x27;a&#x27;</span>&#125;;</span><br><span class="line">    vector&lt;<span class="type">char</span>&gt;::reverse_iterator rtr;</span><br><span class="line">    <span class="keyword">for</span>(rtr=v.<span class="built_in">rbegin</span>();rtr!=v.<span class="built_in">rend</span>();rtr++)</span><br><span class="line">        std::cout&lt;&lt; *rtr;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avaj</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果我们在类的内部定义了一个成员函数，就是请求把对这个函数的调用扩展成内联子过程，这样就避免了函数调用额外的开销。如果成员函数是在类的外部定义的，那么我们必须在这个函数的函数名中指明他是来自类作用域的：<code>&quot;class-name::membername&quot;</code></p>
+</li>
+<li><p>如果在第一个保护标识符之前有成员，class中的成员是私有的（private），struct中的成员是共有的（public）</p>
+</li>
+</ol>
+<h1 id="C-Primer"><a href="#C-Primer" class="headerlink" title="C++ Primer"></a>C++ Primer</h1><blockquote>
+<p>Part1也就是前七章，除了6.6，6.7节，都要通读。尤其是第三章初步介绍了vector和string，简直就是新手福音，搞定这两个容器就能写一些简单的程序。<br>Part2基本就是数据结构和算法，如果有基础读起来很轻松。<br>9，11两章介绍的容器，以及12.1节的智能指针要通读。多用智能指针和容器，远离segment fault. 第10章里的泛型算法可以慢慢读，读完以后可以写出高逼格的函数式风格C++。12.2节讲了怎么用new和delete分配空间，题主作为新手，知道这种写法就行，写程序时尽量用容器代替原始数组，尤其是代码里最好不要有delete。<br>Part3是块硬骨头，标题就是Tools for Class Authors. 作为一个”class user”，有些部分第一次是可以略过的。<br>13章很重要，要细读。初始化，复制，赋值，右值引用是C++里很微妙很重要的部分，别的语言对于这些概念很少有区分得这么细的。这一章不但要精读，还要完全掌握。<br>14章的操作符重载第一次可以观其大略；14.9节第一次可以跳过。<br>15章讲OOP，重要性不言而喻。如果之前一点概念都没有，学起来会觉得比较抽象。网上关于OOP有很多通俗有趣的文章，可以一起看看。<br>16章讲泛型编程，第一次读16.1节，掌握最基本的函数模板和类模板就行了。<br>Part4就更高档了，很多内容第一次就算啃下来，长久不用又忘了。第一次读推荐把18.2节读懂，命名空间简单易用效果好。别的内容可以观其大略，用时再看。17.1节的tuple是个有趣的东东，可以读一读。17.3节的正则表达式和17.4节的随机数也许有用，也可以读一读。如果需要读写文件，要读一下17.5.2节的raw I&#x2F;O和17.5.3节的random I&#x2F;O。</p>
+<p>最后给题主的建议是，写C++，要尽量避免C的写法。用static_cast而不是括号转换符；用vector而不是C里面的数组；用string而不是char *；用智能指针而不是原始指针。当然I&#x2F;O是个例外，printf()还是比cout好用的；转换数字和字符串时sprintf()也比stringstream快</p>
+</blockquote>
+<ol>
+<li><p>如果想声明一个变量而非定义它，就在变量名前加关键字extern，定义与声明的区别：定义申请存储空间，也可能会为变量赋一个初始值</p>
+</li>
+<li><p>头文件不应该包含using声明</p>
+</li>
+<li><p><strong>顶层const</strong>表示指针本身是个常量，<strong>底层const</strong>表示指针所指对象是个常量</p>
+</li>
+<li><p>一般来说，如果非成员函数是类接口的组成部分，则这些函数的声明应该与类在同一个头文件内</p>
+</li>
+<li><p>如果成员是const、引用，或者属于某种未提供默认构造函数的类类型，我们必须通过构造函数初始值列表为这些成员提供初值</p>
+</li>
+<li><p>将只有一个参数的构造函数声明为explicit可以抑制构造函数定义的隐式转换，只能在类内声明构造函数时使用explicit关键字，在类外部定义时不应重复</p>
+</li>
+<li><p>要想确保对象只定义一次，最好的办法是把静态数据成员的定义和其他非内联函数的定义放在同一个文件中</p>
+</li>
+<li><p>lambda表达式</p>
+<p><img src="/2022/09/06/c-review/image-20220715200844207.png" alt="image-20220715200844207"></p>
+</li>
+<li><p>11.4节的hasher函数<code>hash&lt;string&gt;()(sd.isbn());</code>hash<string>()生成了可调用对象,然后该可调用对象(可以看作是函数)作用在sd.isbn()上</p>
+</li>
+<li><p>返回const和非const的函数重载，是因为调用函数时隐式的传递了this指针</p>
+</li>
+<li><p><img src="/2022/09/06/c-review/image-20220716144342905.png" alt="image-20220716144342905"></p>
+</li>
+<li><p>用new分配数组时值初始化和默认初始化,默认情况下动态分配的对象是默认初始化的,这意味着内置类型或组合类型的对象的值将是未定义的,而类类型对象将用默认构造函数进行初始化.也可以对动态分配的对象进行值初始化,只需在类型名之后跟一对空括号即可</p>
+</li>
+<li><p>如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数</p>
+</li>
+<li><p>一旦一个类需要析构函数,那么它几乎肯定也需要一个拷贝构造函数和一个拷贝赋值运算符.一旦一个类需要一个拷贝构造函数,它一定也需要一个拷贝复制运算符,但不一定需要析构函数</p>
+</li>
+<li><p>拷贝赋值运算符应该返回一个指向其左侧运算对象的引用,即在赋值函数中<code>return *this</code></p>
+</li>
+<li><p>通常情况下，不应该重载逗号、取地址、逻辑与、和逻辑或运算符</p>
+</li>
+<li><p>赋值运算符必须定义成类的成员，复合赋值运算符通常情况下也应该这么做，这两类运算符都应该返回左侧运算对象的引用</p>
+</li>
+<li><p>如果类定义了调用运算符，则该类的对象称作函数对象，因为可以调用这种对象，所以我们说这些对象的行为像函数一样</p>
+</li>
+<li><p>赋值（包括复合赋值）、下标、函数调用和箭头运算符必须作为类的成员</p>
+</li>
+<li><p>在c++中，当我们使用<strong>基类的引用或指针</strong>调用一个<strong>虚函数</strong>时将发生<strong>动态绑定</strong>（又称作运行时绑定）</p>
+</li>
+<li><p>派生类构造函数只初始化它的直接基类</p>
+</li>
+<li><p>派生列表中用到的访问说明符的作用是控制派生类从基类继承而来的成员是否对派生类的用户可见</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/06/%E4%B8%AD%E6%96%87%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/" rel="prev" title="中文技术文档写作规范">
+      <i class="fa fa-chevron-left"></i> 中文技术文档写作规范
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/06/Discrete-Math/" rel="next" title="Discrete Math">
+      Discrete Math <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Accelerated-c"><span class="nav-text">Accelerated c++</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">使用字符串</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-Primer"><span class="nav-text">C++ Primer</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Irony</p>
+  <div class="site-description" itemprop="description">This is a blog in order to record my learning and growth.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Irony</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

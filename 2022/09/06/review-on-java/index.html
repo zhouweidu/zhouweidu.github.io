@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhouweidu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="对象和类 静态方法不能访问某一对象的实例域，因为它不能操作对象，但静态的方法可以访问自身类中的静态域  在下面两种情况下使用静态方法：一个方法不需要访问对象状态，其所需参数都是通过显式参数提供（例如：Math.pow（)）；一个方法只需要访问类的静态域  Scanner类的一些知识点：next()方法如果没有扫描读入非空格或非回车字符是不会创建String对象并返回的，并且next()遇到空格或者">
+<meta property="og:type" content="article">
+<meta property="og:title" content="review on java">
+<meta property="og:url" content="https://zhouweidu.github.io/2022/09/06/review-on-java/index.html">
+<meta property="og:site_name" content="Irony&#39;s blog">
+<meta property="og:description" content="对象和类 静态方法不能访问某一对象的实例域，因为它不能操作对象，但静态的方法可以访问自身类中的静态域  在下面两种情况下使用静态方法：一个方法不需要访问对象状态，其所需参数都是通过显式参数提供（例如：Math.pow（)）；一个方法只需要访问类的静态域  Scanner类的一些知识点：next()方法如果没有扫描读入非空格或非回车字符是不会创建String对象并返回的，并且next()遇到空格或者">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/review-on-java/Java-method-table1.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/review-on-java/Java-method-table2.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/review-on-java/5-1912051036333V.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/review-on-java/5-191205103G5960.png">
+<meta property="article:published_time" content="2022-09-06T11:25:58.000Z">
+<meta property="article:modified_time" content="2022-09-06T11:26:52.078Z">
+<meta property="article:author" content="Irony">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhouweidu.github.io/2022/09/06/review-on-java/Java-method-table1.png">
+
+<link rel="canonical" href="https://zhouweidu.github.io/2022/09/06/review-on-java/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>review on java | Irony's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Irony's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Maker & Developer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouweidu.github.io/2022/09/06/review-on-java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Irony">
+      <meta itemprop="description" content="This is a blog in order to record my learning and growth.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Irony's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          review on java
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-06 19:25:58 / 修改时间：19:26:52" itemprop="dateCreated datePublished" datetime="2022-09-06T19:25:58+08:00">2022-09-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="对象和类"><a href="#对象和类" class="headerlink" title="对象和类"></a>对象和类</h2><ol>
+<li><p>静态方法不能访问某一对象的实例域，因为它不能操作对象，但静态的方法可以访问自身类中的静态域</p>
+</li>
+<li><p>在下面两种情况下使用静态方法：一个方法不需要访问对象状态，其所需参数都是通过显式参数提供（例如：Math.pow（)）；一个方法只需要访问类的静态域</p>
+</li>
+<li><p><strong>Scanner类的一些知识点</strong>：next()方法如果没有扫描读入非空格或非回车字符是不会创建String对象并返回的，并且next()遇到空格或者说\t或者是回车都会结束扫描；nextLine():读取输入，包括单词之间的空格和除回车以外的所有符号(即。它读到行尾)。读取输入后，nextLine()将光标定位在下一行（会忽略掉末尾的回车进入下一行开始扫描）。所以它和next()的区别就是它没有分隔符，直接扫描全部的键盘输入内容，并创建对象进行将其引用返回。</p>
+<p>Scanner类还可以用来<strong>读取文件</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    scanner = <span class="keyword">new</span> <span class="title class_">Scanner</span>(<span class="keyword">new</span> <span class="title class_">File</span>(fileName));<span class="comment">//注意传入的是File</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用Scanner对象中hasNext()方法来判断文件是否读取完毕，另外一个就是用来获取控制台输入的nextLine(),nextInt()等方法来获取文本的信息，<strong>非常类似于自己在控制台输入的数据变成了文本内容，给Scanner对象获取</strong>。</p>
+<p>nextInt:<strong>Scanner中的nextInt()只会读取数值，剩下”\n”还没有读取</strong></p>
+<p>next()与nextLine()区别</p>
+<p>next():</p>
+<ul>
+<li>1、一定要读取到有效字符后才可以结束输入。</li>
+<li>2、对输入有效字符之前遇到的空白，next() 方法会自动将其去掉。</li>
+<li>3、只有输入有效字符后才将其后面输入的空白作为分隔符或者结束符。</li>
+<li>4、next() 不能得到带有空格的字符串。</li>
+</ul>
+<p>nextLine()：</p>
+<ul>
+<li>1、以Enter为结束符,也就是说 nextLine()方法返回的是输入回车之前的所有字符，并且将光标定位在下一行（会忽略掉末尾的回车进入下一行开始扫描）。</li>
+<li>2、可以获得空白。</li>
+</ul>
+</li>
+<li><p>Java控制台输入输出</p>
+<ul>
+<li>使用Scanner</li>
+</ul>
+<p><code>Scanner scanner=new Scanner(System.in)</code>,然后使用Scanner相关的方法，比如scanner.nextInt() scanner.nextLine() scanner.next()等</p>
+<ul>
+<li>使用BufferReader</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">BufferedReader bufferedReader=<span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    String str1=bufferedReader.readLine();</span><br><span class="line">    String str2=bufferedReader.readLine();</span><br><span class="line">    System.out.print(str1);</span><br><span class="line">    System.out.print(str2);</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<span id="more"></span>
+
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><ol>
+<li><p>通过<strong>后期绑定</strong>（也叫动态绑定）来确定一个引用所调用的方法是哪一个， private 方法、 static 方法或 final 方法不会动态绑定，在运行时， 调用 e.getSalary（） 的解析过程为（e是Employee类的一个对象）：</p>
+<p>在 Employee 的方法表中， 列出了这个类定义的所有方法（实际上没列出超类Object的方法）：</p>
+<p> <img src="/2022/09/06/review-on-java/Java-method-table1.png" alt="Java-method-table1"></p>
+<p>在Manager的方法表中，有三个方法是继承而来的，一个方法是重新定义的， 还有一个方法是新增加的：</p>
+<p><img src="/2022/09/06/review-on-java/Java-method-table2.png" alt="Java-method-table2"></p>
+<p>1 ) 首先，虚拟机提取 e 的实际类型的方法表。既可能是 Employee、 Manager 的方法表， 也可能是 Employee 类的其他子类的方法表（有可能e的实际类型是Employee的子类但赋值给employee引用）。 </p>
+<p>2 ) 接下来， 虚拟机搜索定义 getSalary 签名的类（方法的名字和参数列表称为方法的签名）。此时，虚拟机已经知道应该调用哪个 方法。 </p>
+<p>3 ) 最后，虚拟机调用方法。动态绑定有一个非常重要的特性： 无需对现存的代码进行修改，就可以对程序进行扩展。 假设增加一个新类 Executive, 并且变量 e 有可能引用这个类的对象， 我们不需要对包含调用 e.getSalary() 的代码进行重新编译。如果 e 恰好引用一个 Executive 类的对象，就会自动地调用 Executive.getSalary（）方法。</p>
+</li>
+</ol>
+<h2 id="静态方法和静态变量"><a href="#静态方法和静态变量" class="headerlink" title="静态方法和静态变量"></a>静态方法和静态变量</h2><ol>
+<li><p>在同一个类中：<br>对于静态方法，其他的静态或非静态方法都可以直接调用它。<br>而对于非静态方法，其他的非静态方法是可以直接调用它的。但是其他静态方法只有通过对象才能调用它。</p>
+<p>静态方法不能被非静态方法覆盖。</p>
+</li>
+<li><p>不同的类之间，无论调用方法是非静态还是静态，如果被调用的方法是：<br>静态方法，则通过类名与对象都可以调（但通过对象的方式不建议使用，通过对象来调用静态的方法静态方法还是不知道它是被哪个对象所调用的，这会产生误解）。<br>非静态方法，则只能通过对象才可以调用它。</p>
+</li>
+</ol>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ol>
+<li>接口中的所有方法自动地属于 public，接口中所有的域被自动的设为public static final，但实现接口时要显式的指出方法是public的，接口中可能包含多个方法，在接口中可以定义常量，但接口绝对不能含有实例域，接口最好没有实现方法，虽然Java8可以在接口中提供简单方法</li>
+<li>不能构造接口的对象，却能声明接口的变量，接口变量必须引用实现了接口的类对象</li>
+<li>在方法中定义的局部类不能用public或private访问说明符进行说明，它的作用域被限定在声明这个局部类的块中</li>
+<li>内部类方法可以访问该类定义所在的作用域中的数据， 包括私有的数据</li>
+<li>内部类没太看懂，不知道重不重要</li>
+</ol>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><ol>
+<li><p>如果出现RuntimeException（非受查异常）异常，那么就一定是你的问题，有可能是因为程序的逻辑错误导致的，这些运行时错误完全在我们的控制之下，但已检查异常需要提供异常处理器</p>
+</li>
+<li><p>方法应该在其首部声明所有可能抛出的异常。这样可以从首部反映出这个方法可能抛出哪类受査异常。</p>
+</li>
+<li><p>运行时异常：编译时不会报错，但程序运行起来如果有错误就会报异常。下面是几种常见的运行时异常</p>
+<p>ArithmeticException  算数运算异常，由于除数为0引起的异常；<br>ClassCastException  类型转换异常，当把一个对象归为某个类，但实际上此对象并不是由这个类创建的，也不是其子类创建的，则会引起异常；<br>ArrayStoreException  由于数组存储空间不够引起的异常；<br>NullPointerException  空指针异常，程序试图访问一个空的数组中的元素或访问空的对象中的方法或变量时产生异常；<br>IndexOutOfBoundsExcention  索引越界异常，由于数组下标越界或字符串访问越界引起异常；<br>ConcurrentModificationException  并发修改异常；<br>NoSuchElementException  找不到元素异常；<br>UnsupportedOperationException  不支持请求异常；（使用Arrays工具类的asList将数组转成集合增加元素时，会报此异常）</p>
+</li>
+</ol>
+<h2 id="泛型程序设计"><a href="#泛型程序设计" class="headerlink" title="泛型程序设计"></a>泛型程序设计</h2><ol>
+<li><p>一个泛型类（ generic class) 就是具有一个或多个类型变量的类。</p>
+</li>
+<li><p>下面的这个Pair就是一个泛型类，类定义中的类型变量指定方法的返回类型以及域和局部变量的类型</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Pair</span>&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> T first;</span><br><span class="line">    <span class="keyword">private</span> T second;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Pair</span><span class="params">()</span> &#123; first = <span class="literal">null</span> ; second = <span class="literal">null</span> ; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Pair</span><span class="params">(T first, T second)</span> </span><br><span class="line">    &#123; <span class="built_in">this</span>.first = first; <span class="built_in">this</span>.second = second; &#125;</span><br><span class="line">    <span class="keyword">public</span> T <span class="title function_">getFirst</span><span class="params">()</span> &#123; <span class="keyword">return</span> first; &#125;</span><br><span class="line">    <span class="keyword">public</span> T <span class="title function_">getSecond</span><span class="params">()</span> &#123; <span class="keyword">return</span> second; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setFirst</span><span class="params">(T newValue)</span> &#123; first = newValue; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSecond</span><span class="params">(T newValue)</span> &#123; second = newValue; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>对类型变量 T 设置<strong>限定</strong>：<code>public static &lt;T extends Comparable&gt; T min(T[] a) </code>,一个类型变量或通配符可以有多个限定， 例如： <code>T extends Comparable &amp; Serializable</code> 限定类型用“ &amp;” 分隔，而逗号用来分隔类型变量。</li>
+<li><strong>泛型的一些东西没搞清楚</strong>，但基本上应该使用泛型没什么问题</li>
+</ol>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><ol>
+<li><p>Java 迭代器指向两个元素之间的位置</p>
+</li>
+<li><p>树集是一个有序集合 ( sorted collection) o，可以以任意顺序将元素插入到集合中。在对集合进行遍历时，每个值将自动地按照排序后的顺序呈现。</p>
+</li>
+<li><p>Java 集合类型分为 Collection 和 Map，它们是 Java 集合的根接口，这两个接口又包含了一些子接口或实现类</p>
+<p><img src="/2022/09/06/review-on-java/5-1912051036333V.png" alt="Collection接口结构"></p>
+<p><img src="/2022/09/06/review-on-java/5-191205103G5960.png" alt="Map接口结构"></p>
+</li>
+<li><p>Java集合接口的作用</p>
+<table>
+<thead>
+<tr>
+<th>接口名称</th>
+<th>作  用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Iterator 接口</td>
+<td>集合的输出接口，主要用于遍历输出（即迭代访问）Collection 集合中的元素，Iterator 对象被称之为迭代器。迭代器接口是集合接口的父接口，实现类实现 Collection 时就必须实现 Iterator 接口。</td>
+</tr>
+<tr>
+<td>Collection 接口</td>
+<td>是 List、Set 和 Queue 的父接口，是存放一组单值的最大接口。所谓的单值是指集合中的每个元素都是一个对象。一般很少直接使用此接口直接操作。</td>
+</tr>
+<tr>
+<td>Queue 接口</td>
+<td>Queue 是 Java 提供的队列实现，有点类似于 List。</td>
+</tr>
+<tr>
+<td>Dueue 接口</td>
+<td>是 Queue 的一个子接口，为双向队列。</td>
+</tr>
+<tr>
+<td>List 接口</td>
+<td>是最常用的接口。是有序集合，允许有相同的元素。使用 List 能够精确地控制每个元素插入的位置，用户能够使用索引（元素在 List 中的位置，类似于数组下标）来访问 List 中的元素，与数组类似。</td>
+</tr>
+<tr>
+<td>Set 接口</td>
+<td>不能包含重复的元素。</td>
+</tr>
+<tr>
+<td>Map 接口</td>
+<td>是存放一对值的最大接口，即接口中的每个元素都是一对，以 key→value 的形式保存。</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Java集合实现类的作用</p>
+<table>
+<thead>
+<tr>
+<th>类名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HashSet</td>
+<td>为优化査询速度而设计的 Set。它是基于 HashMap 实现的，HashSet 底层使用 HashMap 来保存所有元素，实现比较简单</td>
+</tr>
+<tr>
+<td>TreeSet</td>
+<td>实现了 Set 接口，是一个有序的 Set，这样就能从 Set 里面提取一个有序序列</td>
+</tr>
+<tr>
+<td>ArrayList</td>
+<td>一个用数组实现的 List，能进行快速的随机访问，效率高而且实现了可变大小的数组</td>
+</tr>
+<tr>
+<td>ArrayDueue</td>
+<td>是一个基于数组实现的双端队列，按“先进先出”的方式操作集合元素</td>
+</tr>
+<tr>
+<td>LinkedList</td>
+<td>对顺序访问进行了优化，但随机访问的速度相对较慢。此外它还有 addFirst()、addLast()、getFirst()、getLast()、removeFirst() 和 removeLast() 等方法，能把它当成栈（Stack）或队列（Queue）来用</td>
+</tr>
+<tr>
+<td>HsahMap</td>
+<td>按哈希算法来存取键对象</td>
+</tr>
+<tr>
+<td>TreeMap</td>
+<td>可以对键对象进行排序</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>comparable和comparator：</p>
+<p><code>Comparable &amp; Comparator</code>都是用来实现集合中元素的比较、排序的，只是 Comparable 是在集合内部定义的方法实现的排序，<code>Comparator</code> 是在集合外部实现的排序，所以，如想实现排序，就需要在集合外定义<code>Comparator</code>接口的方法或在集合内实现 <code>Comparable</code>接口的方法</p>
+<p>Java中有两种方式来提供比较功能。第一种是实现java.lang.Comparable接口，使你的类天生具有比较的能力，此接口很简单，只有一个<code>compareTo</code>一个方法。此方法接收另一个Object为参数，如果当前对象小于参数则返回负值，如果相等则返回零，否则返回正值，也就是：<br> <strong>x.compareTo(y) 来“比较x和y的大小”。若返回“负数”，意味着“x比y小”；返回“零”，意味着“x等于y”；返回“正数”，意味着“x大于y”。</strong></p>
+<p>使用Comparable比较的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;Person&gt;&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(Person person)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name.compareTo(person.name);</span><br><span class="line">        <span class="comment">//return this.name - person.name;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ArrayList&lt;Person&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Person&gt;();</span><br><span class="line"><span class="comment">// 添加对象到ArrayList中</span></span><br><span class="line">list.add(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;aaa&quot;</span>, <span class="number">10</span>));</span><br><span class="line">list.add(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;bbb&quot;</span>, <span class="number">20</span>));</span><br><span class="line">list.add(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;ccc&quot;</span>, <span class="number">30</span>));</span><br><span class="line">list.add(<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;ddd&quot;</span>, <span class="number">40</span>));</span><br><span class="line">Collections.sort(list); <span class="comment">//这里会自动调用Person中重写的compareTo方法。</span></span><br></pre></td></tr></table></figure>
+
+<p>使用Comparator比较的例子:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhouweidu.se1codetest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Compare</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        ArrayList&lt;Person2&gt; person2s = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        person2s.add(<span class="keyword">new</span> <span class="title class_">Person2</span>(<span class="number">1</span> ,<span class="number">2</span>));</span><br><span class="line">        person2s.add(<span class="keyword">new</span> <span class="title class_">Person2</span>(<span class="number">2</span> ,<span class="number">1</span>));</span><br><span class="line">        person2s.add(<span class="keyword">new</span> <span class="title class_">Person2</span>(<span class="number">4</span> ,<span class="number">6</span>));</span><br><span class="line">        person2s.add(<span class="keyword">new</span> <span class="title class_">Person2</span>(<span class="number">6</span> ,<span class="number">4</span>));</span><br><span class="line">        person2s.sort(<span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;Person2&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Person2 o1, Person2 o2)</span> &#123;</span><br><span class="line">                <span class="comment">//return Integer.compare(o1.getAge(),o2.getAge());</span></span><br><span class="line">                <span class="keyword">return</span> o2.getAge() - o1.getAge();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(person2s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person2</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person2</span><span class="params">(<span class="type">int</span> age, <span class="type">int</span> id)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getId</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.age+<span class="string">&quot; &quot;</span>+<span class="built_in">this</span>.id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><ol>
+<li>反射的特征：动态性（编译时无法确定，在运行时确定下来）</li>
+<li>在一个类中最好提供一个public的空参构造器，便于通过反射去创建运行时类的对象，便于子类继承此运行时类时，默认调用super()时保证父类有此构造器</li>
+<li>框架&#x3D;注解+反射+设计模式</li>
+</ol>
+<h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><ol>
+<li>内部类的分类：成员内部类，局部内部类</li>
+</ol>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ol>
+<li>同步监视器，俗称锁。任何一个类的对象都可以充当锁。要求：多个线程必须要共用同一把锁，即充当锁的对象只有一个</li>
+<li>同步方法synchronized默认的锁，对于非静态方法是this，静态方法是<code>当前类.class</code></li>
+<li>线程通信涉及到三个方法：<ul>
+<li>wait()：一旦执行此方法，当前线程就进入阻塞状态，并释放同步监视器</li>
+<li>notify()：一旦执行此方法，就会唤醒被wait的一个线程，如果有多个线程被wait，我们就唤醒优先级高的那个</li>
+<li>notifyAll()：一旦执行此方法，就会唤醒所有被wait的线程</li>
+</ul>
+</li>
+<li>线程通信的注意点：<ul>
+<li>wait()、notify()、notifyAll()这三个方法必须使用在同步代码块或同步方法中。</li>
+<li>wait()、notify()、notifyAll()这三个方法的调用者必须是同步代码块或同步方法中的同步监视器，否则会出现异常。</li>
+</ul>
+</li>
+</ol>
+<h2 id="一些零散知识点"><a href="#一些零散知识点" class="headerlink" title="一些零散知识点"></a>一些零散知识点</h2><ol>
+<li><p>块（即复合语句）是指由一对大括号括起来的若干条简单的 Java 语句</p>
+</li>
+<li><p>不能在嵌套的两个块中声明同名的变量</p>
+</li>
+<li><p>instanceof（）方法左边是对象，右边是类，当对象是右边类或子类所创建的对象时，返回true，否则返回false</p>
+</li>
+<li><p>设计方法的第一步是<strong>先对数据的合理性进行校验</strong></p>
+</li>
+<li><p>类之间的关系：依赖（“uses-a”）：一个类的方法操纵另一个类的对象；聚合（”has-a“）：类A对象包含类B对象；继承（”is-a“）：特殊与一般的关系</p>
+</li>
+<li><p>单引号是用来写字符型的，例如<code>char str=&#39;a&#39;</code>，而双引号是用来写字符串的</p>
+</li>
+<li><p>开发类时的经验：</p>
+<p>（1）找出类应该做的事情</p>
+<p>（2）列出实例变量和方法</p>
+<p>（3）编写方法的伪码</p>
+<p>（4）编写方法的测试用程序</p>
+<p>（5）实现类</p>
+<p>（6）测试方法</p>
+<p>（7）除错或重新设计</p>
+</li>
+<li><p>logo用面向对象的思想重写一遍：有两个类一个是Turtle一个是Chessboard，当乌龟移动时，就在Chessboard上留下痕迹，这部分是在main方法里面实现的，感觉这部分做的不是很好，乌龟和棋盘的关系是棋盘上有只乌龟，或许应该在棋盘类中创建乌龟的实例？（“has-a”关系？），继续学习用<strong>面向对象的观点和方法</strong>来思考</p>
+</li>
+<li><p>方法签名是指方法的名称（即函数名）和方法的参数</p>
+</li>
+<li><p>在定义方法时，在最后一个形参后加上三点 <strong>…</strong>，就表示该形参可以接受多个参数值，多个参数值被当成数组传入。上述定义有几个要点需要注意：</p>
+</li>
+</ol>
+<ul>
+<li>可变参数只能作为函数的最后一个参数，但其前面可以有也可以没有任何其他参数</li>
+<li>由于可变参数必须是最后一个参数，所以一个函数最多只能有一个可变参数</li>
+<li>Java的可变参数，会被编译器转型为一个数组</li>
+<li>变长参数在编译为字节码后，在方法签名中就是以数组形态出现的。这两个方法的签名是一致的，不能作为方法的重载。如果同时出现，是不能编译通过的。可变参数可以兼容数组，反之则不成立</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">foo</span><span class="params">(String...varargs)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="string">&quot;arg1&quot;</span>, <span class="string">&quot;arg2&quot;</span>, <span class="string">&quot;arg3&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//上述过程和下面的调用是等价的</span></span><br><span class="line">foo(<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;arg1&quot;</span>, <span class="string">&quot;arg2&quot;</span>, <span class="string">&quot;arg3&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="11">
+<li><p>Equals 与 hashCode 的定义必须一致：如果 x.equals(y) 返回 true, 那么 x.hashCode( ) 就必 须与 y.hashCode( ) 具有相同的值。</p>
+</li>
+<li><p>正则表达式：</p>
+<table>
+<thead>
+<tr>
+<th align="left">代码</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">.</td>
+<td align="left">匹配任意1个字符（除了\n）</td>
+</tr>
+<tr>
+<td align="left">[ ]</td>
+<td align="left">匹配[ ]中列举的字符</td>
+</tr>
+<tr>
+<td align="left">\d</td>
+<td align="left">匹配数字，即0-9</td>
+</tr>
+<tr>
+<td align="left">\D</td>
+<td align="left">匹配非数字，即不是数字</td>
+</tr>
+<tr>
+<td align="left">\s</td>
+<td align="left">匹配空白，即 空格，tab键</td>
+</tr>
+<tr>
+<td align="left">\S</td>
+<td align="left">匹配非空白</td>
+</tr>
+<tr>
+<td align="left">\w</td>
+<td align="left">匹配非特殊字符，即a-z、A-Z、0-9、_、汉字</td>
+</tr>
+<tr>
+<td align="left">\W</td>
+<td align="left">匹配特殊字符，即非字母、非数字、非汉字、非_</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>对<strong>递归</strong>的理解：倒着想问题，正着写代码，先想问题的前一步，也就是再走一步就可以解决问题的这个点，然后看从这一点到解决问题有多少种方法，一般而言这几种方法就是从起点走到解决问题的这些方法，但也有可能不是，可能起点开始的时候方法选择会更多，所以要综合第一步来考虑，综合后这就是递归的路径，然后根据不同的路径判断<strong>递归的边界条件</strong>（边界条件非常重要），首先看问题规模是朝着什么方向缩减的，这可以写成if，然后再看看会不会有走向死路（死循环）的情况，这个边界条件也要加上去，这个地方的边界条件可能有点难找，多考虑几个样例来试试，切记分析问题时可以从正向和反向两个方面来分析，反向：假设这样可以会怎么怎么样。</p>
+</li>
+</ol>
+<h2 id="Java高级特性反射、代理（等到今后需要用到时再了解吧）"><a href="#Java高级特性反射、代理（等到今后需要用到时再了解吧）" class="headerlink" title="Java高级特性反射、代理（等到今后需要用到时再了解吧）"></a>Java高级特性反射、代理（等到今后需要用到时再了解吧）</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/06/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%99%E7%A8%8B/" rel="prev" title="MySQL数据库教程">
+      <i class="fa fa-chevron-left"></i> MySQL数据库教程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/06/SE-1-Review/" rel="next" title="SE-1 Review">
+      SE-1 Review <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB"><span class="nav-text">对象和类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-text">多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E5%92%8C%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F"><span class="nav-text">静态方法和静态变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8"><span class="nav-text">异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="nav-text">泛型程序设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88"><span class="nav-text">集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84"><span class="nav-text">反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-text">内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%9B%B6%E6%95%A3%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-text">一些零散知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E5%8F%8D%E5%B0%84%E3%80%81%E4%BB%A3%E7%90%86%EF%BC%88%E7%AD%89%E5%88%B0%E4%BB%8A%E5%90%8E%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0%E6%97%B6%E5%86%8D%E4%BA%86%E8%A7%A3%E5%90%A7%EF%BC%89"><span class="nav-text">Java高级特性反射、代理（等到今后需要用到时再了解吧）</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Irony</p>
+  <div class="site-description" itemprop="description">This is a blog in order to record my learning and growth.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Irony</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
