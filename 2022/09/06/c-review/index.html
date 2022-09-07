@@ -29,8 +29,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220715200844207.png">
 <meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220716144342905.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220907104527530.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220907115924242.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220907150933740.png">
 <meta property="article:published_time" content="2022-09-06T11:04:24.000Z">
-<meta property="article:modified_time" content="2022-09-06T11:05:20.200Z">
+<meta property="article:modified_time" content="2022-09-07T07:09:41.091Z">
 <meta property="article:author" content="Irony">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220715200844207.png">
@@ -176,10 +179,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-09-06 19:04:24 / 修改时间：19:05:20" itemprop="dateCreated datePublished" datetime="2022-09-06T19:04:24+08:00">2022-09-06</time>
+              <time title="创建时间：2022-09-06 19:04:24" itemprop="dateCreated datePublished" datetime="2022-09-06T19:04:24+08:00">2022-09-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-07 15:09:41" itemprop="dateModified" datetime="2022-09-07T15:09:41+08:00">2022-09-07</time>
+              </span>
 
           
 
@@ -266,6 +275,25 @@
 <li><p>派生类构造函数只初始化它的直接基类</p>
 </li>
 <li><p>派生列表中用到的访问说明符的作用是控制派生类从基类继承而来的成员是否对派生类的用户可见</p>
+</li>
+<li><p>explicit关键字：指定构造函数或转换函数 (C++11起)为显式, 即它不能用于隐式转换和复制初始化</p>
+</li>
+<li><p>必须使用初始化列表的时候：</p>
+<p>（1）常量成员，因为常量只能初始化不能赋值，所以必须放在初始化列表里面<br>（2）引用类型，引用必须在定义的时候初始化，并且不能重新赋值，所以也要写在初始化列表里面</p>
+<p>（3）没有默认构造函数的类类型，因为使用初始化列表可以不必调用默认构造函数来初始化，而是直接调用拷贝构造函数初始化</p>
+<p>下图解释了拷贝构造函数</p>
+<p><img src="/2022/09/06/c-review/image-20220907104527530.png" alt="image-20220907104527530"></p>
+</li>
+<li><p>构造函数的调用：</p>
+<p><img src="/2022/09/06/c-review/image-20220907115924242.png" alt="image-20220907115924242"></p>
+<ol start="26">
+<li><p>一个左值是一个标识非临时性对象的表达式。一个右值是一个标识临时性对象的表达式，或者一个不与任何对象相联系的值（如字面值常数），一般的法则是，如果程序中有一个变量名，那么他就是一个左值。在所有情况下函数调用的结果都是右值。</p>
+</li>
+<li></li>
+<li><p>当一个类包含指针作为数据成员时，一般我们必须自己实现析构函数，拷贝赋值函数和拷贝构造函数</p>
+<p><img src="/2022/09/06/c-review/image-20220907150933740.png" alt="image-20220907150933740"></p>
+</li>
+</ol>
 </li>
 </ol>
 
@@ -362,7 +390,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
