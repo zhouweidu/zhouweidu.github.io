@@ -148,6 +148,200 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouweidu.github.io/2022/09/06/JavaWeb%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Irony">
+      <meta itemprop="description" content="This is a blog in order to record my learning and growth.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Irony's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/06/JavaWeb%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">JavaWeb教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-09-06 19:10:08" itemprop="dateCreated datePublished" datetime="2022-09-06T19:10:08+08:00">2022-09-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-14 22:50:33" itemprop="dateModified" datetime="2022-09-14T22:50:33+08:00">2022-09-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-JavaScript"><a href="#1-JavaScript" class="headerlink" title="1. JavaScript"></a>1. JavaScript</h2><h2 id="2-XML"><a href="#2-XML" class="headerlink" title="2. XML"></a>2. XML</h2><h3 id="2-1-XML的概念：可扩展的标记语言"><a href="#2-1-XML的概念：可扩展的标记语言" class="headerlink" title="2.1 XML的概念：可扩展的标记语言"></a>2.1 XML的概念：可扩展的标记语言</h3><h3 id="2-2-XML包含三个部分"><a href="#2-2-XML包含三个部分" class="headerlink" title="2.2 XML包含三个部分"></a>2.2 XML包含三个部分</h3><ul>
+<li>XML声明，必须有而且声明这一行代码必须在XML文件的第一行</li>
+<li>DTD(document type defination) 文档类型定义</li>
+<li>XML正文</li>
+</ul>
+<h2 id="3-MVC"><a href="#3-MVC" class="headerlink" title="3. MVC"></a>3. MVC</h2><h3 id="3-1-MVC：Model（模型）、View（视图）、Controller（控制器）"><a href="#3-1-MVC：Model（模型）、View（视图）、Controller（控制器）" class="headerlink" title="3.1 MVC：Model（模型）、View（视图）、Controller（控制器）"></a>3.1 MVC：Model（模型）、View（视图）、Controller（控制器）</h3><ul>
+<li><p>视图层：用于做数据展示以及用户交互的界面</p>
+</li>
+<li><p>控制层：能够接受客户端的请求，具体的业务功能需要借助于模型组件来完成</p>
+</li>
+<li><p>模型层：模型分为很多种，有比较简单的pojo&#x2F;vo(value object)（数据库的一条记录所对应的对象） ，有业务模型组件，有数据访问组件</p>
+<ul>
+<li>pojo&#x2F;vo：值对象</li>
+<li>DAO：数据访问对象</li>
+<li>BO(business object)：业务对象</li>
+</ul>
+</li>
+<li><p>区分业务对象和数据访问对象</p>
+<p>（1）DAO中的方法都是单精度方法或者细粒度方法，一个方法只考虑一个操作，比如添加就是insert操作，查询就是select操作等等。</p>
+<p>（2）BO中的方法属于业务方法，而实际的业务是比较复杂的，因此业务方法的粒度比较粗</p>
+</li>
+</ul>
+<h2 id="4-IOC"><a href="#4-IOC" class="headerlink" title="4. IOC"></a>4. IOC</h2><h3 id="4-1-耦合-x2F-依赖"><a href="#4-1-耦合-x2F-依赖" class="headerlink" title="4.1 耦合&#x2F;依赖"></a>4.1 耦合&#x2F;依赖</h3><p>依赖指的是某某某离不开某某某，在软件系统中，层与层之间是存在依赖的，也称之为耦合，系统架构设计的原则是<strong>高内聚低耦合</strong>，层内部的组成应该是高度耦合的，而层与层之间的关系应该是低耦合的，最理想的情况是零耦合（就是没用耦合）</p>
+<h3 id="4-2-IOC-控制反转-x2F-DI-依赖注入"><a href="#4-2-IOC-控制反转-x2F-DI-依赖注入" class="headerlink" title="4.2 IOC-控制反转&#x2F;DI-依赖注入"></a>4.2 IOC-控制反转&#x2F;DI-依赖注入</h3><h4 id="4-2-1-控制反转"><a href="#4-2-1-控制反转" class="headerlink" title="4.2.1 控制反转"></a>4.2.1 控制反转</h4><p>（1）之前在Servlet中，我们创建Service对象，<code>FruitService fruitService=new FruitServiceImpl();</code>，这句代码如果出现在Servlet中的某个方法内部，那么这个fruitService的作用域就是这个方法级别，如果这句话出现在Servlet类中（即作为成员变量），那么这个fruitService的作用域就是这个Servlet的实例级别。</p>
+<p>（2）之后我们在applicationContext.xml中定义了这个fruitService，然后通过解析XML产生fruitService实例，存放在beanMap中，这个beanMap在一个BeanFactory中，因此我们改变了之前的Service实例，DAO实例等等的生命周期。也就意味着控制权从程序员转移到BeanFactory（BeanFactory又称为IOC容器）。这个现象我们称之为控制反转。</p>
+<h4 id="4-2-2-依赖注入"><a href="#4-2-2-依赖注入" class="headerlink" title="4.2.2 依赖注入"></a>4.2.2 依赖注入</h4><p>（1）之前我们在控制层出现代码<code>FruitService fruitService=new FruitServiceImpl();</code>，那么，控制层和service层存在耦合。</p>
+<p>（2）之后，我们将代码修改成<code>FruitService fruitService=null;</code>，然后在配置文件中配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;fruit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;fruit.controller.FruitController&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;fruitService&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;fruitService&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个配置文件表明FruitController需要fruitService，IOC容器在解析配置文件时，会去寻找Service实例，通过反射注入到Controller中，以前是程序员主动去获取绑定的，现在靠配置文件解析，容器帮我们注入。</p>
+<h2 id="5-过滤器"><a href="#5-过滤器" class="headerlink" title="5. 过滤器"></a>5. 过滤器</h2><p><strong>过滤器链</strong></p>
+<ul>
+<li>如果采取的是注解的方式配置过滤器，那么过滤器链的拦截顺序是按照全类名（字母）的先后顺序进行排序的。</li>
+<li>如果采取xml的方式进行配置，那么按照配置的先后顺序进行排序</li>
+</ul>
+<h2 id="6-事务管理"><a href="#6-事务管理" class="headerlink" title="6. 事务管理"></a>6. 事务管理</h2><p>ThreadLocal称之为本地线程，用于同一个线程中的数据通信，我们可以通过set(obj)方法在当前线程上存储数据，通过get()方法在当前线程上获取数据</p>
+<h2 id="7-监听器"><a href="#7-监听器" class="headerlink" title="7. 监听器"></a>7. 监听器</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouweidu.github.io/2022/09/06/HTML-CSS-Review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Irony">
+      <meta itemprop="description" content="This is a blog in order to record my learning and growth.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Irony's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/06/HTML-CSS-Review/" class="post-title-link" itemprop="url">HTML+CSS Review</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-06 19:09:37 / 修改时间：19:09:49" itemprop="dateCreated datePublished" datetime="2022-09-06T19:09:37+08:00">2022-09-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="文本格式化标签"><a href="#文本格式化标签" class="headerlink" title="文本格式化标签"></a>文本格式化标签</h4><table>
+<thead>
+<tr>
+<th align="center">标签</th>
+<th align="center">标签</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">b</td>
+<td align="center">strong</td>
+<td align="center">加粗</td>
+</tr>
+<tr>
+<td align="center">u</td>
+<td align="center">ins</td>
+<td align="center">下划线</td>
+</tr>
+<tr>
+<td align="center">i</td>
+<td align="center">em</td>
+<td align="center">倾斜</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">del</td>
+<td align="center">删除线</td>
+</tr>
+</tbody></table>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/09/06/HTML-CSS-Review/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhouweidu.github.io/2022/09/06/Git%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -310,7 +504,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-07 15:09:41" itemprop="dateModified" datetime="2022-09-07T15:09:41+08:00">2022-09-07</time>
+                <time title="修改时间：2022-09-14 22:50:14" itemprop="dateModified" datetime="2022-09-14T22:50:14+08:00">2022-09-14</time>
               </span>
 
           
@@ -324,7 +518,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Accelerated-c"><a href="#Accelerated-c" class="headerlink" title="Accelerated c++"></a>Accelerated c++</h1><h3 id="使用字符串"><a href="#使用字符串" class="headerlink" title="使用字符串"></a>使用字符串</h3><ol>
+          <h2 id="Accelerated-c"><a href="#Accelerated-c" class="headerlink" title="Accelerated c++"></a>Accelerated c++</h2><h3 id="使用字符串"><a href="#使用字符串" class="headerlink" title="使用字符串"></a>使用字符串</h3><ol>
 <li><p><code>&gt;&gt;</code>运算符从标准输入读进一个字符串，它会首先略去输入开始碰到的空白字符（空白、制表符、回退键和换行符），然后连续的读入字符到某个变量中，直到遇到了另一个空白字符或文件结束标记为止</p>
 </li>
 <li><p>c++的数据结构可以用struct实现</p>
@@ -541,10 +735,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-09-06 17:29:48 / 修改时间：22:42:24" itemprop="dateCreated datePublished" datetime="2022-09-06T17:29:48+08:00">2022-09-06</time>
+              <time title="创建时间：2022-09-06 17:29:48" itemprop="dateCreated datePublished" datetime="2022-09-06T17:29:48+08:00">2022-09-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-09 23:25:26" itemprop="dateModified" datetime="2022-09-09T23:25:26+08:00">2022-09-09</time>
+              </span>
 
           
 
@@ -741,7 +941,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

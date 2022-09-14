@@ -32,8 +32,12 @@
 <meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220907104527530.png">
 <meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220907115924242.png">
 <meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220907150933740.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220914141348979.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220914142131245.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220913134523934.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220914211210548.png">
 <meta property="article:published_time" content="2022-09-06T11:04:24.000Z">
-<meta property="article:modified_time" content="2022-09-07T07:09:41.091Z">
+<meta property="article:modified_time" content="2022-09-14T14:50:14.693Z">
 <meta property="article:author" content="Irony">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://zhouweidu.github.io/2022/09/06/c-review/image-20220715200844207.png">
@@ -187,7 +191,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-07 15:09:41" itemprop="dateModified" datetime="2022-09-07T15:09:41+08:00">2022-09-07</time>
+                <time title="修改时间：2022-09-14 22:50:14" itemprop="dateModified" datetime="2022-09-14T22:50:14+08:00">2022-09-14</time>
               </span>
 
           
@@ -201,7 +205,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Accelerated-c"><a href="#Accelerated-c" class="headerlink" title="Accelerated c++"></a>Accelerated c++</h1><h3 id="使用字符串"><a href="#使用字符串" class="headerlink" title="使用字符串"></a>使用字符串</h3><ol>
+        <h2 id="Accelerated-c"><a href="#Accelerated-c" class="headerlink" title="Accelerated c++"></a>Accelerated c++</h2><h3 id="使用字符串"><a href="#使用字符串" class="headerlink" title="使用字符串"></a>使用字符串</h3><ol>
 <li><p><code>&gt;&gt;</code>运算符从标准输入读进一个字符串，它会首先略去输入开始碰到的空白字符（空白、制表符、回退键和换行符），然后连续的读入字符到某个变量中，直到遇到了另一个空白字符或文件结束标记为止</p>
 </li>
 <li><p>c++的数据结构可以用struct实现</p>
@@ -226,7 +230,7 @@
 <li><p>如果在第一个保护标识符之前有成员，class中的成员是私有的（private），struct中的成员是共有的（public）</p>
 </li>
 </ol>
-<h1 id="C-Primer"><a href="#C-Primer" class="headerlink" title="C++ Primer"></a>C++ Primer</h1><blockquote>
+<h2 id="C-Primer"><a href="#C-Primer" class="headerlink" title="C++ Primer"></a>C++ Primer</h2><blockquote>
 <p>Part1也就是前七章，除了6.6，6.7节，都要通读。尤其是第三章初步介绍了vector和string，简直就是新手福音，搞定这两个容器就能写一些简单的程序。<br>Part2基本就是数据结构和算法，如果有基础读起来很轻松。<br>9，11两章介绍的容器，以及12.1节的智能指针要通读。多用智能指针和容器，远离segment fault. 第10章里的泛型算法可以慢慢读，读完以后可以写出高逼格的函数式风格C++。12.2节讲了怎么用new和delete分配空间，题主作为新手，知道这种写法就行，写程序时尽量用容器代替原始数组，尤其是代码里最好不要有delete。<br>Part3是块硬骨头，标题就是Tools for Class Authors. 作为一个”class user”，有些部分第一次是可以略过的。<br>13章很重要，要细读。初始化，复制，赋值，右值引用是C++里很微妙很重要的部分，别的语言对于这些概念很少有区分得这么细的。这一章不但要精读，还要完全掌握。<br>14章的操作符重载第一次可以观其大略；14.9节第一次可以跳过。<br>15章讲OOP，重要性不言而喻。如果之前一点概念都没有，学起来会觉得比较抽象。网上关于OOP有很多通俗有趣的文章，可以一起看看。<br>16章讲泛型编程，第一次读16.1节，掌握最基本的函数模板和类模板就行了。<br>Part4就更高档了，很多内容第一次就算啃下来，长久不用又忘了。第一次读推荐把18.2节读懂，命名空间简单易用效果好。别的内容可以观其大略，用时再看。17.1节的tuple是个有趣的东东，可以读一读。17.3节的正则表达式和17.4节的随机数也许有用，也可以读一读。如果需要读写文件，要读一下17.5.2节的raw I&#x2F;O和17.5.3节的random I&#x2F;O。</p>
 <p>最后给题主的建议是，写C++，要尽量避免C的写法。用static_cast而不是括号转换符；用vector而不是C里面的数组；用string而不是char *；用智能指针而不是原始指针。当然I&#x2F;O是个例外，printf()还是比cout好用的；转换数字和字符串时sprintf()也比stringstream快</p>
 </blockquote>
@@ -296,6 +300,90 @@
 </ol>
 </li>
 </ol>
+<h2 id="B站C-视频课程"><a href="#B站C-视频课程" class="headerlink" title="B站C++视频课程"></a>B站C++视频课程</h2><h3 id="1-引用"><a href="#1-引用" class="headerlink" title="1. 引用"></a>1. 引用</h3><ol>
+<li><p>引用的本质：给变量取个别名。定义引用时必须初始化，因为系统不会为引用开辟空间，引用和原变量代表同一内存空间。c语言角度看底层用常量指针实现（用c++不要关心这件事）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a=<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> &amp;b=a;</span><br><span class="line"><span class="comment">//底层实际发生的是</span></span><br><span class="line"><span class="comment">//int * const b=&amp;a;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用赋值问题</p>
+<p><img src="/2022/09/06/c-review/image-20220914141348979.png" alt="image-20220914141348979"></p>
+</li>
+<li><p>函数返回值为引用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">function1</span><span class="params">(<span class="type">int</span> &amp; aa)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> aa;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> &amp; <span class="title">function2</span><span class="params">(<span class="type">int</span> &amp; aa)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> aa;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> b;</span><br><span class="line">    b = <span class="built_in">function1</span>(a);<span class="comment">//function1()的返回值先储存在一个临时变量中，</span></span><br><span class="line">                     <span class="comment">//然后再把临时变量赋值给b</span></span><br><span class="line">    <span class="built_in">function1</span>(a) = <span class="number">20</span>;<span class="comment">//不OK function1()的返回值为临时变量，不能赋值</span></span><br><span class="line">    <span class="built_in">function2</span>(a) = <span class="number">20</span>;<span class="comment">//OK  此时a的值变成了20，返回的是左值引用可以出现在等号左边</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：若函数的返回值为引用(&amp;)，则编译器就不为返回值创建临时变量了。直接返回那个变量的引用。所以千万不要返回临时变量的引用，如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> &amp; <span class="title">function</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> b = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">return</span> b;<span class="comment">//不OK 等函数返回后，b就消失了，引用了一个消失的东西</span></span><br><span class="line">             <span class="comment">//程序会懵逼的。指针也一样。</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a;</span><br><span class="line">    a = <span class="built_in">function</span>();<span class="comment">//function()返回的东西已经消失了，引用也就不存在了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/09/06/c-review/image-20220914142131245.png" alt="image-20220914142131245"></p>
+</li>
+</ol>
+<h3 id="2-内联函数"><a href="#2-内联函数" class="headerlink" title="2. 内联函数"></a>2. 内联函数</h3><p><img src="/2022/09/06/c-review/image-20220913134523934.png" alt="image-20220913134523934"></p>
+<p>在<strong>编译阶段</strong>将内联函数中的函数体替换函数调用处，避免函数调用时的开销（入栈出栈）。必须在定义时使用关键字inline修饰，不能在声明的时候使用inline</p>
+<h3 id="3-缺省参数"><a href="#3-缺省参数" class="headerlink" title="3. 缺省参数"></a>3. 缺省参数</h3><p>建议在函数声明处给默认值。</p>
+<h3 id="4-构造函数"><a href="#4-构造函数" class="headerlink" title="4. 构造函数"></a>4. 构造函数</h3><p>调用构造函数的几种方式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//隐式调用无参构造（推荐）</span></span><br><span class="line">Data ob1;</span><br><span class="line"><span class="comment">//显示调用有参构造</span></span><br><span class="line">Data ob2=<span class="built_in">Data</span>()</span><br><span class="line"><span class="comment">//隐式调用有参构造（推荐）</span></span><br><span class="line">Data <span class="built_in">ob3</span>(<span class="number">10</span>);</span><br><span class="line"><span class="comment">//显示调用有参构造</span></span><br><span class="line">Data ob4=<span class="built_in">Data</span>(<span class="number">10</span>)</span><br><span class="line"><span class="comment">//构造函数的隐式转换（前提：类中只有一个数据成员）</span></span><br><span class="line">Data ob5=<span class="number">30</span>;<span class="comment">//Data ob5(30)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-析构函数"><a href="#5-析构函数" class="headerlink" title="5. 析构函数"></a>5. 析构函数</h3><ul>
+<li><p>如果类有指针成员必须实现析构函数，释放指针成员所指向的内存空间。</p>
+</li>
+<li><p>同一级别先构造的后释放（符合栈的特点）</p>
+</li>
+</ul>
+<h3 id="6-拷贝构造函数"><a href="#6-拷贝构造函数" class="headerlink" title="6. 拷贝构造函数"></a>6. 拷贝构造函数</h3><ul>
+<li>本质是构造函数，只有在旧对象初始化新对象（定义时的对象是新对象，定义完以后就变成了旧对象）时才会调用拷贝构造。函数调用时给形参（此时的形参是普通对象，不是引用）开辟空间，会调用拷贝构造函数用实参初始化形参。</li>
+<li>如果类中没有指针成员，不用实现拷贝构造（浅拷贝）和析构函数；如果类中有指针成员，必须实现拷贝构造（深拷贝）和析构函数（释放指针成员指向的堆区空间）</li>
+</ul>
+<p>拷贝构造的几种调用形式：</p>
+<ul>
+<li>旧对象给新对象初始化，调用拷贝构造</li>
+<li>给对象取别名，不会调用拷贝构造</li>
+<li>普通对象作为函数参数，调用函数时，会发生拷贝构造</li>
+</ul>
+<h3 id="7-初始化列表"><a href="#7-初始化列表" class="headerlink" title="7. 初始化列表"></a>7. 初始化列表</h3><ul>
+<li><p>成员对象：一个类的对象作为另一个类的成员。</p>
+</li>
+<li><p>类会自动调用成员对象的无参构造函数，如果类中想调用成员对象的有参构造函数，必须使用初始化列表。</p>
+</li>
+<li><p>对象的初始化和析构顺序：先初始化类中的成员对象（先把内部建好才能建外部），然后再初始化该对象；析构顺序正好相反（先拆外部才能拆内部），先析构该对象，再析构成员对象。</p>
+</li>
+<li><p>对象数组的初始化：必须显示使用有参构造，逐个元素初始化。若不显示初始化，则会对每个元素默认调用无参构造函数</p>
+</li>
+</ul>
+<h3 id="8-类的存储结构"><a href="#8-类的存储结构" class="headerlink" title="8. 类的存储结构"></a>8. 类的存储结构</h3><p>成员函数、静态成员是独立存储，所有对象共享的，对象独有的只有成员数据</p>
+<h3 id="9-this指针"><a href="#9-this指针" class="headerlink" title="9. this指针"></a>9. this指针</h3><h3 id="10-类中有指针成员"><a href="#10-类中有指针成员" class="headerlink" title="10. 类中有指针成员"></a>10. 类中有指针成员</h3><p>如果有指针成员，必须自己写拷贝构造函数、赋值运算符函数、析构函数</p>
+<h3 id="11-重载箭头运算符"><a href="#11-重载箭头运算符" class="headerlink" title="11. 重载箭头运算符"></a>11. 重载箭头运算符</h3><p>箭头操作符(-&gt;)的内置用法是，使用一个类对象的指针来调用所指对象的成员。左操作数为对象指针，右操作数为该对象的成员。</p>
+<p>定义重载箭头操作符之后看起来就有点特别，既可用类对象的指针来调用，也可用类对象直接调用。<br>重载箭头操作符，首先重载箭头操作符必须定义为类成员函数。</p>
+<p>箭头操作符与众不同。它其实是一元操作符，却表现得像二元操作符一样：接受一个对象和一个成员名。对对象解引用以获取成员。不管外表如何，箭头操作符不接受显式形参。</p>
+<p>这里没有第二个形参，因为 -&gt; 的右操作数不是表达式，相反，是对应着类成员的一个标识符。没有明显可行的途径将一个标识符作为形参传递给函数，相反，由编译器处理获取成员的工作。</p>
+<p>对于形如point-&gt;member的表达式来说，point必须是二者之一：指向类对象的指针、一个重载了operator-&gt;() 的类对象。</p>
+<p>根据point类型的不同，有如下两条作用规则：</p>
+<ol>
+<li><p>如果point是指针，则按照内置的箭头运算符去处理。表达式等价于(*point).member。首先解引用该指针，然后从所得的对象中获取指定的成员。如果point所指的类没有名为member的成员，则编译器报错。</p>
+</li>
+<li><p>如果point是一个定义了operator-&gt;() 的类对象，则point-&gt;member等价于point.operator-&gt;() -&gt;member。其中，如果operator-&gt;()的返回结果是一个指针，则转第1步；如果返回结果仍然是一个对象，且该对象本身也重载了operator-&gt;()，则重复调用第2步，否则编译器报错。最终，过程要么结束在第一步，要么无限递归，要么报错。</p>
+</li>
+</ol>
+<p>也就是说，如果返回类型是类类型的其他对象（或是这种对象的引用），则将递归应用该操作符。编译器检查返回对象所属类型是否具有成员箭头，如果有，就应用那个操作符；否则，编译器产生一个错误。这个过程继续下去，直到返回一个指向带有指定成员的的对象的指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">firstClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	firstClass* <span class="keyword">operator</span>-&gt;() &#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;firstClass -&gt;() is called!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">action</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;firstClass action() is called!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">myClass</span> &#123;</span><br><span class="line">	firstClass firstObj;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	firstClass&amp; <span class="keyword">operator</span>-&gt;() &#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;myClass -&gt;() is called!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="keyword">return</span> firstObj;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">action</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;myClass action() is called!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	myClass obj;</span><br><span class="line">	obj-&gt;<span class="built_in">action</span>();</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用结果为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myClass -&gt;() is called!</span><br><span class="line">firstClass -&gt;() is called!</span><br><span class="line">firstClass action() is called!</span><br></pre></td></tr></table></figure>
+
+<h3 id="12-继承"><a href="#12-继承" class="headerlink" title="12. 继承"></a>12. 继承</h3><h4 id="12-1-重定义"><a href="#12-1-重定义" class="headerlink" title="12.1 重定义"></a>12.1 重定义</h4><p>重定义：有继承，子类重定义了父类的同名函数（包含静态和非静态，必须是非虚函数），参数顺序、个数、类型可以不同，子类一旦重定义了父类的同名函数，不管参数是否一致，都将屏蔽父类所有的同名函数，需要加父类的作用域才能访问。</p>
+<p>补充一下<strong>重载</strong>的定义：同一作用域，同名函数，参数的顺序、个数、类型不同 都可以重载。函数的返回值 类型不能作为重载条件（函数重载、运算符重载）</p>
+<h4 id="12-2-子类不能继承父类的成员"><a href="#12-2-子类不能继承父类的成员" class="headerlink" title="12.2 子类不能继承父类的成员"></a>12.2 子类不能继承父类的成员</h4><p>父类的构造函数、析构函数（但是在<strong>析构函数前加上virtual</strong>也有多态的性质，编译器为了让析构函数实现多态,会将它们的名字都处理为destructor）、赋值运算符不能被子类继承。</p>
+<p>友元不属于类的成员所以不存在继承。</p>
+<h3 id="13-多态"><a href="#13-多态" class="headerlink" title="13. 多态"></a>13. 多态</h3><h4 id="13-1-多态的分类"><a href="#13-1-多态的分类" class="headerlink" title="13.1 多态的分类"></a>13.1 多态的分类</h4><ul>
+<li><p>静态多态：函数重载，运算符重载。</p>
+</li>
+<li><p>动态多态：有继承，子类重写父类的虚函数，父类指针指向子类地址空间。</p>
+</li>
+</ul>
+<h4 id="13-2-虚函数"><a href="#13-2-虚函数" class="headerlink" title="13.2 虚函数"></a>13.2 虚函数</h4><p>定义：在成员函数前virtual修饰。</p>
+<p>子类重写父类的虚函数要注意：函数名、返回值类型、参数<strong>类型个数顺序</strong>必须完全一致。</p>
+<p>今后在定义类时析构函数都定义为虚函数。</p>
+<p>重写（覆盖）：有继承，子类重写父类的虚函数。返回值类型、函数名、参数顺序、个数、类型都必须一致。</p>
+<h4 id="13-3-虚函数的实现机制"><a href="#13-3-虚函数的实现机制" class="headerlink" title="13.3 虚函数的实现机制"></a>13.3 虚函数的实现机制</h4><p>靠虚函数指针和虚函数表实现</p>
+<p><img src="/2022/09/06/c-review/image-20220914211210548.png" alt="image-20220914211210548"></p>
 
     </div>
 
@@ -376,7 +464,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Accelerated-c"><span class="nav-text">Accelerated c++</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">使用字符串</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-Primer"><span class="nav-text">C++ Primer</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Accelerated-c"><span class="nav-text">Accelerated c++</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">使用字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Primer"><span class="nav-text">C++ Primer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B%E7%AB%99C-%E8%A7%86%E9%A2%91%E8%AF%BE%E7%A8%8B"><span class="nav-text">B站C++视频课程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%BC%95%E7%94%A8"><span class="nav-text">1. 引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0"><span class="nav-text">2. 内联函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%BC%BA%E7%9C%81%E5%8F%82%E6%95%B0"><span class="nav-text">3. 缺省参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-text">4. 构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="nav-text">5. 析构函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-text">6. 拷贝构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%97%E8%A1%A8"><span class="nav-text">7. 初始化列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E7%B1%BB%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-text">8. 类的存储结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-this%E6%8C%87%E9%92%88"><span class="nav-text">9. this指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E7%B1%BB%E4%B8%AD%E6%9C%89%E6%8C%87%E9%92%88%E6%88%90%E5%91%98"><span class="nav-text">10. 类中有指针成员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E9%87%8D%E8%BD%BD%E7%AE%AD%E5%A4%B4%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">11. 重载箭头运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E7%BB%A7%E6%89%BF"><span class="nav-text">12. 继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#12-1-%E9%87%8D%E5%AE%9A%E4%B9%89"><span class="nav-text">12.1 重定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-2-%E5%AD%90%E7%B1%BB%E4%B8%8D%E8%83%BD%E7%BB%A7%E6%89%BF%E7%88%B6%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98"><span class="nav-text">12.2 子类不能继承父类的成员</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-%E5%A4%9A%E6%80%81"><span class="nav-text">13. 多态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#13-1-%E5%A4%9A%E6%80%81%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-text">13.1 多态的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-2-%E8%99%9A%E5%87%BD%E6%95%B0"><span class="nav-text">13.2 虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-3-%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="nav-text">13.3 虚函数的实现机制</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -390,7 +478,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
