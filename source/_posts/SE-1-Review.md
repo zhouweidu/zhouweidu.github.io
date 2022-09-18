@@ -2,6 +2,9 @@
 title: SE-1 Review
 date: 2022-09-06 19:27:34
 tags:
+- 软工
+categories:
+- 南大课程
 ---
 
 # Python部分

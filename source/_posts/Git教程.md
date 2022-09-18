@@ -2,6 +2,9 @@
 title: Git教程
 date: 2022-09-06 19:07:10
 tags:
+- Git
+categories:
+- 个人技术栈
 typora-root-url: Git教程
 ---
 

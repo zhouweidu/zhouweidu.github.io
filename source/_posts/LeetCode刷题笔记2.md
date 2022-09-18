@@ -2,6 +2,9 @@
 title: LeetCode刷题笔记2
 date: 2022-09-11 16:35:56
 tags:
+- LeetCode
+categories:
+- 个人技术栈
 ---
 
 # 226. 翻转二叉树

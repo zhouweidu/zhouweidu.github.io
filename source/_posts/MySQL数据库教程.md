@@ -2,6 +2,10 @@
 title: MySQL数据库教程
 date: 2022-09-06 19:25:33
 tags:
+- MySQL
+- 后端
+categories:
+- 个人技术栈
 ---
 
 #### 基本的select语句

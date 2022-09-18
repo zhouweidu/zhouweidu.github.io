@@ -2,6 +2,10 @@
 title: JDBC review
 date: 2022-09-06 19:10:39
 tags:
+- JDBC
+- 后端
+categories:
+- 个人技术栈
 ---
 
 # JDBC核心技术

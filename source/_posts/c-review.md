@@ -2,6 +2,9 @@
 title: c++ review
 date: 2022-09-06 19:04:24
 tags:
+- C++
+categories:
+- 个人技术栈
 typora-root-url: c-review
 ---
 
@@ -366,3 +369,20 @@ firstClass action() is called!
 靠虚函数指针和虚函数表实现
 
 ![image-20220914211210548](image-20220914211210548.png)
+
+## 14. STL-容器
+
+### 14.1 vector容器
+
+**单端动态数组容器**
+
+![image-20220916210913071](image-20220916210913071.png)
+
+### 14.2 deque容器
+
+**双端动态数组容器**
+
+![image-20220916215345053](image-20220916215345053.png)
+
+## 15. STL-算法
+
