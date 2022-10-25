@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"zhouweidu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1. 第一课面向对象：封装、继承、多态。模块与模块之间尽量解耦合 2. 递归">
+  <meta name="description" content="1. 第一课面向对象：封装、继承、多态。模块与模块之间尽量解耦合 2. 递归3.栈、队列3.1 数组循环左移假设数组a[7]&#x3D;{1,2,3,4,5,6,7}，向左移3个元素，输出结果为：4 5 6 7 1 2 3 对前3个元素逆序，变为{3,2,1,4,5,6,7} 对后4个元素逆序，变为{ 3,2,1,7,6,5,4 } 对所有元素逆序，变为{ 4,5,6,7,1,2,3 } 1234">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法分析">
 <meta property="og:url" content="https://zhouweidu.github.io/2022/09/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Irony&#39;s blog">
-<meta property="og:description" content="1. 第一课面向对象：封装、继承、多态。模块与模块之间尽量解耦合 2. 递归">
+<meta property="og:description" content="1. 第一课面向对象：封装、继承、多态。模块与模块之间尽量解耦合 2. 递归3.栈、队列3.1 数组循环左移假设数组a[7]&#x3D;{1,2,3,4,5,6,7}，向左移3个元素，输出结果为：4 5 6 7 1 2 3 对前3个元素逆序，变为{3,2,1,4,5,6,7} 对后4个元素逆序，变为{ 3,2,1,7,6,5,4 } 对所有元素逆序，变为{ 4,5,6,7,1,2,3 } 1234">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-06T23:58:31.000Z">
-<meta property="article:modified_time" content="2022-09-18T07:58:28.945Z">
+<meta property="article:modified_time" content="2022-10-22T03:44:19.334Z">
 <meta property="article:author" content="Irony">
 <meta property="article:tag" content="数据结构与算法">
 <meta name="twitter:card" content="summary">
@@ -192,7 +192,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-18 15:58:28" itemprop="dateModified" datetime="2022-09-18T15:58:28+08:00">2022-09-18</time>
+                <time title="修改时间：2022-10-22 11:44:19" itemprop="dateModified" datetime="2022-10-22T11:44:19+08:00">2022-10-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,7 +216,12 @@
 
       
         <h1 id="1-第一课"><a href="#1-第一课" class="headerlink" title="1. 第一课"></a>1. 第一课</h1><p>面向对象：封装、继承、多态。模块与模块之间尽量解耦合</p>
-<h1 id="2-递归"><a href="#2-递归" class="headerlink" title="2. 递归"></a>2. 递归</h1>
+<h1 id="2-递归"><a href="#2-递归" class="headerlink" title="2. 递归"></a>2. 递归</h1><h1 id="3-栈、队列"><a href="#3-栈、队列" class="headerlink" title="3.栈、队列"></a>3.栈、队列</h1><h2 id="3-1-数组循环左移"><a href="#3-1-数组循环左移" class="headerlink" title="3.1 数组循环左移"></a>3.1 数组循环左移</h2><p>假设数组a[7]&#x3D;{1,2,3,4,5,6,7}，向左移3个元素，输出结果为：4 5 6 7 1 2 3</p>
+<p><strong>对前3个元素逆序，变为{3,2,1,4,5,6,7}</strong></p>
+<p><strong>对后4个元素逆序，变为{ 3,2,1,7,6,5,4 }</strong></p>
+<p><strong>对所有元素逆序，变为{ 4,5,6,7,1,2,3 }</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//[ster...end)，左边包含右边不包含</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">reverse</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> ster, <span class="type">int</span> end)</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> temp;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> s = end - <span class="number">1</span>;        <span class="comment">//起始位置下标不变，终止位置-1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (ster &lt; s)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        temp = a[ster];</span><br><span class="line"></span><br><span class="line">        a[ster] = a[s];</span><br><span class="line"></span><br><span class="line">        a[s] = temp;</span><br><span class="line"></span><br><span class="line">        ster++;</span><br><span class="line"></span><br><span class="line">        s--;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i, k, a[<span class="number">7</span>] = &#123; <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;先输入左移个数：\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;k);</span><br><span class="line"></span><br><span class="line">    reverse(a, <span class="number">0</span>, k);</span><br><span class="line"></span><br><span class="line">    reverse(a, k, <span class="number">7</span>);</span><br><span class="line"></span><br><span class="line">    reverse(a, <span class="number">0</span>, <span class="number">7</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i++)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -299,7 +304,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%AC%AC%E4%B8%80%E8%AF%BE"><span class="nav-text">1. 第一课</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E9%80%92%E5%BD%92"><span class="nav-text">2. 递归</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%AC%AC%E4%B8%80%E8%AF%BE"><span class="nav-text">1. 第一课</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E9%80%92%E5%BD%92"><span class="nav-text">2. 递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%A0%88%E3%80%81%E9%98%9F%E5%88%97"><span class="nav-text">3.栈、队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E6%95%B0%E7%BB%84%E5%BE%AA%E7%8E%AF%E5%B7%A6%E7%A7%BB"><span class="nav-text">3.1 数组循环左移</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -313,14 +318,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
