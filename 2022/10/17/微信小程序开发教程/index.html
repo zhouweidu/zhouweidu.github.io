@@ -20,18 +20,39 @@
     var CONFIG = {"hostname":"zhouweidu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1. 前端1.1 WXSS1.1.1 尺寸单位rpx：可以根据屏幕宽度进行自适应。规定屏幕宽度为750rpx。 1.1.2 样式的使用静态的样式统一写到class中。style接受动态样式，在运行时进行解析，尽量避免将静态样式写到style中，以免影响渲染速度。 1.2 JS1.2.1 小程序的生命周期和回调函数 一般将实时更新页面数据的代码放在onShow回调函数中。 页面的基础内容相关数据一般">
+  <meta name="description" content="1. 前端1.1 WXSS1.1.1 尺寸单位rpx：可以根据屏幕宽度进行自适应。规定屏幕宽度为750rpx。 1.1.2 样式的使用静态的样式统一写到class中。style接受动态样式，在运行时进行解析，尽量避免将静态样式写到style中，以免影响渲染速度。 1.1.3 页面布局Flex 布局语法教程 | 菜鸟教程 (runoob.com)，在display属性中使用flex布局，displa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序开发教程">
 <meta property="og:url" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Irony&#39;s blog">
-<meta property="og:description" content="1. 前端1.1 WXSS1.1.1 尺寸单位rpx：可以根据屏幕宽度进行自适应。规定屏幕宽度为750rpx。 1.1.2 样式的使用静态的样式统一写到class中。style接受动态样式，在运行时进行解析，尽量避免将静态样式写到style中，以免影响渲染速度。 1.2 JS1.2.1 小程序的生命周期和回调函数 一般将实时更新页面数据的代码放在onShow回调函数中。 页面的基础内容相关数据一般">
+<meta property="og:description" content="1. 前端1.1 WXSS1.1.1 尺寸单位rpx：可以根据屏幕宽度进行自适应。规定屏幕宽度为750rpx。 1.1.2 样式的使用静态的样式统一写到class中。style接受动态样式，在运行时进行解析，尽量避免将静态样式写到style中，以免影响渲染速度。 1.1.3 页面布局Flex 布局语法教程 | 菜鸟教程 (runoob.com)，在display属性中使用flex布局，displa">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221027195545207.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221027195720710.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026222223725.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026222406788.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026222508319.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026223055691.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026223603000.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026223709885.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026223741454.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224015002.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224038467.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224119388.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224135325.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224210022.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224232956.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224314459.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224355639.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221027160908376.png">
+<meta property="og:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221027160955798.png">
 <meta property="article:published_time" content="2022-10-17T12:26:19.000Z">
-<meta property="article:modified_time" content="2022-10-23T03:32:47.026Z">
+<meta property="article:modified_time" content="2022-10-27T13:52:13.430Z">
 <meta property="article:author" content="Irony">
 <meta property="article:tag" content="前端">
+<meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221027195545207.png">
 
 <link rel="canonical" href="https://zhouweidu.github.io/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/">
 
@@ -192,7 +213,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-23 11:32:47" itemprop="dateModified" datetime="2022-10-23T11:32:47+08:00">2022-10-23</time>
+                <time title="修改时间：2022-10-27 21:52:13" itemprop="dateModified" datetime="2022-10-27T21:52:13+08:00">2022-10-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,12 +242,43 @@
       
         <h1 id="1-前端"><a href="#1-前端" class="headerlink" title="1. 前端"></a>1. 前端</h1><h2 id="1-1-WXSS"><a href="#1-1-WXSS" class="headerlink" title="1.1 WXSS"></a>1.1 WXSS</h2><h3 id="1-1-1-尺寸单位"><a href="#1-1-1-尺寸单位" class="headerlink" title="1.1.1 尺寸单位"></a>1.1.1 尺寸单位</h3><p>rpx：可以根据屏幕宽度进行自适应。规定屏幕宽度为750rpx。</p>
 <h3 id="1-1-2-样式的使用"><a href="#1-1-2-样式的使用" class="headerlink" title="1.1.2 样式的使用"></a>1.1.2 样式的使用</h3><p>静态的样式统一写到class中。style接受动态样式，在运行时进行解析，尽量避免将静态样式写到style中，以免影响渲染速度。</p>
+<h3 id="1-1-3-页面布局"><a href="#1-1-3-页面布局" class="headerlink" title="1.1.3 页面布局"></a>1.1.3 页面布局</h3><p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/flex-grammar.html">Flex 布局语法教程 | 菜鸟教程 (runoob.com)</a>，在display属性中使用flex布局，<code>display:flex;</code></p>
+<h3 id="1-1-4-button按钮的属性"><a href="#1-1-4-button按钮的属性" class="headerlink" title="1.1.4 button按钮的属性"></a>1.1.4 button按钮的属性</h3><p>button按钮会有一些默认的样式，要通过style内嵌css来设置样式。</p>
+<span id="more"></span>
+
 <h2 id="1-2-JS"><a href="#1-2-JS" class="headerlink" title="1.2 JS"></a>1.2 JS</h2><h3 id="1-2-1-小程序的生命周期和回调函数"><a href="#1-2-1-小程序的生命周期和回调函数" class="headerlink" title="1.2.1 小程序的生命周期和回调函数"></a>1.2.1 小程序的生命周期和回调函数</h3><ol>
 <li>一般将实时更新页面数据的代码放在onShow回调函数中。</li>
 <li>页面的基础内容相关数据一般放在onLoad函数中仅被加载一次。</li>
+<li>小程序页面的生命周期在编写js代码时很重要，到时候写页面的时候要考虑到各个生命周期应该做什么事情，由此在回调函数中写相应的内容。</li>
 </ol>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221027195545207.png" alt="image-20221027195545207"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221027195720710.png" alt="image-20221027195720710"></p>
 <h3 id="1-2-2-事件响应"><a href="#1-2-2-事件响应" class="headerlink" title="1.2.2 事件响应"></a>1.2.2 事件响应</h3><p>target一般是触发事件的源组件，currentTarget是事件绑定的当前组件。一般使用currentTarget。</p>
-<h1 id="2-后端"><a href="#2-后端" class="headerlink" title="2.后端"></a>2.后端</h1><h2 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h2>
+<h3 id="1-2-3-页面间数据通信"><a href="#1-2-3-页面间数据通信" class="headerlink" title="1.2.3 页面间数据通信"></a>1.2.3 页面间数据通信</h3><p>一般使用url传递参数即可，需要两个页面互相传递数据时才使用EventChannel传递参数。<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html">wx.navigateTo中使用事件通信通道传递参数的方法</a>。</p>
+<h3 id="1-2-4-setData函数调用"><a href="#1-2-4-setData函数调用" class="headerlink" title="1.2.4 setData函数调用"></a>1.2.4 setData函数调用</h3><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1673414">微信小程序：setData方法详解和注意事项</a></p>
+<h2 id="1-3-WXML"><a href="#1-3-WXML" class="headerlink" title="1.3 WXML"></a>1.3 WXML</h2><h3 id="1-3-1-image标签的属性"><a href="#1-3-1-image标签的属性" class="headerlink" title="1.3.1 image标签的属性"></a>1.3.1 image标签的属性</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42339350/article/details/118489491">image的mode常用属性</a></p>
+<h2 id="1-4-常用API"><a href="#1-4-常用API" class="headerlink" title="1.4 常用API"></a>1.4 常用API</h2><h3 id="1-4-1-界面交互API"><a href="#1-4-1-界面交互API" class="headerlink" title="1.4.1 界面交互API"></a>1.4.1 界面交互API</h3><p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026222223725.png" alt="image-20221026222223725"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026222406788.png" alt="image-20221026222406788"></p>
+<h3 id="1-4-2-页面路由API"><a href="#1-4-2-页面路由API" class="headerlink" title="1.4.2 页面路由API"></a>1.4.2 页面路由API</h3><p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026222508319.png" alt="image-20221026222508319"></p>
+<h2 id="1-5-调用云函数"><a href="#1-5-调用云函数" class="headerlink" title="1.5 调用云函数"></a>1.5 调用云函数</h2><p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026223055691.png" alt="image-20221026223055691"></p>
+<h3 id="1-5-1-上传图片（尽量不要有该功能比较难）"><a href="#1-5-1-上传图片（尽量不要有该功能比较难）" class="headerlink" title="1.5.1 上传图片（尽量不要有该功能比较难）"></a>1.5.1 上传图片（尽量不要有该功能比较难）</h3><p>视频中关于上传图片的实现有点小问题，不能每次选择图片后就立即上传到云端，这样会不断占用云端服务器的存储空间，最好在用户提交反馈的时候在将图片上传到云端。但上传图片功能比较麻烦，如果不是必要就不要开发该功能。</p>
+<h3 id="1-5-2-订阅消息（更难了尽量不要开发该功能）"><a href="#1-5-2-订阅消息（更难了尽量不要开发该功能）" class="headerlink" title="1.5.2 订阅消息（更难了尽量不要开发该功能）"></a>1.5.2 订阅消息（更难了尽量不要开发该功能）</h3><h2 id="1-6-前端开发的一点小提醒"><a href="#1-6-前端开发的一点小提醒" class="headerlink" title="1.6 前端开发的一点小提醒"></a>1.6 前端开发的一点小提醒</h2><p>因为小程序最终都会前后端打通，所以在前端开发中逻辑可能会比较复杂，需要自己多思考多调试，就是多用<code>console.log()</code>函数在控制台打印一些信息帮助自己找出问题，最常用的就是打印json数据。微信小程序的api版本在更新，有一些api可能在调用的时候会出问题，这时只能自己查阅开发者文档进行检查，复制文档中的新版api进行使用。但今后使用小程序的时候手机上的微信版本就必须比较新，如果旧版本的api没有问题那么就继续用旧版本的api。</p>
+<h1 id="2-后端"><a href="#2-后端" class="headerlink" title="2. 后端"></a>2. 后端</h1><h2 id="2-1-云函数"><a href="#2-1-云函数" class="headerlink" title="2.1 云函数"></a>2.1 云函数</h2><p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026223603000.png" alt="image-20221026223603000"></p>
+<h2 id="2-2-云函数操作数据库"><a href="#2-2-云函数操作数据库" class="headerlink" title="2.2 云函数操作数据库"></a>2.2 云函数操作数据库</h2><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/database/query.html">查询指令(与或非大于小于等)-微信开放文档 </a></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026223709885.png" alt="image-20221026223709885"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026223741454.png" alt="image-20221026223741454"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224015002.png" alt="image-20221026224015002"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224038467.png" alt="image-20221026224038467"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224119388.png" alt="image-20221026224119388"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224135325.png" alt="image-20221026224135325"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224210022.png" alt="image-20221026224210022"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224232956.png" alt="image-20221026224232956"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224314459.png" alt="image-20221026224314459"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221026224355639.png" alt="image-20221026224355639"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221027160908376.png" alt="image-20221027160908376"></p>
+<p><img src="/2022/10/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/image-20221027160955798.png" alt="image-20221027160955798"></p>
+<h1 id="3-多人协同开发"><a href="#3-多人协同开发" class="headerlink" title="3. 多人协同开发"></a>3. 多人协同开发</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zmh3933/article/details/122280675">微信小程序多人开发的配置流程</a></p>
+
     </div>
 
     
@@ -236,6 +288,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"># 后端</a>
           </div>
 
         
@@ -306,7 +359,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%89%8D%E7%AB%AF"><span class="nav-text">1. 前端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-WXSS"><span class="nav-text">1.1 WXSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E5%B0%BA%E5%AF%B8%E5%8D%95%E4%BD%8D"><span class="nav-text">1.1.1 尺寸单位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E6%A0%B7%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">1.1.2 样式的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-JS"><span class="nav-text">1.2 JS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-text">1.2.1 小程序的生命周期和回调函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E4%BA%8B%E4%BB%B6%E5%93%8D%E5%BA%94"><span class="nav-text">1.2.2 事件响应</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%90%8E%E7%AB%AF"><span class="nav-text">2.后端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1"><span class="nav-text">2.1</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%89%8D%E7%AB%AF"><span class="nav-text">1. 前端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-WXSS"><span class="nav-text">1.1 WXSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E5%B0%BA%E5%AF%B8%E5%8D%95%E4%BD%8D"><span class="nav-text">1.1.1 尺寸单位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E6%A0%B7%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">1.1.2 样式的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80"><span class="nav-text">1.1.3 页面布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-button%E6%8C%89%E9%92%AE%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-text">1.1.4 button按钮的属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-JS"><span class="nav-text">1.2 JS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-text">1.2.1 小程序的生命周期和回调函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E4%BA%8B%E4%BB%B6%E5%93%8D%E5%BA%94"><span class="nav-text">1.2.2 事件响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E9%A1%B5%E9%9D%A2%E9%97%B4%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1"><span class="nav-text">1.2.3 页面间数据通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-4-setData%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="nav-text">1.2.4 setData函数调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-WXML"><span class="nav-text">1.3 WXML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-image%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-text">1.3.1 image标签的属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E5%B8%B8%E7%94%A8API"><span class="nav-text">1.4 常用API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-%E7%95%8C%E9%9D%A2%E4%BA%A4%E4%BA%92API"><span class="nav-text">1.4.1 界面交互API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-%E9%A1%B5%E9%9D%A2%E8%B7%AF%E7%94%B1API"><span class="nav-text">1.4.2 页面路由API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-%E8%B0%83%E7%94%A8%E4%BA%91%E5%87%BD%E6%95%B0"><span class="nav-text">1.5 调用云函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-1-%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%EF%BC%88%E5%B0%BD%E9%87%8F%E4%B8%8D%E8%A6%81%E6%9C%89%E8%AF%A5%E5%8A%9F%E8%83%BD%E6%AF%94%E8%BE%83%E9%9A%BE%EF%BC%89"><span class="nav-text">1.5.1 上传图片（尽量不要有该功能比较难）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-2-%E8%AE%A2%E9%98%85%E6%B6%88%E6%81%AF%EF%BC%88%E6%9B%B4%E9%9A%BE%E4%BA%86%E5%B0%BD%E9%87%8F%E4%B8%8D%E8%A6%81%E5%BC%80%E5%8F%91%E8%AF%A5%E5%8A%9F%E8%83%BD%EF%BC%89"><span class="nav-text">1.5.2 订阅消息（更难了尽量不要开发该功能）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E7%82%B9%E5%B0%8F%E6%8F%90%E9%86%92"><span class="nav-text">1.6 前端开发的一点小提醒</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%90%8E%E7%AB%AF"><span class="nav-text">2. 后端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E4%BA%91%E5%87%BD%E6%95%B0"><span class="nav-text">2.1 云函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E4%BA%91%E5%87%BD%E6%95%B0%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">2.2 云函数操作数据库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%A4%9A%E4%BA%BA%E5%8D%8F%E5%90%8C%E5%BC%80%E5%8F%91"><span class="nav-text">3. 多人协同开发</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
