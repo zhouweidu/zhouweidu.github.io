@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"zhouweidu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1. 第一课面向对象：封装、继承、多态。模块与模块之间尽量解耦合 2. 递归3.栈、队列3.1 数组循环左移假设数组a[7]&#x3D;{1,2,3,4,5,6,7}，向左移3个元素，输出结果为：4 5 6 7 1 2 3 对前3个元素逆序，变为{3,2,1,4,5,6,7} 对后4个元素逆序，变为{ 3,2,1,7,6,5,4 } 对所有元素逆序，变为{ 4,5,6,7,1,2,3 } 1234">
+  <meta name="description" content="1. 第一课面向对象：封装、继承、多态。模块与模块之间尽量解耦合 2. 递归约瑟夫环问题（递归解法） 假设： 初始情况： 0, 1, 2 ……n-2, n-1 (共n个人)  第一个人(编号一定是(m-1)%n,设之为(k-1) ) 出列之后， 剩下的n-1个人组成了一个新的约瑟夫环（以编号为k&#x3D;&#x3D;m%n的人开始）:  k  k+1  k+2  … n-2, n-1, 0, 1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法分析">
 <meta property="og:url" content="https://zhouweidu.github.io/2022/09/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Irony&#39;s blog">
-<meta property="og:description" content="1. 第一课面向对象：封装、继承、多态。模块与模块之间尽量解耦合 2. 递归3.栈、队列3.1 数组循环左移假设数组a[7]&#x3D;{1,2,3,4,5,6,7}，向左移3个元素，输出结果为：4 5 6 7 1 2 3 对前3个元素逆序，变为{3,2,1,4,5,6,7} 对后4个元素逆序，变为{ 3,2,1,7,6,5,4 } 对所有元素逆序，变为{ 4,5,6,7,1,2,3 } 1234">
+<meta property="og:description" content="1. 第一课面向对象：封装、继承、多态。模块与模块之间尽量解耦合 2. 递归约瑟夫环问题（递归解法） 假设： 初始情况： 0, 1, 2 ……n-2, n-1 (共n个人)  第一个人(编号一定是(m-1)%n,设之为(k-1) ) 出列之后， 剩下的n-1个人组成了一个新的约瑟夫环（以编号为k&#x3D;&#x3D;m%n的人开始）:  k  k+1  k+2  … n-2, n-1, 0, 1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-06T23:58:31.000Z">
-<meta property="article:modified_time" content="2022-10-22T03:44:19.334Z">
+<meta property="article:modified_time" content="2022-10-30T13:47:12.965Z">
 <meta property="article:author" content="Irony">
 <meta property="article:tag" content="数据结构与算法">
 <meta name="twitter:card" content="summary">
@@ -192,7 +192,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-22 11:44:19" itemprop="dateModified" datetime="2022-10-22T11:44:19+08:00">2022-10-22</time>
+                <time title="修改时间：2022-10-30 21:47:12" itemprop="dateModified" datetime="2022-10-30T21:47:12+08:00">2022-10-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,7 +216,34 @@
 
       
         <h1 id="1-第一课"><a href="#1-第一课" class="headerlink" title="1. 第一课"></a>1. 第一课</h1><p>面向对象：封装、继承、多态。模块与模块之间尽量解耦合</p>
-<h1 id="2-递归"><a href="#2-递归" class="headerlink" title="2. 递归"></a>2. 递归</h1><h1 id="3-栈、队列"><a href="#3-栈、队列" class="headerlink" title="3.栈、队列"></a>3.栈、队列</h1><h2 id="3-1-数组循环左移"><a href="#3-1-数组循环左移" class="headerlink" title="3.1 数组循环左移"></a>3.1 数组循环左移</h2><p>假设数组a[7]&#x3D;{1,2,3,4,5,6,7}，向左移3个元素，输出结果为：4 5 6 7 1 2 3</p>
+<h1 id="2-递归"><a href="#2-递归" class="headerlink" title="2. 递归"></a>2. 递归</h1><p>约瑟夫环问题（<strong>递归解法</strong>）</p>
+<p>假设：</p>
+<p>初始情况： 0, 1, 2 ……n-2, n-1 (共n个人)</p>
+<p> 第一个人(编号一定是(m-1)%n,设之为(k-1) ) 出列之后，</p>
+<p>剩下的n-1个人组成了一个新的约瑟夫环（以编号为k&#x3D;&#x3D;m%n的人开始）:</p>
+<p> k  k+1  k+2  … n-2, n-1, 0, 1, 2, …,k-3, k-2 </p>
+<p>现在我们把他们的编号做一下转换：</p>
+<p>x -&gt; x’   （x‘代表新编号，x代表原编号  k&#x3D;&#x3D;m%n）</p>
+<p>k   –&gt; 0<br>k+1  –&gt; 1<br>k+2  –&gt; 2<br>…<br>…</p>
+<p>k-3  –&gt; n-3</p>
+<p>k-2  –&gt; n-2</p>
+<p>变换后就完完全全成为了(n-1)个人报数的子问题，假如我们知道这个子问题的解：例如x’是最终的胜利者，那么根据上面这个表把这个x’变回去不刚好就是n个人情况的解吗！<br>x’ -&gt;ｘ？(这正是从n-1时的结果反过来推n个人时的编号！)<br>0 -&gt; k</p>
+<p>1 -&gt; k+1</p>
+<p>2 -&gt; k+2</p>
+<p>…</p>
+<p>…</p>
+<p>n-3 -&gt; k-3</p>
+<p>n-2 -&gt; k-2</p>
+<p>变回去的公式　x&#x3D;(x’+k)%n</p>
+<p>那么，如何知道(n-1)个人报数的问题的解？只要知道(n-2)个人的解就行了。(n-2)个人的解呢？只要知道(n-3)的情况就可以了 —- 这显然就是一个递归问题：</p>
+<p>令f[i]表示i个人玩游戏报m退出最后胜利者的编号，最后的结果就是f[n]</p>
+<p>递推公式</p>
+<p>f[1]&#x3D;0;</p>
+<p>f[n]&#x3D;(f[n-1]+k)%n &#x3D; (f[n-1] +m%n) % n &#x3D; (f[n-1] + m) % n ;  (n&gt;1)</p>
+<p>当然，当n&#x3D;&#x3D;1时，直接返回0即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">lastRemaining</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> m)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (lastRemaining(n - <span class="number">1</span>, m) + m) % n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-链表"><a href="#3-链表" class="headerlink" title="3. 链表"></a>3. 链表</h1><h1 id="4-栈、队列"><a href="#4-栈、队列" class="headerlink" title="4.栈、队列"></a>4.栈、队列</h1><h2 id="4-1-数组循环左移"><a href="#4-1-数组循环左移" class="headerlink" title="4.1 数组循环左移"></a>4.1 数组循环左移</h2><p>假设数组a[7]&#x3D;{1,2,3,4,5,6,7}，向左移3个元素，输出结果为：4 5 6 7 1 2 3</p>
 <p><strong>对前3个元素逆序，变为{3,2,1,4,5,6,7}</strong></p>
 <p><strong>对后4个元素逆序，变为{ 3,2,1,7,6,5,4 }</strong></p>
 <p><strong>对所有元素逆序，变为{ 4,5,6,7,1,2,3 }</strong></p>
@@ -304,7 +331,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%AC%AC%E4%B8%80%E8%AF%BE"><span class="nav-text">1. 第一课</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E9%80%92%E5%BD%92"><span class="nav-text">2. 递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%A0%88%E3%80%81%E9%98%9F%E5%88%97"><span class="nav-text">3.栈、队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E6%95%B0%E7%BB%84%E5%BE%AA%E7%8E%AF%E5%B7%A6%E7%A7%BB"><span class="nav-text">3.1 数组循环左移</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%AC%AC%E4%B8%80%E8%AF%BE"><span class="nav-text">1. 第一课</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E9%80%92%E5%BD%92"><span class="nav-text">2. 递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E9%93%BE%E8%A1%A8"><span class="nav-text">3. 链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%A0%88%E3%80%81%E9%98%9F%E5%88%97"><span class="nav-text">4.栈、队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E6%95%B0%E7%BB%84%E5%BE%AA%E7%8E%AF%E5%B7%A6%E7%A7%BB"><span class="nav-text">4.1 数组循环左移</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
