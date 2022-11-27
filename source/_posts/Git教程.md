@@ -34,3 +34,5 @@ d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relat
 ## 2. 廖雪峰的git教程
 
 [多人协作git - 廖雪峰的官方网站 (liaoxuefeng.com)](https://www.liaoxuefeng.com/wiki/896043488029600/900375748016320)
+
+![image-20221101100754052](image-20221101100754052.png)
