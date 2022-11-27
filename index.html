@@ -277,7 +277,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-27 21:55:11" itemprop="dateModified" datetime="2022-10-27T21:55:11+08:00">2022-10-27</time>
+                <time title="修改时间：2022-11-09 22:31:23" itemprop="dateModified" datetime="2022-11-09T22:31:23+08:00">2022-11-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -443,7 +443,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-29 16:24:04" itemprop="dateModified" datetime="2022-10-29T16:24:04+08:00">2022-10-29</time>
+                <time title="修改时间：2022-11-09 14:53:16" itemprop="dateModified" datetime="2022-11-09T14:53:16+08:00">2022-11-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -615,7 +615,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-30 21:47:12" itemprop="dateModified" datetime="2022-10-30T21:47:12+08:00">2022-10-30</time>
+                <time title="修改时间：2022-11-27 22:32:12" itemprop="dateModified" datetime="2022-11-27T22:32:12+08:00">2022-11-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -672,6 +672,8 @@
 <p><strong>对所有元素逆序，变为{ 4,5,6,7,1,2,3 }</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//[ster...end)，左边包含右边不包含</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">reverse</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> ster, <span class="type">int</span> end)</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> temp;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> s = end - <span class="number">1</span>;        <span class="comment">//起始位置下标不变，终止位置-1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (ster &lt; s)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        temp = a[ster];</span><br><span class="line"></span><br><span class="line">        a[ster] = a[s];</span><br><span class="line"></span><br><span class="line">        a[s] = temp;</span><br><span class="line"></span><br><span class="line">        ster++;</span><br><span class="line"></span><br><span class="line">        s--;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i, k, a[<span class="number">7</span>] = &#123; <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;先输入左移个数：\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;k);</span><br><span class="line"></span><br><span class="line">    reverse(a, <span class="number">0</span>, k);</span><br><span class="line"></span><br><span class="line">    reverse(a, k, <span class="number">7</span>);</span><br><span class="line"></span><br><span class="line">    reverse(a, <span class="number">0</span>, <span class="number">7</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i++)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="4-2-表达式树"><a href="#4-2-表达式树" class="headerlink" title="4.2 表达式树"></a>4.2 表达式树</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Amentos/article/details/127182926">《数据结构》：中缀表达式转后缀表达式 后缀表达式的计算</a></p>
+
       
     </div>
 
@@ -721,7 +723,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-29 13:54:33" itemprop="dateModified" datetime="2022-10-29T13:54:33+08:00">2022-10-29</time>
+                <time title="修改时间：2022-11-17 22:55:36" itemprop="dateModified" datetime="2022-11-17T22:55:36+08:00">2022-11-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -749,7 +751,7 @@
 <p>对于这个不恢复余数的除法，我其实是有点困惑它的正确性如何成立的。经过一些思考，得出了一些或许可以增进一些理解的解释。首先我们考虑被除数和除数都是正数的情况，按照不恢复余数除法的上商规则，不难得出其实每一位商都会是正确的，因为上商判断时依据的也是新算出来的余数，也就是是否够减。但是最后的余数可能会有偏差，如果最后一步是不够减的，上商为0之后本来应该要在下一步实现恢复的，但是没有下一步了，因此我们要将余数加上一个被除数。两个负数相除的情形是类似的。但是需要注意的是一个负数除以它本身的情形，比如-8&#x2F;（-8），算的时候我们得到-8 - 1*（-8）&#x3D; 0，这时候如果看位串的符号位来说是变号了的，应该上商是0，然后余数现在也是0，但是在修正余数的时候由于0和-8符号位不同，要加上一个-8，余数变成-8，这显然是不合理的。对于这种情况需要加一个修正，即如果余数等于除数，那么余数减去除数，商加1。</p>
 <p>再考虑不同符号的数的除法，比如 -8&#x2F;3, 在这里要清楚其实不恢复余数的除法本质上还是恢复了余数，只不过和下一步的试商合在一起了。注意到<strong>上商的时候的判断标准和恢复余数的除法是不同的</strong>，不恢复余数的除法看的是<strong>是否和除数同号</strong>，这导致了本来该上 1 的地方现在上了 0，本来该上 0 的地方现在上了 1，相当于取反的效果，因此最后需要修正商，加一，合起来达到了取补码的效果。对于这种情况下余数修正的判断，如果最后余数符号和被除数相同，那么不需要修正，如果变了号，说明最后加过头了，但是没有下一轮来恢复了，这时需要减去一个除数。</p>
 <p>但是在不同符号数相除的情形当中仍然有一个 bug，那就是正数除以负数且能整除的情况。比如 -8&#x2F;2 ，我们会得到结果商为 -3,余数为 -2。试了一下，<strong>当被除数为负数，除数为正数，且可以整除的时候</strong>会出现这种情况。这时需要加一个特判修正，如果余数加上除数为0，那么商减一余数置0 。</p>
-<h1 id="2-一些单位"><a href="#2-一些单位" class="headerlink" title="2. 一些单位"></a>2. 一些单位</h1><p>我们目前所用的K、M、G、T等都是英文表示方法，分别是Kilo（10^3 )、Mega（10^6 ）、Giga（10^9 ）、Tera（10^12 ）的简写，更大的还有Peta（10^15 ）、Exa（10^18 ）、Bronto（10^21 ）等</p>
+<h1 id="2-一些单位"><a href="#2-一些单位" class="headerlink" title="2. 一些单位"></a>2. 一些单位</h1><p>我们目前所用的K、M、G、T等都是英文表示方法，分别是Kilo（10^3 )、Mega（10^6 ）、Giga（10^9 ）、Tera（10^12 ）的简写，更大的还有Peta（10^15 ）、Exa（10^18 ）、Bronto（10^21 ）等。</p>
 
       
     </div>
