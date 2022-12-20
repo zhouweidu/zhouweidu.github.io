@@ -10,9 +10,9 @@ typora-root-url: c-高级程序设计
 
 ![image-20220913112451688](image-20220913112451688.png)
 
-# 结构化程序设计部分
+# 1. 结构化程序设计部分
 
-## 1. 数据类型
+## 1.1 数据类型
 
 `int x=8;` x的取值范围被称为值集
 
@@ -20,15 +20,15 @@ typora-root-url: c-高级程序设计
 
 <!--more-->
 
-# 作业部分
+# 2. 作业部分
 
-## 1. 判断int是否溢出
+## 2.1 判断int是否溢出
 
-### 1.1 用INT_MAX
+### 2.1.1 用INT_MAX
 
 INT_MAX这个宏定义了int的最大值，用long long来定义结果变量，如果得到的结果大于INT_MAX则发生了溢出，不能用int定义结果变量，因为是int类型，就算发生了溢出也会截断一些位来使变量保持在int范围内（溢出会发生未定义的行为），所以int类型的变量永远不可能超过INT_MAX。
 
-### 1.2 用数学方法
+### 2.1.2 用数学方法
 
 ```c++
 void test(){	
@@ -42,7 +42,7 @@ void test(){
 
 思想：相加的结果与其中一个数相减，与另一个数比较看是否相等；相乘除的结果和乘除的因子相反操作，和原来的数值进行比较看是否相等。
 
-# 2. 最小公倍数和最大公约数
+## 2.2 最小公倍数和最大公约数
 
 **两个数的乘积等于这两个数的最大公约数与最小公倍数的积**，可以用欧几里得算法求出最大公约数进而得出最小公倍数。
 
@@ -67,22 +67,22 @@ int gcd(int a, int b){
 }
 ```
 
-# 3. C++的类
+## 2.3 C++的类
 
-## 3.1 拷贝控制
+### 2.3.1 拷贝控制
 
 ![image-20221029162402898](image-20221029162402898.png)
 
-# 机考复习
+# 3. 机考复习
 
-## 1. 输入
+## 3.1 输入
 
 split函数的实现
 
 ```c++
 vector<string> split(string str, char delimiter) {
     vector<string> strVec;
-    //show,me,
+    // show,,me,,
     for (int i = 0; i < str.size(); ++i) {
         if (str[i] != delimiter) {
             int j;
@@ -98,7 +98,9 @@ vector<string> split(string str, char delimiter) {
 }
 ```
 
-# 2. STL的使用
+string 头文件中有stoi、stod、stof等函数，可以方便的将字符串转为数字类型。
+
+## 3.2 STL的使用
 
 std::priority_queue 优先队列的使用
 
@@ -108,8 +110,9 @@ std::priority_queue 优先队列的使用
 using namespace std;
 
 /******** 定义类时同时定义操作符重载函数 ********/
-struct Node1
+class Node1
 {
+  public:
     // 要比较的元素
     int x;
     // 构造函数
@@ -123,8 +126,9 @@ struct Node1
 };
 
 /******** 自定义类，自定义比较函数 ********/
-struct Node2
+class Node2
 {
+  public:
     // 要比较的元素
     int x;
     // 构造函数
@@ -139,16 +143,18 @@ bool operator<(const Node2 &a, const Node2 &b)
 }
 
 /******** 自定义类，自定义包含比较函数的结构体 ********/
-struct Node3
+class Node3
 {
+  public:
     // 要比较的元素
     int x;
     // 构造函数
     Node3(int x) { this->x = x; }
 };
 
-struct cmpClass
+class cmpClass
 {
+  public:
     // 操作符重载函数，必须是写()
     bool operator()(const Node3 &a, const Node3 &b)
     {
@@ -160,7 +166,7 @@ struct cmpClass
 int main()
 {
     /******** 初始化优先级队列的对象p ********/
-    // Node1类型，默认使用vector，小顶堆，同 priority_queue<Node1, vector<Node1>, less<Node1> > p;
+    // Node1类型，默认使用vector，大顶堆，同 priority_queue<Node1, vector<Node1>, less<Node1> > p;
     priority_queue<Node1> p;
 
     // 乱序入队
@@ -219,3 +225,17 @@ int main()
 ![image-20221109145041019](/image-20221109145041019.png)
 
 ![image-20221109145051045](/image-20221109145051045.png)
+
+## 3.3 sort算法的使用
+
+![image-20221203203558831](image-20221203203558831.png)
+
+![image-20221203203614506](image-20221203203614506.png)
+
+![image-20221204121728590](image-20221204121728590.png)
+
+# 4. 面向对象部分
+
+![image-20221220112402021](/image-20221220112402021.png)
+
+![image-20221220112817218](/image-20221220112817218.png)
