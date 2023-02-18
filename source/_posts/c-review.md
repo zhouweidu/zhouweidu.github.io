@@ -4,7 +4,7 @@ date: 2022-09-06 19:04:24
 tags:
 - C++
 categories:
-- 个人技术栈
+- C++
 typora-root-url: c-review
 ---
 

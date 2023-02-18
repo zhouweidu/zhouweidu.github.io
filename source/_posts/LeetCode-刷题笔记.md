@@ -4,7 +4,7 @@ date: 2022-09-06 19:10:59
 tags:
 - LeetCode
 categories:
-- 个人技术栈
+- LeetCode
 typora-root-url: LeetCode-刷题笔记
 ---
 
@@ -7031,11 +7031,11 @@ public void rotate(int[][] matrix) {
 
 
 ​        
-        // 此处是Leetcode21 --> 合并两个有序链表
-        public ListNode mergeTwoLists(ListNode l1,ListNode l2){
-            ListNode dummy = new ListNode(0);
-            ListNode curr  = dummy;
-        
+​        // 此处是Leetcode21 --> 合并两个有序链表
+​        public ListNode mergeTwoLists(ListNode l1,ListNode l2){
+​            ListNode dummy = new ListNode(0);
+​            ListNode curr  = dummy;
+​        
             while(l1 != null && l2!= null){ // 退出循环的条件是走完了其中一个链表
                 // 判断l1 和 l2大小
                 if (l1.val < l2.val){

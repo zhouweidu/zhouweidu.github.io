@@ -4,7 +4,7 @@ date: 2022-09-06 19:25:58
 tags:
 - Java
 categories:
-- 个人技术栈
+- Java
 typora-root-url: review-on-java
 ---
 

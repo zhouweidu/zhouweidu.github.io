@@ -5,7 +5,7 @@ tags:
 - JDBC
 - 后端
 categories:
-- 个人技术栈
+- 后端
 ---
 
 # JDBC核心技术

@@ -6,7 +6,7 @@ tags:
 - Python
 - Java
 categories:
-- 南大课程
+- 软件工程
 ---
 
 # Python部分

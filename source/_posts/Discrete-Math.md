@@ -4,7 +4,7 @@ date: 2022-09-06 19:05:38
 tags:
 - 数据结构与算法
 categories:
-- 个人技术栈
+- 数据结构与算法
 typora-root-url: Discrete-Math
 ---
 

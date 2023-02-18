@@ -4,7 +4,7 @@ date: 2022-09-11 16:35:56
 tags:
 - LeetCode
 categories:
-- 个人技术栈
+- LeetCode
 ---
 
 # 226. 翻转二叉树

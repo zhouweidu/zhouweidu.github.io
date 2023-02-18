@@ -5,7 +5,7 @@ tags:
 - MySQL
 - 后端
 categories:
-- 个人技术栈
+- 数据库
 ---
 
 # MySQL初级篇

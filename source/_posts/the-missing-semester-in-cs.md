@@ -5,7 +5,7 @@ tags:
 - Linux
 - Shell
 categories:
-- 南大课程
+- Linux
 ---
 
 # 1. Shell

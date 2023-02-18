@@ -6,7 +6,7 @@ tags:
 - 后端
 - Java
 categories:
-- 个人技术栈
+- 后端
 ---
 
 # 1. MyBatis
@@ -54,5 +54,4 @@ post有请求体，get没有请求体。
 ## 4.5 Tomcat相关
 
 [Tomcat处理HTTP请求原理&线程池](https://www.cnblogs.com/danyuzhu11/p/10469334.html)
-
 

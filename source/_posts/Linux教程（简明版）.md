@@ -4,7 +4,7 @@ date: 2022-09-06 19:25:01
 tags:
 - Linux
 categories:
-- 个人技术栈
+- Linux
 ---
 
 ## 帮助指令
